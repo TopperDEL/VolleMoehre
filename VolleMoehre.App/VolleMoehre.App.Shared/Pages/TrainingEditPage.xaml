@@ -1,0 +1,29 @@
+﻿<Page
+    x:Class="VolleMoehre.App.Shared.TrainingEditPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:VolleMoehre.App.Shared"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <ScrollViewer>
+        <Grid>
+            <StackPanel>
+                <ComboBox Header="Trainingstyp" SelectedValue="{Binding Trainingstyp, Mode=TwoWay}" x:Name="TrainingstypenCombo"/>
+                <DatePicker Header="Datum" Date="{Binding Datum, Mode=TwoWay, Converter={StaticResource DateTimeToDateTimeOffsetConverter}}"/>
+                <!--<TimePicker Header="Uhrzeit" Time="{Binding Uhrzeit, Mode=TwoWay}"
+                            MinuteIncrement="15"/>-->
+                <TextBox Header="Uhrzeit" Text="{Binding Uhrzeit, Mode=TwoWay}" Width="50" HorizontalAlignment="Left"/>
+
+                <ComboBox Header="Ort" x:Name="Orte" SelectedValue="{Binding OrtId, Mode=TwoWay}" DisplayMemberPath="Bezeichnung" SelectedValuePath="Id"/>
+                <TextBox Header="Freitext" Text="{Binding FreitextInfo, Mode=TwoWay}"/>
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="Speichern" Margin="0,24" Click="SaveButton_Click" x:Name="SaveButton" Style="{StaticResource MoehreButtonStyle}"/>
+                    <Button Content="Abbrechen" Margin="24" Click="CancelButton_Click" x:Name="CancelButton" Style="{StaticResource MoehreButtonStyle}"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
+</Page>

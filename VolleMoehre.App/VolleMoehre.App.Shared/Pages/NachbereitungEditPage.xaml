@@ -1,0 +1,22 @@
+﻿<Page
+    x:Class="VolleMoehre.App.Shared.NachbereitungEditPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:VolleMoehre.App.Shared"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <StackPanel Margin="10">
+            <TextBox Header="Gefahrene Kilometer (ganzzahlig aufrunden)" Text="{Binding GefahreneKilometer, Mode=TwoWay}"/>
+            <ComboBox Header="Dein Teilnahmestatus" SelectedValue="{Binding SpielerStatus, Mode=TwoWay}" x:Name="SpielerStatusCombo"/>
+
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Speichern" Margin="0,24" Click="SaveButton_Click" x:Name="SaveButton" Style="{StaticResource MoehreButtonStyle}"/>
+                <Button Content="Abbrechen" Margin="24" Click="CancelButton_Click" x:Name="CancelButton" Style="{StaticResource MoehreButtonStyle}"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>

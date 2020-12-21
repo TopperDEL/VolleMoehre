@@ -1,0 +1,250 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>6279c845-92f8-4333-ab99-3d213163593c</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>VolleMoehre.App.Shared</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="$(MSBuildThisFileDirectory)App.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\AbrechnungPage.xaml.cs">
+      <DependentUpon>AbrechnungPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\APIConnectionPage.xaml.cs">
+      <DependentUpon>APIConnectionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\AuftrittEditPage.xaml.cs">
+      <DependentUpon>AuftrittEditPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\AuftrittePage.xaml.cs">
+      <DependentUpon>AuftrittePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Commands\StartNachbereitungCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Commands\ChangeStatusCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Commands\ChangeTrainingStatusCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Commands\SetAbwesendCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Commands\SetHelferCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Commands\SetModeratorCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Commands\SetSpielerCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Commands\SetTrainingAbwesendCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Commands\SetTrainingLeiterCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Commands\SetTrainingTeilnehmerCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Commands\SetTrainingVorgemerktCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Commands\SetVorgemerktCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converter\BooleanToInvertedVisibilityConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converter\BooleanToVisibilityConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converter\DateConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converter\DateTimeConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converter\DateTimeToDateTimeOffsetConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Converter\DateTimeToTimeSpanConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\InternMainPage.xaml.cs">
+      <DependentUpon>InternMainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\ListenEintraegePage.xaml.cs">
+      <DependentUpon>ListenEintraegePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\ListenEintragEditPage.xaml.cs">
+      <DependentUpon>ListenEintragEditPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\NachbereitungEditPage.xaml.cs">
+      <DependentUpon>NachbereitungEditPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\NachbereitungPage.xaml.cs">
+      <DependentUpon>NachbereitungPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\OrtEditPage.xaml.cs">
+      <DependentUpon>OrtEditPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\OrtePage.xaml.cs">
+      <DependentUpon>OrtePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Resources.cs">
+      <DependentUpon>Resources.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Services\AbrechnungsService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\APIConnectionService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\AuftritteService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\ListenService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\NachbereitungService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\OrteService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\ServiceBase.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\SpielerService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\SpieleService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\TrainingsService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\SpielEditPage.xaml.cs">
+      <DependentUpon>SpielEditPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\SpielePage.xaml.cs">
+      <DependentUpon>SpielePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\TrainingEditPage.xaml.cs">
+      <DependentUpon>TrainingEditPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Pages\TrainingsPage.xaml.cs">
+      <DependentUpon>TrainingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\AbrechnungViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\APIConnectionPageViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\AuftritteViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\AuftrittsterminViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\BaseViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\KommentarViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\ListeViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\MainPageViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\NachbereitungenViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\OrteViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\SpieleViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\TrainingsterminViewModel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\TrainingsViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="$(MSBuildThisFileDirectory)Pages\AbrechnungPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Pages\APIConnectionPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Pages\AuftrittEditPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Pages\AuftrittePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Pages\InternMainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Pages\ListenEintraegePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Pages\ListenEintragEditPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Pages\MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Pages\NachbereitungEditPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Pages\NachbereitungPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Pages\OrtEditPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Pages\OrtePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Resources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Pages\SpielEditPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Pages\SpielePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Pages\TrainingEditPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Pages\TrainingsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)Assets\banner2.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\banner4.jpg" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\LockScreenLogo.scale-200.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\SplashScreen.scale-200.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Square150x150Logo.scale-200.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Square150x150Logo.scale-400.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Square44x44Logo.scale-200.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\StoreLogo.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Assets\Wide310x150Logo.scale-200.png" />
+    <Content Include="$(MSBuildThisFileDirectory)FodyWeavers.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <PRIResource Include="$(MSBuildThisFileDirectory)Strings\en\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Update="$(MSBuildThisFileDirectory)AbrechnungPage.xaml.cs">
+      <DependentUpon>AbrechnungPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="$(MSBuildThisFileDirectory)APIConnectionPage.xaml.cs">
+      <DependentUpon>APIConnectionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="$(MSBuildThisFileDirectory)AuftrittEditPage.xaml.cs">
+      <DependentUpon>AuftrittEditPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="$(MSBuildThisFileDirectory)AuftrittePage.xaml.cs">
+      <DependentUpon>AuftrittePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="$(MSBuildThisFileDirectory)InternMainPage.xaml.cs">
+      <DependentUpon>InternMainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="$(MSBuildThisFileDirectory)ListenEintraegePage.xaml.cs">
+      <DependentUpon>ListenEintraegePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="$(MSBuildThisFileDirectory)ListenEintragEditPage.xaml.cs">
+      <DependentUpon>ListenEintragEditPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="$(MSBuildThisFileDirectory)NachbereitungEditPage.xaml.cs">
+      <DependentUpon>NachbereitungEditPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="$(MSBuildThisFileDirectory)NachbereitungPage.xaml.cs">
+      <DependentUpon>NachbereitungPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="$(MSBuildThisFileDirectory)OrtEditPage.xaml.cs">
+      <DependentUpon>OrtEditPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="$(MSBuildThisFileDirectory)OrtePage.xaml.cs">
+      <DependentUpon>OrtePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="$(MSBuildThisFileDirectory)SpielEditPage.xaml.cs">
+      <DependentUpon>SpielEditPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="$(MSBuildThisFileDirectory)SpielePage.xaml.cs">
+      <DependentUpon>SpielePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="$(MSBuildThisFileDirectory)TrainingEditPage.xaml.cs">
+      <DependentUpon>TrainingEditPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="$(MSBuildThisFileDirectory)TrainingsPage.xaml.cs">
+      <DependentUpon>TrainingsPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Pages\" />
+  </ItemGroup>
+</Project>

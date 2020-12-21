@@ -1,0 +1,5 @@
+- Pull to refresh (dazu muss uno RefreshContainer implementieren)
+X SaveArea/VisibleBoundsPadding
+X Pages-cs und xaml-files unterordnen
+- Besseres Back-Button-Handling
+- Jumplist anbindung

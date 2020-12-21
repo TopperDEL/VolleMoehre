@@ -1,0 +1,1008 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+@addTagHelper VolleMoehre.Web.Helper.MoehreContentTagHelper,VolleMoehre.Web
+@addTagHelper VolleMoehre.Web.Helper.MoehreImageTagHelper,VolleMoehre.Web
+
+<!-- Begin Wrapper -->
+<div id="wrapper">
+    <!-- Begin Header -->
+    <div id="header">
+        <div id="logo">
+            <h1>
+                <a href="#home">
+                    <span style="color: #ff6600; font-weight: bold">Volle Möhre!</span>
+                    Improvisationstheater
+                </a>
+            </h1>
+        </div>
+        <ul id="menu">
+            <li>
+                <a id="homelink" href="#home">
+                    <img class="lazy" src="~/images/grey.gif" data-original="/images/moehre-icon.png"
+                         alt="Startseite" />
+                </a>
+            </li>
+            <li><a href="#termine">Termine</a></li>
+            <li><a href="#ueberuns">Über uns</a></li>
+            <li><a href="#portfolio">Portfolio</a></li>
+            <li><a href="#workshops">Workshops</a></li>
+            <li><a href="#presse">Presse</a></li>
+            <li><a href="#kontakt">Kontakt/Buchung</a></li>
+            <li><a href="#impressum">Impressum</a></li>
+            <li id="facebooklink_li">
+                <a id="facebooklink" href="https://www.facebook.com/Improtheater.Volle.Moehre"
+                   target="_blank">
+                    <img class="lazy" src="~/images/grey.gif" data-original="/images/icon-fb.png"
+                         alt="Unsere Seite bei Facebook" />
+                </a>
+            </li>
+        </ul>
+    </div>
+    <!-- End Header -->
+    <!-- Begin Top Section -->
+    <div id="home" class="borderline">
+        <div class="title">
+            <h2>
+                Home <span>Willkommen!</span>
+            </h2>
+            <div class="gototop">
+                <a href="#top" class="scrolltop" title="Go to Top"></a>
+            </div>
+        </div>
+        <!-- Begin Slider -->
+        <div id="slider">
+            <div class="flexslider">
+                <moehre-content url="Slider.aspx"></moehre-content>
+            </div>
+        </div>
+        <!-- End Slider -->
+        <div class="section-container" id="termineNext">
+            <div class="one-fourth">
+                <h2>
+                    Nächster Auftritt:
+                </h2>
+            </div>
+            <div class="three-fourth last termineNextDesc">
+                <a href="#termine">
+                    @if (Model.Auftritte.Count > 0)
+                    {
+                    @Model.Auftritte.First().Datum.ToString("ddd dd.MM.yyyy")
+                    <span>-</span>
+                        @Model.Auftritte.First().Datum.ToString("t")
+                <span>Uhr -</span>
+                    @Model.Auftritte.First().Showtyp
+                <span>-</span>
+                    @Model.Auftritte.First().Spielort
+                    }
+                    else
+                    {
+                    <p>Derzeit haben wir leider - Corona-bedingt - keine Auftritte.</p>
+                    }
+                </a>
+            </div>
+        </div>
+        <!-- Begin Services -->
+        <div class="section-container" id="begruessung">
+            <moehre-content url="Begruessung.aspx"></moehre-content>
+        </div>
+        @*<div class="section-container" id="begruessungZusatz">
+                <moehre-content url="BegruessungZusatz.aspx"></moehre-content>
+            </div>*@
+        <!-- End Services -->
+    </div>
+    <!-- End Top Section -->
+    <!-- Begin termine Section -->
+    <div id="corona" class="borderline">
+        <div class="section-container">
+            <h2>
+                Aufgrund der aktuellen Situation wurden alle Auftritte abgesagt. Bitte informiert euch hier oder auf unserer Facebook-Seite wann es wieder Termine gibt. Wir stehen das gemeinsam durch!
+            </h2>
+        </div>
+    </div>
+    <div id="termine" class="news-page borderline">
+        <div class="title">
+            <h2>
+                Termine<span>Wann und wo</span>
+            </h2>
+            <div class="gototop">
+                <a href="#top" class="scrolltop" title="Nach oben"></a>
+            </div>
+        </div>
+        <!-- Begin termine Container -->
+        <div id="tab-buttons-container-termine" class="tab-container">
+            <ul id="carouselTermine" class="etabs">
+                @foreach (var item in Model.Auftritte)
+                {
+                <li class="tab">
+                    <div class="date">
+                        <div class="day">
+                            @item.Datum.Day
+                        </div>
+                        <div class="month">
+                            @Html.Encode(String.Format("{0:MMM}", item.Datum))
+                        </div>
+                        <div class="year">
+                            @item.Datum.Year
+                        </div>
+                    </div>
+                    <a href="#termin_@item.Id">
+                        @item.Showtyp<br>
+                        @item.Spielort
+                    </a>
+                </li>
+                }
+            </ul>
+            <!-- Begin Entries -->
+            <div class="panel-container terminePanelContainer">
+                @foreach (var item in Model.Auftritte)
+                {
+                <div id="termin_@item.Id" class="tab-buttons-panel-termine terminePanel">
+                    <h2>
+                        @item.Showtyp
+                    </h2>
+                    <p class="formatTicker">
+                        @if (item.Showtyp.ToLower().Contains("show"))
+                            {
+                        <moehre-content url="Format_ImproShow.aspx"></moehre-content>
+                            }
+                            else if (item.Showtyp.ToLower().Contains("kabarett"))
+                            {
+                        <moehre-content url="Format_ImproKabarett.aspx"></moehre-content>
+                            }
+                            else if (item.Showtyp.ToLower().Contains("match"))
+                            {
+                        <moehre-content url="Format_ImproMatch.aspx"></moehre-content>
+                            }
+                            else
+                            {
+                        <moehre-content url="Format_Allgemein.aspx"></moehre-content>
+                            }
+                    </p>
+                    <div class="termineInhalt">
+                        <p>
+                            Wo: @item.Ort
+                        </p>
+                        <p>
+                            Wann: <span class="terminDatum">
+                                @item.Datum.ToString("ddd dd.MM.yyyy")
+                                -
+                                @item.Datum.ToString("t")
+                                Uhr
+                            </span>
+                        </p>
+                        <p>
+                            @if (!string.IsNullOrEmpty(item.Spielort) && item.Spielort.ToLower().Contains("rote"))
+                                {
+                            <moehre-content url="Ort_RoteBuehne.aspx"></moehre-content>
+                                }
+                                else if (!string.IsNullOrEmpty(item.Spielort) && item.Spielort.ToLower().Contains("weed"))
+                                {
+                            <moehre-content url="Ort_Spitzweedscheune.aspx"></moehre-content>
+                                }
+                                else if (!string.IsNullOrEmpty(item.Spielort) && item.Spielort.ToLower().Contains("scheune"))
+                                {
+                            <moehre-content url="Ort_AlteScheune.aspx"></moehre-content>
+                                }
+                                else if (!string.IsNullOrEmpty(item.Spielort) && item.Spielort.ToLower().Contains("keller"))
+                                {
+                            <moehre-content url="Ort_Kulturkellerei.aspx"></moehre-content>
+                                }
+                                else if (!string.IsNullOrEmpty(item.Spielort) && item.Spielort.ToLower().Contains("lauf"))
+                                {
+                            <moehre-content url="Ort_JUZLauf.aspx"></moehre-content>
+                                }
+                                else if (!string.IsNullOrEmpty(item.Spielort) && item.Spielort.ToLower().Contains("eckental"))
+                                {
+                            <moehre-content url="Ort_JUZEckental.aspx"></moehre-content>
+                                }
+                                else if (!string.IsNullOrEmpty(item.Spielort) && item.Spielort.ToLower().Contains("jungeggers"))
+                                {
+                            <moehre-content url="Ort_Jungeggers.aspx"></moehre-content>
+                                }
+                                else if (!string.IsNullOrEmpty(item.Spielort) && item.Spielort.ToLower().Contains("kammer"))
+                                {
+                            <moehre-content url="Ort_KammerAnsbach.aspx"></moehre-content>
+                                }
+                                else
+                                {
+                            <moehre-content url="Ort_Allgemein.aspx"></moehre-content>
+                                }
+                        </p>
+                        @if (!string.IsNullOrEmpty(item.EintrittInfo))
+                            {
+                        <p>
+                            Eintritt: <span class="eintritt">
+                                @item.EintrittInfo
+                            </span>
+                        </p>
+                            }
+                            else
+                            {
+                        <p><span class="eintritt">Eintritt frei!</span></p>
+                            }
+                        <div id="esSpielen">
+                            Es spielen:<br>
+                            @foreach (string spieler in item.Teilnehmer)
+                                {
+                            <moehre-image Spieler="@spieler"></moehre-image>
+                                }
+                        </div>
+                    </div>
+                    <div class="termineGooglemaps">
+                        @if (item.Strasse != string.Empty)
+                            {
+                        @*<img class="lazy" src="/Content/locustheme/images/grey.gif" data-original="https://maps.googleapis.com/maps/api/staticmap?center=@item.Strasse+@item.Hausnummer,+@item.Postleitzahl+@item.Ort&zoom=14&size=300x200&maptype=roadmap&markers=color:orange%7Clabel:%7C+@item.Strasse+@item.Hausnummer,+@item.Postleitzahl+@item.Ort&sensor=false&key=AIzaSyAGS7cYrvZp87Z17CHm__ISK2kSQMyQAig"
+                            alt="Anfahrt @item.Spielort" width="300" height="200" />*@
+                            }
+                        <div class="termineLinks">
+                            <ul>
+                                @if (!string.IsNullOrEmpty(item.VVKLink))
+                                    {
+                                <li><a href="@item.VVKLink" target="_blank"><b>Tickets</b></a></li>
+                                    }
+                                @if (!string.IsNullOrEmpty(item.AnfahrtLink))
+                                    {
+                                <li>/><a href="@item.AnfahrtLink" target="_blank">Anfahrt</a></li>
+                                    }
+                                    else if (item.Strasse != null && item.Strasse != string.Empty)
+                                    {
+                                <li>
+                                    <a href="https://maps.google.com/maps?saddr=&daddr=@item.Strasse+@item.Hausnummer,+@item.Postleitzahl+@item.Ort"
+                                       target="_blank">Anfahrt</a>
+                                </li>
+                                    }
+                                @if (!string.IsNullOrEmpty(item.Infolink))
+                                    {
+                                <li><a href="@item.Infolink" target="_blank">Infos zum Spielort</a></li>
+                                    }
+                                @*<li><a href="https://intern.vollemoehre.de/api/kalender/public/@item.Id" target="_blank">Termin vormerken</a></li>*@
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                }
+            </div>
+            <!-- End Entries -->
+        </div>
+        <!-- End termine Container -->
+        <script type="text/javascript">
+            //Fügt die Schaltflächen für Vor und Zurück auf kleinen Geräten hinzu
+            setTabButtons('#tab-buttons-container-termine', '.tab-buttons-panel-termine');
+        </script>
+    </div>
+    <!-- End termine Section -->
+    <!-- Begin "Über Uns" Section -->
+    <div id="ueberuns" class="borderline">
+        <div class="title">
+            <h2>
+                Info<span>Über uns</span>
+            </h2>
+            <div class="gototop">
+                <a href="#top" class="scrolltop" title="Nach oben"></a>
+            </div>
+        </div>
+        <div class="section-container small-padding">
+            <moehre-content url="UeberUns.aspx"></moehre-content>
+        </div>
+        <!-- Begin Spieler Container -->
+        <div id="tab-buttons-container-spieler" class="tab-container">
+            <ul id="carouselSpieler" class="etabs, carouselSpielerCls">
+                <li class="tab"><a href="#tim">Tim Parth</a></li>
+                <li class="tab"><a href="#yosh">Jörg Diethorn</a></li>
+                <li class="tab"><a href="#goeksen">Göksen Meine</a></li>
+                <li class="tab"><a href="#lisa">Lisa van der Linden</a></li>
+                <li class="tab"><a href="#philipph">Philipp Hofmann</a></li>
+                <li class="tab"><a href="#christine">Christine Hofmann</a></li>
+                <li class="tab"><a href="#michael">Michael Müller</a></li>
+                <li class="tab"><a href="#kalli">Karlheinz Knöbl</a></li>
+                <li class="tab"><a href="#philippw">Philipp Weißmann</a></li>
+            </ul>
+            <!-- Begin Entries -->
+            <div class="panel-container">
+                <div id="tim" class="tab-buttons-panel-spieler">
+                    <img class="lazy" src="~/images/grey.gif" data-original="/images/Fotos2013/Tim.jpg"
+                         alt="" width="630" height="315" />
+                    <h2>
+                        Tim Parth
+                    </h2>
+                    <p>
+                        <b>Zur Person:</b>
+                        <br>
+                        Tim wurde am 12.09.1983 in Nürnberg geboren und ist seit 2005 festes Mitglied bei
+                        Volle Möhre!. Innerhalb der Gruppe ist er für die Weiterentwicklung und Pflege der
+                        Homepage zuständig. Nebenbei ist er ein wenig selbständig und wühlt sich durch diverse
+                        Personalsysteme. Wenn er sonst nichts zu tun hat spielt er eine Runde mit seinem
+                        selbstentwickelten Kartenspiel <a href="https://www.mehrkopf.de">Mehrkopf</a>.
+                        <br>
+                        <br>
+                        <b>Ausbildungen:</b>
+                        <br>
+                        Studium der Wirtschaftsinformatik an der FH Nürnberg
+                        <br>
+                        <br>
+                        <b>Theater/Schauspielerfahrungen:</b>
+                        <br>
+                        - Mitglied in einer experimentellen Schultheatergruppe am Dietrich-Bonhoeffer-Gymnasium
+                        Oberasbach
+                        <br>
+                        <br>
+                        <b>Weitere Projekte:</b>
+                        <br>
+                        - hat beim Gedichtwettbewerb der Nationalbibliothek deutschsprachiger Gedichte gewonnen
+                        und ist mit eigenen Werken in verschiedenen Ausgaben der "Gesammelten Werke" erschienen
+                        <br>
+                        - mit eigenen Filmproduktionen mehrfach beim "Mittelfränkischen Jugendfilmfestival"
+                        teilgenommen
+                        <br>
+                        - Ehrenamtlicher Betreuer bei Kinder-/Jugendzeltlagern
+                        <br>
+                        - Hobby-Musiker
+                        <br>
+                        - 3D-Drucker und Lasercutter
+                        <br>
+                        <br>
+                        <b>Homepages:</b>
+                        <br>
+                        <a href="https://www.mehrkopf.de">https://www.mehrkopf.de</a>
+                        <br>
+                        <a href="https://www.barembo.de">https://www.barembo.de</a>
+                        <br>
+                        <br>
+                    <p>
+                        <img class="lazy" src="~/images/grey.gif" data-original="/images/pfeilchen.png"
+                             width="9" height="9" />
+                        @*<%= Html.ActionLink(" Tim eine Nachricht zukommen lassen ","Nachricht","Kontakt", new { Spielername = "Tim", popup = true }, new { @class = "popup-link" } ) %>*@
+                        <img class="lazy" src="~/images/grey.gif" data-original="/images/pfeilchenTurned.png"
+                             width="9" height="9" />
+                    </p>
+                    </p>
+                </div>
+                <div id="yosh" class="tab-buttons-panel-spieler">
+                    <img src="~/images/Fotos2013/Yosh.jpg"
+                         alt="" width="630" height="315" />
+                    <h2>
+                        Jörg Diethorn
+                    </h2>
+                    <p>
+                        <b>Zur Person:</b>
+                        <br>
+                        Yosh wurde am 16.04.1984 in Nürnberg geboren und ist seit 2007 festes Mitglied bei
+                        Volle Möhre.
+                        <br>
+                        <br>
+                        <b>Ausbildungen:</b>
+                        <br>
+                        Student an der Friedrich Alexander Universität Erlangen
+                        <br>
+                        <br>
+                        <b>Teilgenommene Workshops:</b>
+                        <br>
+                        - 2008 Workshop mit Michael Jakob (Improvisation für Anfänger und Fortgeschrittene)
+                        <br>
+                        - 2009 Pantomime Workshop
+                        <br>
+                        - Workshops zur Rhetorik, Mediation usw.
+                        <br>
+                        <br>
+                        <b>Theater/Schauspielerfahrungen:</b>
+                        <br>
+                        - 5 Jahre Mitglied einer Theatergruppe am DBG Oberasbach
+                        <br>
+                        - Auftritt beim Roten Kreuz
+                        <br>
+                        - Auftritt zum Thomas Tag bei Onoldia Nürnberg
+                        <br>
+                        <br>
+                        <b>Weitere Projekte:</b>
+                        <br>
+                        - Stellvertretender Vorsitzender des KJW Nürnberg
+                        <br>
+                        - Mitglied des AWO-Vorstandes Nürnberg
+                        <br>
+                        - Jugendbetreuer auf Freizeiten
+                        <br>
+                        - Mitglied des TSV 1861 Zirndorf
+                        <br>
+                        <br>
+                    <p>
+                        <img class="lazy" src="~/images/grey.gif" data-original="/images/pfeilchen.png"
+                             width="9" height="9" />
+                        @*<%= Html.ActionLink(" Yosh eine Nachricht zukommen lassen ", "Nachricht", "Kontakt", new { Spielername = "Yosh", popup = true }, new { @class = "popup-link" })%>*@
+                        <img class="lazy" src="~/images/grey.gif" data-original="/images/pfeilchenTurned.png"
+                             width="9" height="9" />
+                    </p>
+                    </p>
+                </div>
+                <div id="goeksen" class="tab-buttons-panel-spieler">
+                    <img src="~/images/Fotos2013/Goeksen.jpg"
+                         alt="" width="630" height="315" />
+                    <h2>
+                        Göksen Meine
+                    </h2>
+                    <p>
+                        <b>Zur Person:</b>
+                        <br>
+                        Göksen wurde am 20.04.1977 in Ansbach geboren und ist seit 2005 festes Mitglied
+                        bei Volle Möhre!. Innerhalb von Volle Möhre! ist sie für die Organisation und die
+                        Finanzen zuständig.<br>
+                        <br>
+                        <b>
+                            Ausbildungen:<br>
+                        </b>Studium der Betriebswirtschaftslehre an der FH Ansbach
+                        <br>
+                        <br>
+                        <b>Teilgenommene Workshops:</b>
+                        <br>
+                        - 2007 Workshop mit Scratch (Kanada)
+                        <br>
+                        - 2007 Workshop mit La Gata (Kolumbien)
+                        <br>
+                        - 2009 Workshop mit Rapid Fire (Kanada)
+                        <br>
+                        <br>
+                        <b>Theater/Schauspielerfahrungen:</b>
+                        <br>
+                        - Gründung und Leitung eigener Theatergruppen an der FOS Ansbach und FH Ansbach
+                        <br>
+                        - Auftritte in den Theatergruppen Neunstetten und Leutershausen
+                        <br>
+                        - Mitglied im Kabarett-Theater „Spieltrieb“
+                        <br>
+                        - Gastauftritte bei den Improvisationsgruppen „6aufKraut“ und "Holterdipolter"
+                        <br>
+                        <br>
+                        <b>Weitere Projekte:</b>
+                        <br>
+                        - Coach und Trainerin für Kommunikations- und Kreativitätstechniken
+                        <br>
+                        - Gründungsberaterin
+                        <br>
+                        - Gründung der "Improschmiede"
+                        <br>
+                        - Gründung von "MeineArt"
+                        <br>
+                        - Mitgründerin von "INKA Trainings"
+                        <br>
+                        - Mitgründerin von "Improneurship"
+                        <br>
+                        <br>
+                        <b>Auszeichnungen:</b>
+                        <br>
+                        - Impro-Slam-Champion 2008 in Nürnberg
+                        <br>
+                        - Goldener Klumpen Ladenburg 2017
+                        <br>
+                        <br>
+                        <b>Homepages:</b>
+                        <br>
+                        <a href="http://www.improschmiede.de">http://www.improschmiede.de</a>
+                        <br>
+                        <a href="http://www.meineart.training">http://www.meineart.training</a>
+                        <br>
+                        <a href="http://www.inka-training.de">http://www.inka-training.de</a>
+                        <br>
+                        <br>
+                    <p>
+                        <img class="lazy" src="~/images/grey.gif" data-original="/images/pfeilchen.png"
+                             width="9" height="9" />
+                        @*<%= Html.ActionLink(" Göksen eine Nachricht zukommen lassen ", "Nachricht", "Kontakt", new { Spielername = "Göksen", popup = true }, new { @class = "popup-link" })%>*@
+                        <img class="lazy" src="~/images/grey.gif" data-original="/images/pfeilchenTurned.png"
+                             width="9" height="9" />
+                    </p>
+                    </p>
+                </div>
+                <div id="lisa" class="tab-buttons-panel-spieler">
+                    <img src="~/images/Fotos2013/Lisa.jpg"
+                         alt="" width="630" height="315" />
+                    <h2>
+                        Lisa van der Linden (geb. Schikora)
+                    </h2>
+                    <p>
+                        <b>Zur Person:</b>
+                        <br>
+                        geboren in Nürnberg am 28.11.1982. Seit 2006 bei Volle Möhre dabei. Sportkoordinatorin und Bildungsplanerin,
+                        Tänzerin, Improspielerin.
+                        <br>
+                        <br>
+                        <b>Ausbildungen:</b>
+                        <br>
+                        Studium der Diplom-Pädagogik mit Schwerpunkt Andragogik an der Uni Bamberg
+                        <br>
+                        <br>
+                        <b>Teilgenommene Workshops:</b>
+                        <br>
+                        - Übungsleiterschein
+                        <br>
+                        <br>
+                        <b>Theater/Schauspielerfahrungen:</b>
+                        <br>
+                        - Auftritte im Schultheater des Gymnasiums Stein
+                        <br>
+                        - Erste Improerfahrungen bei Piperlapupp an der Uni Bamberg
+                        <br>
+                        <br>
+                        <b>Weitere Projekte:</b>
+                        <br>
+                        - Mitglied einer Gymnastik- und Tanz-Gruppe und Trainerin einer Jugendgruppe G &
+                        T
+                        <br>
+                        <br>
+                        <b>Auszeichnungen:</b>
+                        <br>
+                        - Impro-Slam-Gewinnerin 2008 Nürnberg
+                        <br>
+                        - Bayerischer Meister und 4. Deutscher Meister in Gymnastik und Tanz 2009
+                        <br>
+                        <br>
+                    <p>
+                        <img class="lazy" src="~/images/grey.gif" data-original="/images/pfeilchen.png"
+                             width="9" height="9" />
+                        @*<%= Html.ActionLink(" Lisa eine Nachricht zukommen lassen ", "Nachricht", "Kontakt", new { Spielername = "Lisa", popup = true }, new { @class = "popup-link" })%>*@
+                        <img class="lazy" src="~/images/grey.gif" data-original="/images/pfeilchenTurned.png"
+                             width="9" height="9" />
+                    </p>
+                    </p>
+                </div>
+                <div id="philipph" class="tab-buttons-panel-spieler">
+                    <img src="~/images/Fotos2013/PhilippH.jpg"
+                         alt="" width="630" height="315" />
+                    <h2>
+                        Philipp Hofmann (geb. Oeder)
+                    </h2>
+                    <p>
+                        <b>Zur Person:</b>
+                        <br>
+                        Philipp wurde am 26.Februar 1982 in Würzburg geboren. Als Gründungsmitglied und
+                        Künstlerischer Leiter von Volle Möhre! ist er fast schon eine "Vollzeitmöhre". Auf
+                        der Bühne ist er unter anderem für Zauberwesen, verschiedene Dialekte, exzentrische
+                        Persönlichkeiten und rasante Bühnenstunts zuständig.
+                        <br>
+                        <br>
+                        <b>Ausbildungen:</b>
+                        <br>
+                        Diplom-Pädagoge (Univ.), Heilpraktiker für Psychotherapie (HPG), Hypnotherapeut,
+                        Systemischer Berater
+                        <br>
+                        <br>
+                        <b>Teilgenommene Workshops:</b>
+                        <br>
+                        - 2006 Impro-Langform Workshop mit Sigi Wekerle (Deutschland)
+                        <br>
+                        - 2009 Workshop mit Rapid Fire (Kanada)
+                        <br>
+                        - 2011 Workshop mit Shawn Kinley (Kanada, Loose Moose)
+                        <br>
+                        <br>
+                        <b>Theater/Schauspielerfahrungen:</b>
+                        <br>
+                        - Mitglied im Kabarett-Theater „Spieltrieb“
+                        <br>
+                        <br>
+                        <b>Weitere Projekte:</b>
+                        <br>
+                        - Pandoras-Spieluhr
+                        <br>
+                        - Musikproduktion
+                        <br>
+                        - Performance-Moderation für Events aller Art
+                        <br>
+                        - Moderation von "Bar Burlesque" in der Roten Bühne, Nürnberg
+                        <br>
+                        - Improworkshops für Kinder
+                        <br>
+                        <br>
+                        <b>Auszeichnungen:</b>
+                        <br>
+                        - 4. Sieger der NN-Rockbühne 2001
+                        <br>
+                        - Jugendkulturpreis Ansbach mit der Gruppe Spieltrieb 2004
+                        <br>
+                        - Improchampion 2008 in Ansbach
+                        <br>
+                        <br>
+                        <b>Homepages:</b>
+                        <br>
+                        <a href="http://www.philipphofmann.info">http://www.philipphofmann.info</a>
+                        <br>
+                        <a href="http://www.pandoras-spieluhr.de">http://www.pandoras-spieluhr.de</a>
+                        <br>
+                        <br>
+                    <p>
+                        <img class="lazy" src="~/images/grey.gif" data-original="/images/pfeilchen.png"
+                             width="9" height="9" />
+                        @*<%= Html.ActionLink(" Philipp eine Nachricht zukommen lassen ", "Nachricht", "Kontakt", new { Spielername = "Philipp", popup = true }, new { @class = "popup-link" })%>*@
+                        <img class="lazy" src="~/images/grey.gif" data-original="/images/pfeilchenTurned.png"
+                             width="9" height="9" />
+                    </p>
+                    </p>
+                </div>
+                <div id="christine" class="tab-buttons-panel-spieler">
+                    <img src="~/images/Fotos2013/Christine.jpg"
+                         alt="" width="630" height="315" />
+                    <h2>
+                        Christine Hofmann
+                    </h2>
+                    <p>
+                        <b>Zur Person:</b>
+                        <br>
+                        Christine wurde am 11.09.1977 in Ansbach geboren. Sie war schon festes Mitglied
+                        bei Volle Möhre! als Volle Möhre! noch gar nicht Volle Möhre! hieß. Also von Anfang
+                        an. Sie begeistert das Publikum und uns Möhren immer wieder mit völlig neuen Charakteren
+                        auf der Bühne, die unterschiedlicher nicht sein könnten. Christine ist unsere offizielle
+                        "Facebook-Beauftragte" und <a href="https://www.facebook.com/Improtheater.Volle.Moehre" target="_blank">postet was das Zeug hält</a>. Ob Veranstaltungen, Fotos oder
+                        spannende Neuigkeiten, sie hält die Fans auf dem Laufenden.
+                        <br>
+                        <br>
+                        <b>Ausbildungen:</b>
+                        <br>
+                        Ausbildung zur Verlagskauffrau (IHK) bei der Fränkischen Landeszeitung Ansbach Dipl.-Wirtschaftsinformatikerin
+                        (FH) mit Schwerpunkt Multimedia an der Hochschule Ansbach
+                        <br>
+                        <br>
+                        <b>Theater/Schauspielerfahrungen:</b>
+                        <br>
+                        Christine hat ab der Grundschule bis zum Studium bei unterschiedlichsten Theaterproduktionen
+                        mitgewirkt. Außerdem hat sie bereits als Amateurmodell für Fotokurse vor der Kamera
+                        gestanden.
+                        <br>
+                        <br>
+                        <b>Auszeichnungen:</b>
+                        <br>
+                        Impro-Slam-Gewinnerin 2011 Lauf
+                        <br>
+                        <br>
+                    <p>
+                        <img class="lazy" src="~/images/grey.gif" data-original="/images/pfeilchen.png"
+                             width="9" height="9" />
+                        @*<%= Html.ActionLink(" Christine eine Nachricht zukommen lassen ", "Nachricht", "Kontakt", new { Spielername = "Christine", popup = true }, new { @class = "popup-link" })%>*@
+                        <img class="lazy" src="~/images/grey.gif" data-original="/images/pfeilchenTurned.png"
+                             width="9" height="9" />
+                    </p>
+                    </p>
+                </div>
+                <div id="michael" class="tab-buttons-panel-spieler">
+                    <img src="~/images/Fotos2013/Michael.jpg"
+                         alt="" width="630" height="315" />
+                    <h2>
+                        Michael Müller
+                    </h2>
+                    <p>
+                        <b>Zur Person:</b>
+                        <br>
+                        Michael ist in Bremen geboren, in Freiburg aufgewachsen und hat in Villingen pubertiert.
+                        Bevor er in Nürnberg seßhaft geworden ist, hat er sich noch eine Weile in Deutschland
+                        und der Schweiz herumgetrieben. Herumtreiben macht er auch beim Impro, weshalb er
+                        sich auch bei anderen Gruppen und Projekten herumtreibt (Impro-Fachjargon: Bühnenschlampe).
+                        Bei der Vollen Möhre! spielt er seit 2010 mit.<br>
+                        <br>
+                        <b>Ausbildungen:</b>
+                        <br>
+                        Hat im Schwarzwald Wirtschaftsinformatik studiert. Auf 960 Höhenmetern. Das steigt
+                        ihm heute noch manchmal zu Kopf.
+                        <br>
+                        <br>
+                        <b>Workshops:</b>
+                        <br>
+                        2004 war der erste<br>
+                        Seitdem viele, viele bei sehr vielen verschiedenen Lehrern (die meisten gut), insbesondere
+                        bei Frankie Andersson, Steve Jarrand und Jörg Schur.<br>
+                        Gibt seit 2011 eigene Workshops zum Improtheater
+                        <br>
+                        <br>
+                        <b>Theater/Schauspielerfahrungen:</b>
+                        <br>
+                        Improvisationstheater Allmächd Knud (seit 2005)
+                        <br>
+                        Projekt i42 (seit 2009): Masken, Trance Masks, Solo-Peformance
+                        <br>
+                        Hand im Hand (2007): Improvisationstheater mit Handpuppen
+                        <br>
+                        <br>
+                        <b>Weitere Projekte:</b>
+                        <br>
+                        Weitere Projekte kommen sobald Michael für 5 Minuten still sitzt.<br>
+                        Dann wird auch <a href="http://www.der-monarch.de">www.der-monarch.de</a> weiter
+                        geschrieben.
+                        <br>
+                        <br>
+                    <p>
+                        <img class="lazy" src="~/images/grey.gif" data-original="/images/pfeilchen.png"
+                             width="9" height="9" />
+                        @*<%= Html.ActionLink(" Michael eine Nachricht zukommen lassen ", "Nachricht", "Kontakt", new { Spielername = "MichaelM", popup = true }, new { @class = "popup-link" })%>*@
+                        <img class="lazy" src="~/images/grey.gif" data-original="/images/pfeilchenTurned.png"
+                             width="9" height="9" />
+                    </p>
+                    </p>
+                </div>
+                <div id="kalli" class="tab-buttons-panel-spieler">
+                    <img src="~/images/Fotos2013/Kalli.jpg"
+                         alt="" width="630" height="315" />
+                    <h2>
+                        Karlheinz Knöbl
+                    </h2>
+                    <p>
+                        <b>Zur Person:</b>
+                        <br>
+                        Kalli wurde am 21.10.1988 in Fürth geboren, ist aber seit diesem Tag ein waschechter
+                        Ansbacher. Er ist seit 2005 festes Mitglied bei Volle Möhre!.
+                        <br>
+                        <br>
+                        <b>Ausbildungen:</b>
+                        <br>
+                        Duales Studium zum Messe-, Kongress-, Eventmanager an der BA Ravensburg
+                        <br>
+                        <br>
+                        <b>Theater/Schauspielerfahrungen:</b>
+                        <br>
+                        - Diverse Stücke mit der Platen Theater AG
+                        <br>
+                        <br>
+                        <b>Weitere Projekte:</b>
+                        <br>
+                        - Betreuung von Kindern und Jugendlichen bei der Kinderzeltstadt Ansbach
+                        <br>
+                        - Organisation und Durchführung von Live-Rollenspielen im Raum Ansbach für Erwachsene
+                        und Jugendliche
+                        <br>
+                        - Langjähriges Engagement bei der Stadtschülervertretung Ansbach
+                        <br>
+                        <br>
+                    <p>
+                        <img class="lazy" src="~/images/grey.gif" data-original="/images/pfeilchen.png"
+                             width="9" height="9" />
+                        @*<%= Html.ActionLink(" Kalli eine Nachricht zukommen lassen ", "Nachricht", "Kontakt", new { Spielername = "Kalli", popup = true }, new { @class = "popup-link" })%>*@
+                        <img class="lazy" src="~/images/grey.gif" data-original="/images/pfeilchenTurned.png"
+                             width="9" height="9" />
+                    </p>
+                    </p>
+                </div>
+                <div id="philippw" class="tab-buttons-panel-spieler">
+                    <img src="~/images/Fotos2013/PhilippW.jpg"
+                         alt="" width="630" height="315" />
+                    <h2>
+                        Philipp Weißmann
+                    </h2>
+                    <p>
+                        <b>Zur Person:</b>
+                        <br>
+                        Philipp wurde am 11.05.1983 in Erlangen geboren und ist seit 2010 festes Mitglied
+                        bei Volle Möhre!. Dort ist er nun sowohl Impro-Spieler als auch Impro-Musiker.
+                        <br>
+                        <br>
+                        <b>Ausbildungen:</b>
+                        <br>
+                        - Ausbildung zum "Staatlich geprüften Technischen Assisten für Informatik"
+                        <br>
+                        - z.Z. Studium "Master of Science" in Informatik
+                        <br>
+                        <br>
+                        <b>Teilgenommene Workshops:</b>
+                        <br>
+                        - Keith Johnstone (Kanada)
+                        <br>
+                        - Becky Johnson (Kanada)
+                        <br>
+                        - The Crumbs (Winnipeg, Kanada)
+                        <br>
+                        - La Gata (Bogotà, Kolumbien)
+                        <br>
+                        - Philippe Saïd (Frankreich)
+                        <br>
+                        - Birgit Linner (Isar148 / München)
+                        <br>
+                        - Ralf Schmitt (Steife Brise / Hamburg)
+                        <br>
+                        - Bernd Witte (Emscher Blut / Dortmund)
+                        <br>
+                        <br>
+                        <b>Theater/Schauspielerfahrungen:</b>
+                        <br>
+                        - Gründer der Improtheatergruppe "Die Spätzünder" Bamberg (2003 - 2009)
+                        <br>
+                        - E.T.A. Hoffmann Theater Bamberg: "Wärter" in "Der Totmacher" (Bayerischer Theatertage:
+                        Beste Studioproduktion)
+                        <br>
+                        - E.T.A. Hoffmann Theater Bamberg: "Sadistischer Techniker" / "Garde" in "Turandot"
+                        <br>
+                        - Die Künstlerwerkstatt Stegaurach: "Theseus" in "Ein Sommernachtstraum"
+                        <br>
+                        - Eigenproduktion: "Don Salerno" in "Passione della morte"
+                        <br>
+                        - The.a.d.A. e.V.: "Algernon" in "Bunbury - The importance of being Ernest"
+                        <br>
+                        - Eigenproduktion: "Polizist" in "Fusion"
+                        <br>
+                        <br>
+                        <b>Theater/Schauspielerfahrungen:</b>
+                        <br>
+                        - Mitglied AKKU (Agenda Arbeitskreis Kultur Höchstadt)
+                        <br>
+                        - Moderation vieler Events (Fränkische Schultheatertage, Theater-Events, usw.)
+                        <br>
+                        <br>
+                        <b>Homepages:</b>
+                        <br>
+                        <a href="http://www.der-philipp.tv">http://www.der-philipp.tv</a>
+                        <br>
+                        <br>
+                    <p>
+                        <img class="lazy" src="~/images/grey.gif" data-original="/images/pfeilchen.png"
+                             width="9" height="9" />
+                        @*<%= Html.ActionLink(" Philipp eine Nachricht zukommen lassen ", "Nachricht", "Kontakt", new { Spielername = "PhilippW", popup = true }, new { @class = "popup-link" })%>*@
+                        <img class="lazy" src="~/images/grey.gif" data-original="/images/pfeilchenTurned.png"
+                             width="9" height="9" />
+                    </p>
+                    </p>
+                </div>
+            </div>
+            <!-- End Entries -->
+        </div>
+        <!-- End Spieler Container -->
+        <script type="text/javascript">
+            //Fügt die Schaltflächen für Vor und Zurück auf kleinen Geräten hinzu
+            setTabButtons('#tab-buttons-container-spieler', '.tab-buttons-panel-spieler');
+        </script>
+    </div>
+    <!-- End "Über uns" Section -->
+    <!-- Begin Portfolio Section -->
+    <div id="portfolio" class="borderline">
+        <div class="title">
+            <h2>
+                Portfolio<span>Was wir bieten</span>
+            </h2>
+            <div class="gototop">
+                <a href="#top" class="scrolltop" title="Nach oben"></a>
+            </div>
+        </div>
+        <div class="section-container">
+            <moehre-content url="Portfolio.aspx"></moehre-content>
+        </div>
+        <div class="bottom">
+            <div class="gototop">
+                <a href="#top" class="scrolltop" title="Nach oben"></a>
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+    </div>
+    <!-- End Services Section -->
+    <!-- Begin Workshops Section -->
+    <div id="workshops" class="borderline">
+        <div class="title">
+            <h2>
+                Workshops<span>Wenn Sie mal wollen</span>
+            </h2>
+            <div class="gototop">
+                <a href="#top" class="scrolltop" title="Nach oben"></a>
+            </div>
+        </div>
+        <div class="section-container">
+            <moehre-content url="Workshops.aspx"></moehre-content>
+        </div>
+        <div class="bottom">
+            <div class="gototop">
+                <a href="#top" class="scrolltop" title="Nach oben"></a>
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+    </div>
+    <!-- End Workshops Section -->
+    <!-- Begin "Presse" Section -->
+    <div id="presse" class="borderline">
+        <div class="title">
+            <h2>
+                Presse<span>Zusatzmaterial</span>
+            </h2>
+            <div class="gototop">
+                <a href="#top" class="scrolltop" title="Nach oben"></a>
+            </div>
+        </div>
+        <div class="section-container small-padding">
+            <moehre-content url="Presse.aspx"></moehre-content>
+        </div>
+        <div class="bottom">
+            <div class="gototop">
+                <a href="#top" class="scrolltop" title="Nach oben"></a>
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+    </div>
+    <!-- End "Presse" Section -->
+    <!-- Begin "Kontakt" Section -->
+    <div id="kontakt" class="borderline">
+        <div class="title">
+            <h2>
+                Kontakt <span>Schreiben Sie uns!</span>
+            </h2>
+            <div class="gototop">
+                <a href="#top" class="scrolltop" title="Nach oben"></a>
+            </div>
+        </div>
+        <div class="contact-container">
+            <!-- Begin Form -->
+            <div class="form-container">
+                <p>
+                    Vielen Dank, dass Sie sich für einen Auftritt von Volle Möhre! interessieren. Geben
+                    Sie uns mit dem folgenden Formular möglichst viele Informationen über das geplante
+                    Event und vor allem über Ihre Kontaktdaten. Wir setzen uns dann umgehend mit Ihnen
+                    in Verbindung!
+                </p>
+                <p>
+                    <img class="lazy" src="~/images/grey.gif" data-original="/images/pfeilchen.png"
+                         width="9" height="9" />
+                    @*<%= Html.ActionLink(" Senden Sie uns hier eine Nachricht ", "Nachricht", "Kontakt", new { Spielername = "buchung", popup = true }, new { @class = "popup-link" })%>*@
+                    <img class="lazy" src="~/images/grey.gif" data-original="/images/pfeilchenTurned.png"
+                         width="9" height="9" />
+                </p>
+            </div>
+            <!-- Begin Information -->
+            <div class="contact-right">
+                <div class="contact-info">
+                    <ul>
+                        <li><span class="lite">Webseite:</span>www.volle-moehre.de</li>
+                        <li><span class="lite">Kontaktperson:</span>Göksen Meine</li>
+                        <li><span class="lite">Telefon:</span>0151 - 26 95 83 23</li>
+                    </ul>
+                </div>
+                <div class="contact-info">
+                    <!-- Begin Social Icons -->
+                    <ul class="social">
+                        <li>
+                            <a href="https://www.facebook.com/Improtheater.Volle.Moehre" target="_blank">
+                                <img class="lazy" src="~/images/grey.gif" data-original="/images/icon-fb.png"
+                                     alt="Volle Möhre auf Facebook" />
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://twitter.com/VMoehre" target="_blank">
+                                <img class="lazy" src="~/images/grey.gif" data-original="/images/icon-tw.png"
+                                     alt="Volle Möhre auf Twitter" />
+                            </a>
+                            <!-- Facebook -->
+                    </ul>
+                    <iframe src="//www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2FImprotheater.Volle.Moehre&amp;send=false&amp;layout=button_count&amp;width=450&amp;show_faces=false&amp;font=segoe+ui&amp;colorscheme=light&amp;action=like&amp;height=21"
+                            scrolling="no" frameborder="0" style="border: none; overflow: hidden; width: 450px;
+                            height: 21px;" allowtransparency="true"></iframe>
+                    <!-- End Social Icons -->
+                </div>
+            </div>
+            <!-- End Information -->
+        </div>
+        <div class="bottom">
+            <div class="gototop">
+                <a href="#top" class="scrolltop" title="Nach oben"></a>
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+    </div>
+    <!-- End "Kontakt" Section -->
+    <!-- Begin "Impressum" Section -->
+    <div id="impressum" class="borderline">
+        <div class="title">
+            <h2>
+                Impressum<span>Das Rechtliche</span>
+            </h2>
+            <div class="gototop">
+                <a href="#top" class="scrolltop" title="Nach oben"></a>
+            </div>
+        </div>
+        <div class="section-container small-padding">
+            <moehre-content url="Impressum.aspx"></moehre-content>
+        </div>
+        <div class="bottom">
+            <div class="gototop">
+                <a href="#top" class="scrolltop" title="Nach oben"></a>
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+    </div>
+    <!-- End "Impressum" Section -->
+    <!-- End Wrapper -->
+</div>

@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<Package
+  xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10"
+  xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest"
+  xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+  IgnorableNamespaces="uap mp">
+
+  <Identity
+    Name="8916TimParth.5848C59B9EF9"
+    Publisher="CN=07929E22-2FB8-4C9D-B9EB-B4A357099123"
+    Version="1.0.17.0" />
+
+  <mp:PhoneIdentity PhoneProductId="f0240800-df4a-423e-a3ae-eee6c6283688" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
+
+  <Properties>
+    <DisplayName>Volle Möhre</DisplayName>
+    <PublisherDisplayName>Tim Parth</PublisherDisplayName>
+    <Logo>Assets\StoreLogo.png</Logo>
+  </Properties>
+
+  <Dependencies>
+    <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.0.0" MaxVersionTested="10.0.0.0" />
+  </Dependencies>
+
+  <Resources>
+    <Resource Language="x-generate"/>
+  </Resources>
+
+  <Applications>
+    <Application Id="App"
+      Executable="VolleMoehre.App.exe"
+      EntryPoint="VolleMoehre.App.App">
+      <uap:VisualElements
+        DisplayName="Volle Möhre"
+        Square150x150Logo="Assets\Square150x150Logo.png"
+        Square44x44Logo="Assets\Square44x44Logo.png"
+        Description="Die App der Theatergruppe Volle Möhre! Sie zeigt in erster Linie nur die aktuellen Termine, dient für unsere Spieler aber über einen versteckten Bereich als Terminverwaltung."
+        BackgroundColor="#FFFFFF">
+        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png" ShortName="Volle Möhre!" Square71x71Logo="Assets\Square150x150Logo.png" Square310x310Logo="Assets\Square150x150Logo.png">
+          <uap:ShowNameOnTiles>
+            <uap:ShowOn Tile="square310x310Logo"/>
+          </uap:ShowNameOnTiles>
+        </uap:DefaultTile >
+        <uap:SplashScreen Image="Assets\SplashScreen.png"  BackgroundColor="#FFFFFF"/>
+        <uap:LockScreen BadgeLogo="Assets\Square150x150Logo.png" Notification="badge"/>
+      </uap:VisualElements>
+    </Application>
+  </Applications>
+
+  <Capabilities>
+    <Capability Name="internetClient" />
+  </Capabilities>
+</Package>
