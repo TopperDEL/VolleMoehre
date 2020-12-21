@@ -23,7 +23,7 @@ steps:
 
 - task: NuGetCommand@2
   inputs:
-    restoreSolution: '**/*iOs.sln'
+    restoreSolution: '*iOs.sln'
 
 - task: InstallAppleCertificate@2
   inputs:
@@ -45,7 +45,7 @@ steps:
 
 - task: XamariniOS@2
   inputs:
-    solutionFile: '**/*iOs.sln'
+    solutionFile: '*iOs.sln'
     configuration: 'AppStore'
     buildForSimulator: false
     packageApp: true
