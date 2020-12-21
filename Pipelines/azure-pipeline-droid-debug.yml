@@ -20,7 +20,7 @@ steps:
 - task: NuGetCommand@2
   inputs:
     command: 'restore'
-    restoreSolution: '**/*.sln'
+    restoreSolution: '**/*Droid.sln'
     feedsToUse: 'select'
 
 - task: android-manifest-package-name@1
@@ -39,6 +39,6 @@ steps:
 
 - task: XamarinAndroid@1
   inputs:
-    projectFile: '**/*Droid.csproj'
+    projectFile: '**/*Droid.sln'
     outputDirectory: '$(outputDirectory)'
     configuration: '$(buildConfiguration)'
