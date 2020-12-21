@@ -19,7 +19,7 @@ steps:
 - task: NuGetCommand@2
   inputs:
     command: 'restore'
-    restoreSolution: '**/*Droid.csproj'
+    restoreSolution: '**/*.sln'
     feedsToUse: 'select'
 
 - task: android-manifest-package-name@1
@@ -45,7 +45,7 @@ steps:
 - task: AndroidSigning@3
   displayName: 'Signing and aligning APK file(s) **/*.apk'
   inputs:
-    apksignerKeystoreFile: VolleMoehre.keystore
+    apksignerKeystoreFile: Moehre.keystore
     apksignerKeystorePassword: '$(keystore.password)'
     apksignerKeystoreAlias: '$(keystore.alias)'
     apksignerKeyPassword: '$(keystore.keypassword)'
