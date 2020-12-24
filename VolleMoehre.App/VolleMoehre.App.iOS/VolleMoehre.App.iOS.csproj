@@ -146,58 +146,58 @@
     </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <ImageAsset Include="Media.xcassets\AppIcons.appiconset\Nutzmich1024x1024.png">
+    <ImageAsset Include="Media.xcassets\AppIcons.appiconset\Moehre1024x1024.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Media.xcassets\AppIcons.appiconset\Nutzmich120x120.png">
+    <ImageAsset Include="Media.xcassets\AppIcons.appiconset\Moehre120x120.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Media.xcassets\AppIcons.appiconset\Nutzmich120x1201.png">
+    <ImageAsset Include="Media.xcassets\AppIcons.appiconset\Moehre120x1201.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Media.xcassets\AppIcons.appiconset\Nutzmich152x152.png">
+    <ImageAsset Include="Media.xcassets\AppIcons.appiconset\Moehre152x152.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Media.xcassets\AppIcons.appiconset\Nutzmich167x167.png">
+    <ImageAsset Include="Media.xcassets\AppIcons.appiconset\Moehre167x167.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Media.xcassets\AppIcons.appiconset\Nutzmich180x180.png">
+    <ImageAsset Include="Media.xcassets\AppIcons.appiconset\Moehre180x180.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Media.xcassets\AppIcons.appiconset\Nutzmich20x20.png">
+    <ImageAsset Include="Media.xcassets\AppIcons.appiconset\Moehre20x20.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Media.xcassets\AppIcons.appiconset\Nutzmich29x29.png">
+    <ImageAsset Include="Media.xcassets\AppIcons.appiconset\Moehre29x29.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Media.xcassets\AppIcons.appiconset\Nutzmich40x40.png">
+    <ImageAsset Include="Media.xcassets\AppIcons.appiconset\Moehre40x40.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Media.xcassets\AppIcons.appiconset\Nutzmich40x401.png">
+    <ImageAsset Include="Media.xcassets\AppIcons.appiconset\Moehre40x401.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Media.xcassets\AppIcons.appiconset\Nutzmich40x402.png">
+    <ImageAsset Include="Media.xcassets\AppIcons.appiconset\Moehre40x402.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Media.xcassets\AppIcons.appiconset\Nutzmich58x58.png">
+    <ImageAsset Include="Media.xcassets\AppIcons.appiconset\Moehre58x58.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Media.xcassets\AppIcons.appiconset\Nutzmich58x581.png">
+    <ImageAsset Include="Media.xcassets\AppIcons.appiconset\Moehre58x581.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Media.xcassets\AppIcons.appiconset\Nutzmich60x60.png">
+    <ImageAsset Include="Media.xcassets\AppIcons.appiconset\Moehre60x60.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Media.xcassets\AppIcons.appiconset\Nutzmich76x76.png">
+    <ImageAsset Include="Media.xcassets\AppIcons.appiconset\Moehre76x76.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Media.xcassets\AppIcons.appiconset\Nutzmich80x80.png">
+    <ImageAsset Include="Media.xcassets\AppIcons.appiconset\Moehre80x80.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Media.xcassets\AppIcons.appiconset\Nutzmich80x801.png">
+    <ImageAsset Include="Media.xcassets\AppIcons.appiconset\Moehre80x801.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Media.xcassets\AppIcons.appiconset\Nutzmich87x87.png">
+    <ImageAsset Include="Media.xcassets\AppIcons.appiconset\Moehre87x87.png">
       <Visible>false</Visible>
     </ImageAsset>
     <ImageAsset Include="Media.xcassets\AppIcons.appiconset\Contents.json">
