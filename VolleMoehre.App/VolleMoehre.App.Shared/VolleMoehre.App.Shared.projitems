@@ -84,7 +84,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Pages\TrainingsPage.xaml.cs">
       <DependentUpon>TrainingsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="$(MSBuildThisFileDirectory)Resources.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\AbrechnungsService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\APIConnectionService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\AuftritteService.cs" />

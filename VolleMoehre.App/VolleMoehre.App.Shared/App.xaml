@@ -12,7 +12,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
                 <!-- Add resource dictionaries here -->
-                <local:Resources/>
+                <ResourceDictionary Source="Resources.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <!-- Add resources here -->
         </ResourceDictionary>
