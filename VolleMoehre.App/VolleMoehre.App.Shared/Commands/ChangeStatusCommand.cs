@@ -6,7 +6,6 @@ using VolleMoehre.Contracts.Interfaces;
 using VolleMoehre.Contracts.Model;
 using VolleMoehre.App.Shared.ViewModels;
 using VolleMoehre.Shared.Services;
-using Plugin.Connectivity;
 
 namespace VolleMoehre.App.Shared.Commands
 {

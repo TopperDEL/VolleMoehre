@@ -6,11 +6,16 @@
     xmlns:shared="using:VolleMoehre.App.Shared"
     xmlns:converter="using:VolleMoehre.App.Shared.Converter"
     RequestedTheme="Light">
+	
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
+                <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
+                <!-- Add resource dictionaries here -->
                 <local:Resources/>
             </ResourceDictionary.MergedDictionaries>
+            <!-- Add resources here -->
         </ResourceDictionary>
     </Application.Resources>
+
 </Application>

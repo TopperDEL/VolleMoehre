@@ -19,8 +19,10 @@ namespace VolleMoehre.Shared.Services
 
         public async Task<Spieler> GetPlayerForAPIKey(string apiKey)
         {
+#if !__WASM__
             if (!Barrel.Current.IsExpired("verify_" + apiKey) | !IsOnline())
                 return Barrel.Current.Get<Spieler>("verify_" + apiKey);
+#endif
 
             var client = GetClient(apiKey);
             try
@@ -28,7 +30,9 @@ namespace VolleMoehre.Shared.Services
                 var result = await client.GetAsync("verify", HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false);
                 var resultContent = await result.Content.ReadAsAsync<VolleMoehre.Contracts.Model.Spieler>();
 
+#if !__WASM__
                 Barrel.Current.Add<Spieler>("verify_" + apiKey, resultContent, TimeSpan.FromDays(365));
+#endif
 
                 return resultContent;
             }
