@@ -12,8 +12,7 @@ namespace VolleMoehre.Shared.Services
         protected HttpClient GetClient(string apiKey = "")
         {
 #if __WASM__
-            var handler = new Uno.UI.Wasm.WasmHttpHandler();
-            var client = new HttpClient(handler);
+            HttpClient client = new HttpClient();
 #else
 #if DEBUG && !__ANDROID__
             var handler = new HttpClientHandler();
