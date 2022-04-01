@@ -11,6 +11,10 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
+                
+                <MaterialColors xmlns="using:Uno.Material" />
+                <MaterialResources xmlns="using:Uno.Material" WithImplicitStyles="True"/>
+                
                 <!-- Add resource dictionaries here -->
                 <ResourceDictionary Source="Resources.xaml"/>
             </ResourceDictionary.MergedDictionaries>
