@@ -44,8 +44,11 @@
 
     <DataTemplate x:Key="OrtTemplate" x:DataType="contracts:Ort">
         <StackPanel Margin="0,0,0,10">
-            <TextBlock Text="{Binding Bezeichnung}" FontWeight="Bold"/>
-            <TextBlock Text="{Binding Stadt}" Margin="10,0,0,0" FontSize="12" FontStyle="Italic" TextWrapping="WrapWholeWords"/>
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="{Binding Bezeichnung}" FontWeight="Bold" VerticalAlignment="Top"/>
+                <TextBlock Text="{Binding Stadt}" Margin="10,0,0,0" VerticalAlignment="Top" TextWrapping="WrapWholeWords"/>
+            </StackPanel>
+            <TextBlock Text="{Binding Bemerkung}" Margin="10,0,0,0" FontSize="12" FontStyle="Italic" TextWrapping="WrapWholeWords"/>
         </StackPanel>
     </DataTemplate>
     <DataTemplate x:Key="SpielTemplate" x:DataType="contracts:Spiel">
