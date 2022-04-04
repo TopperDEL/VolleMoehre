@@ -13,7 +13,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Button Grid.Row="0" Content="Neues Spiel anlegen..." Margin="10" HorizontalAlignment="Center" Click="SpielAnlegenClick"/>
+        <Button Grid.Row="0" Content="Neues Spiel anlegen..." Margin="5" FontSize="11" MinHeight="10" HorizontalAlignment="Center" Click="SpielAnlegenClick"/>
         <ProgressRing Grid.Row="1" Visibility="{Binding Loading, Converter={StaticResource BooleanToVisibilityConverter}}" IsActive="True"/>
         <ListView Grid.Row="1" ItemsSource="{Binding Spiele}" ItemTemplate="{StaticResource SpielTemplate}"
                       ItemClick="SpielSelected"

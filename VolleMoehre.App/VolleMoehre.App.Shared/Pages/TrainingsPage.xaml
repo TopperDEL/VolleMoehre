@@ -13,7 +13,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Button Grid.Row="0" Content="Neues Training anlegen..." Margin="10" HorizontalAlignment="Center" Click="TrainingAnlegenClick"/>
+        <Button Grid.Row="0" Content="Neues Training anlegen..." Margin="5" FontSize="11" MinHeight="10" HorizontalAlignment="Center" Click="TrainingAnlegenClick"/>
         <ProgressRing Grid.Row="1" Visibility="{Binding Loading, Converter={StaticResource BooleanToVisibilityConverter}}" IsActive="True"/>
         <ListView Grid.Row="1" ItemsSource="{Binding Trainings}"
                       ItemTemplate="{StaticResource TrainingsterminTemplate}"

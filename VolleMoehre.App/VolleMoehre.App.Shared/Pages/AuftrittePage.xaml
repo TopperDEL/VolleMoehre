@@ -14,7 +14,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Button Grid.Row="0" Content="Neuen Auftritt anlegen..." Margin="10" HorizontalAlignment="Center" Click="AuftrittAnlegenClick" 
+        <Button Grid.Row="0" Content="Neuen Auftritt anlegen..." Margin="5" FontSize="11" MinHeight="10" HorizontalAlignment="Center" Click="AuftrittAnlegenClick" 
                 />
         <ProgressRing Grid.Row="1" Visibility="{Binding Loading, Converter={StaticResource BooleanToVisibilityConverter}}" IsActive="True"/>
         <ListView Grid.Row="1" ItemsSource="{Binding Auftritte}"
