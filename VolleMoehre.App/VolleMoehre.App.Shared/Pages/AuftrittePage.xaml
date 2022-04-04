@@ -111,66 +111,66 @@
                                 <Button Padding="0" Background="Transparent" Visibility="{x:Bind Path=CanSpieler, Converter={StaticResource BooleanToInvertedVisibilityConverter}}">
                                     <Border BorderThickness="1" BorderBrush="Green"
                             Background="Green" CornerRadius="10">
-                                        <TextBlock HorizontalAlignment="Center" Foreground="White" Text="Spieler" Margin="5" Padding="0" FontSize="11"/>
+                                        <TextBlock HorizontalAlignment="Center" Foreground="White" Text="Spieler" Margin="5" Padding="0" FontSize="{ThemeResource MaterialButtonFontSize}" FontFamily="{StaticResource MaterialMediumFontFamily}"/>
                                     </Border>
                                 </Button>
                                 <Button Padding="0" Background="Transparent" Visibility="{x:Bind Path=CanSpieler, Converter={StaticResource BooleanToVisibilityConverter}}"
                         Command="{Binding DataContext.SetSpielerCommand, ElementName=Auftritte_Page}" CommandParameter="{Binding}">
                                     <Border BorderThickness="1" BorderBrush="Green"
                             Background="White" CornerRadius="10">
-                                        <TextBlock HorizontalAlignment="Center" Foreground="Black" Text="Spieler" Margin="5" Padding="0" FontSize="11"/>
+                                        <TextBlock HorizontalAlignment="Center" Foreground="Black" Text="Spieler" Margin="5" Padding="0" FontSize="{ThemeResource MaterialButtonFontSize}" FontFamily="{StaticResource MaterialMediumFontFamily}"/>
                                     </Border>
                                 </Button>
                                 <Button Padding="0" Background="Transparent" Visibility="{x:Bind Path=CanHelfer, Converter={StaticResource BooleanToInvertedVisibilityConverter}}">
                                     <Border BorderThickness="1" BorderBrush="Blue"
                             Background="Blue" CornerRadius="10">
-                                        <TextBlock HorizontalAlignment="Center" Foreground="White" Text="Helfer" Margin="5" Padding="0" FontSize="11"/>
+                                        <TextBlock HorizontalAlignment="Center" Foreground="White" Text="Helfer" Margin="5" Padding="0" FontSize="{ThemeResource MaterialButtonFontSize}" FontFamily="{StaticResource MaterialMediumFontFamily}"/>
                                     </Border>
                                 </Button>
                                 <Button Padding="0" Background="Transparent" Visibility="{x:Bind Path=CanHelfer, Converter={StaticResource BooleanToVisibilityConverter}}"
                         Command="{Binding DataContext.SetHelferCommand, ElementName=Auftritte_Page}" CommandParameter="{Binding}">
                                     <Border BorderThickness="1" BorderBrush="Blue"
                             Background="White" CornerRadius="10">
-                                        <TextBlock HorizontalAlignment="Center" Foreground="Black" Text="Helfer" Margin="5" Padding="0" FontSize="11"/>
+                                        <TextBlock HorizontalAlignment="Center" Foreground="Black" Text="Helfer" Margin="5" Padding="0" FontSize="{ThemeResource MaterialButtonFontSize}" FontFamily="{StaticResource MaterialMediumFontFamily}"/>
                                     </Border>
                                 </Button>
                                 <Button Padding="0" Background="Transparent" Visibility="{x:Bind Path=CanModeration, Converter={StaticResource BooleanToInvertedVisibilityConverter}}">
                                     <Border BorderThickness="1" BorderBrush="Purple"
                             Background="Purple" CornerRadius="10">
-                                        <TextBlock HorizontalAlignment="Center" Foreground="White" Text="Mod" Margin="5" Padding="0" FontSize="11"/>
+                                        <TextBlock HorizontalAlignment="Center" Foreground="White" Text="Mod" Margin="5" Padding="0" FontSize="{ThemeResource MaterialButtonFontSize}" FontFamily="{StaticResource MaterialMediumFontFamily}"/>
                                     </Border>
                                 </Button>
                                 <Button Padding="0" Background="Transparent" Visibility="{x:Bind Path=CanModeration, Converter={StaticResource BooleanToVisibilityConverter}}"
                         Command="{Binding DataContext.SetModeratorCommand, ElementName=Auftritte_Page}" CommandParameter="{Binding}">
                                     <Border BorderThickness="1" BorderBrush="Purple"
                             Background="White" CornerRadius="10">
-                                        <TextBlock HorizontalAlignment="Center" Foreground="Black" Text="Mod" Margin="5" Padding="0" FontSize="11"/>
+                                        <TextBlock HorizontalAlignment="Center" Foreground="Black" Text="Mod" Margin="5" Padding="0" FontSize="{ThemeResource MaterialButtonFontSize}" FontFamily="{StaticResource MaterialMediumFontFamily}"/>
                                     </Border>
                                 </Button>
                                 <Button Padding="0" Background="Transparent" Visibility="{x:Bind Path=CanVormerken, Converter={StaticResource BooleanToInvertedVisibilityConverter}}">
                                     <Border BorderThickness="1" BorderBrush="Orange"
                             Background="Orange" CornerRadius="10">
-                                        <TextBlock HorizontalAlignment="Center" Foreground="White" Text="Vorgemerkt" Margin="5" Padding="0" FontSize="11"/>
+                                        <TextBlock HorizontalAlignment="Center" Foreground="White" Text="Vorgemerkt" Margin="5" Padding="0" FontSize="{ThemeResource MaterialButtonFontSize}" FontFamily="{StaticResource MaterialMediumFontFamily}"/>
                                     </Border>
                                 </Button>
                                 <Button Padding="0" Background="Transparent" Visibility="{x:Bind Path=CanVormerken, Converter={StaticResource BooleanToVisibilityConverter}}"
                         Command="{Binding DataContext.SetVorgemerktCommand, ElementName=Auftritte_Page}" CommandParameter="{Binding}">
                                     <Border BorderThickness="1" BorderBrush="Orange"
                             Background="White" CornerRadius="10">
-                                        <TextBlock HorizontalAlignment="Center" Foreground="Black" Text="Vorgemerkt" Margin="5" Padding="0" FontSize="11"/>
+                                        <TextBlock HorizontalAlignment="Center" Foreground="Black" Text="Vorgemerkt" Margin="5" Padding="0" FontSize="{ThemeResource MaterialButtonFontSize}" FontFamily="{StaticResource MaterialMediumFontFamily}"/>
                                     </Border>
                                 </Button>
                                 <Button Padding="0" Background="Transparent" Visibility="{x:Bind Path=CanAbwesend, Converter={StaticResource BooleanToInvertedVisibilityConverter}}">
                                     <Border BorderThickness="1" BorderBrush="Red"
                             Background="Red" CornerRadius="10">
-                                        <TextBlock HorizontalAlignment="Center" Foreground="White" Text="Abwesend" Margin="5" Padding="0" FontSize="11"/>
+                                        <TextBlock HorizontalAlignment="Center" Foreground="White" Text="Abwesend" Margin="5" Padding="0" FontSize="{ThemeResource MaterialButtonFontSize}" FontFamily="{StaticResource MaterialMediumFontFamily}"/>
                                     </Border>
                                 </Button>
                                 <Button Padding="0" Background="Transparent" Visibility="{x:Bind Path=CanAbwesend, Converter={StaticResource BooleanToVisibilityConverter}}"
                         Command="{Binding DataContext.SetAbwesendCommand, ElementName=Auftritte_Page}" CommandParameter="{Binding}">
                                     <Border BorderThickness="1" BorderBrush="Red"
                             Background="White" CornerRadius="10">
-                                        <TextBlock HorizontalAlignment="Center" Foreground="Black" Text="Abwesend" Margin="5" Padding="0" FontSize="11"/>
+                                        <TextBlock HorizontalAlignment="Center" Foreground="Black" Text="Abwesend" Margin="5" Padding="0" FontSize="{ThemeResource MaterialButtonFontSize}" FontFamily="{StaticResource MaterialMediumFontFamily}"/>
                                     </Border>
                                 </Button>
                             </StackPanel>
