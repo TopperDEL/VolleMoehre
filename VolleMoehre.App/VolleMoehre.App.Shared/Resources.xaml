@@ -42,9 +42,6 @@
         </StackPanel>
     </DataTemplate>
 
-    
-
-    
     <DataTemplate x:Key="OrtTemplate" x:DataType="contracts:Ort">
         <StackPanel Margin="0,0,0,10">
             <TextBlock Text="{Binding Bezeichnung}" FontWeight="Bold"/>
