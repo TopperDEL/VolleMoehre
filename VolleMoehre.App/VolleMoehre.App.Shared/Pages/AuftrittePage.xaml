@@ -9,7 +9,7 @@
     mc:Ignorable="d" x:Name="Auftritte_Page"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+    <Grid MaxWidth="700">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>

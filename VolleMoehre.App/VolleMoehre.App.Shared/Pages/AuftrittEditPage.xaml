@@ -8,49 +8,45 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid HorizontalAlignment="Stretch">
-        <ScrollViewer>
-            <StackPanel MaxWidth="700">
-                <TextBlock Text="Showtyp" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
-                <TextBox Text="{Binding Showtyp, Mode=TwoWay}"/>
-                <TextBlock Text="Datum" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
-                <DatePicker Date="{Binding Datum, Mode=TwoWay, Converter={StaticResource DateTimeToDateTimeOffsetConverter}}"/>
-                <!--<TimePicker Header="Uhrzeit" Time="{Binding Uhrzeit, Mode=TwoWay}"
-                            MinuteIncrement="15"/>-->
-                <TextBlock Text="Uhrzeit" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
-                <TextBox Text="{Binding Uhrzeit, Mode=TwoWay}" Width="50" HorizontalAlignment="Left"/>
-                <TextBlock Text="Ort" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
-                <ComboBox x:Name="Orte" SelectedValue="{Binding OrtId, Mode=TwoWay}" DisplayMemberPath="Bezeichnung" SelectedValuePath="Id"/>
-                <TextBlock Text="Ort überschreiben mit" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
-                <TextBox Text="{Binding SpezialOrtText, Mode=TwoWay}"/>
-                <TextBlock Text="Auftrittsbeschreibung überschreiben mit" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
-                <TextBox Text="{Binding SpezialTerminDescription, Mode=TwoWay}"/>
-                <TextBlock Text="Freitext (intern)" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
-                <TextBox Text="{Binding FreitextInfoIntern, Mode=TwoWay}"/>
-                <TextBlock Text="Freitext (extern)" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
-                <TextBox Text="{Binding FreitextInfoExtern, Mode=TwoWay}"/>
-                <CheckBox Content="Öffentlich" IsChecked="{Binding Oeffentlich, Mode=TwoWay}"/>
-                <CheckBox Content="Eintritt frei" IsChecked="{Binding EintrittFrei, Mode=TwoWay}"/>
-                <TextBlock Text="Eintritt-Info (bei nicht-Standard-Orten)" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
-                <TextBox Text="{Binding EintrittInfo, Mode=TwoWay}"/>
-                <TextBlock Text="Musiker" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
-                <TextBox Text="{Binding Musiker, Mode=TwoWay}"/>
-                <TextBlock Text="Benötigte Möhren (inkl. Mod)" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
-                <TextBox Text="{Binding BenoetigteSpieler, Mode=TwoWay}"/>
-                <TextBlock Text="Bezahlung Moderator (in €)" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
-                <TextBox Text="{Binding BezahlungModerator, Mode=TwoWay}"/>
-                <TextBlock Text="Bezahlung Spieler (in €)" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
-                <TextBox Text="{Binding BezahlungSpieler, Mode=TwoWay}"/>
-                <TextBlock Text="Bezahlung Helfer (in €)" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
-                <TextBox Text="{Binding BezahlungHelfer, Mode=TwoWay}"/>
-                <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
-                    <Button Content="Speichern" Margin="0" Click="SaveButton_Click" x:Name="SaveButton"/>
-                    <Button Content="Abbrechen" Margin="5" Click="CancelButton_Click" x:Name="CancelButton" Style="{StaticResource MaterialOutlinedButtonStyle}"/>
-                    <Button Margin="5" Click="DeleteButton_Click" x:Name="DeleteButton" Style="{StaticResource MaterialOutlinedButtonStyle}">
-                        <SymbolIcon Symbol="Delete"/>
-                    </Button>
-                </StackPanel>
+    <ScrollViewer MaxWidth="700">
+        <StackPanel HorizontalAlignment="Stretch">
+            <TextBlock Text="Showtyp" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
+            <TextBox Text="{Binding Showtyp, Mode=TwoWay}"/>
+            <TextBlock Text="Datum" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
+            <DatePicker Date="{Binding Datum, Mode=TwoWay, Converter={StaticResource DateTimeToDateTimeOffsetConverter}}"/>
+            <TextBlock Text="Uhrzeit" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
+            <TextBox Text="{Binding Uhrzeit, Mode=TwoWay}" Width="100" HorizontalAlignment="Left"/>
+            <TextBlock Text="Ort" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
+            <ComboBox x:Name="Orte" SelectedValue="{Binding OrtId, Mode=TwoWay}" DisplayMemberPath="Bezeichnung" SelectedValuePath="Id"/>
+            <TextBlock Text="Ort überschreiben mit" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
+            <TextBox Text="{Binding SpezialOrtText, Mode=TwoWay}"/>
+            <TextBlock Text="Auftrittsbeschreibung überschreiben mit" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
+            <TextBox Text="{Binding SpezialTerminDescription, Mode=TwoWay}"/>
+            <TextBlock Text="Freitext (intern)" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
+            <TextBox Text="{Binding FreitextInfoIntern, Mode=TwoWay}"/>
+            <TextBlock Text="Freitext (extern)" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
+            <TextBox Text="{Binding FreitextInfoExtern, Mode=TwoWay}"/>
+            <CheckBox Content="Öffentlich" IsChecked="{Binding Oeffentlich, Mode=TwoWay}"/>
+            <CheckBox Content="Eintritt frei" IsChecked="{Binding EintrittFrei, Mode=TwoWay}"/>
+            <TextBlock Text="Eintritt-Info (bei nicht-Standard-Orten)" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
+            <TextBox Text="{Binding EintrittInfo, Mode=TwoWay}"/>
+            <TextBlock Text="Musiker" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
+            <TextBox Text="{Binding Musiker, Mode=TwoWay}"/>
+            <TextBlock Text="Benötigte Möhren (inkl. Mod)" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
+            <TextBox Text="{Binding BenoetigteSpieler, Mode=TwoWay}"/>
+            <TextBlock Text="Bezahlung Moderator (in €)" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
+            <TextBox Text="{Binding BezahlungModerator, Mode=TwoWay}"/>
+            <TextBlock Text="Bezahlung Spieler (in €)" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
+            <TextBox Text="{Binding BezahlungSpieler, Mode=TwoWay}"/>
+            <TextBlock Text="Bezahlung Helfer (in €)" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
+            <TextBox Text="{Binding BezahlungHelfer, Mode=TwoWay}"/>
+            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                <Button Content="Speichern" Margin="0" Click="SaveButton_Click" x:Name="SaveButton"/>
+                <Button Content="Abbrechen" Margin="5" Click="CancelButton_Click" x:Name="CancelButton" Style="{StaticResource MaterialOutlinedButtonStyle}"/>
+                <Button Margin="5" Click="DeleteButton_Click" x:Name="DeleteButton" Style="{StaticResource MaterialOutlinedButtonStyle}">
+                    <SymbolIcon Symbol="Delete"/>
+                </Button>
             </StackPanel>
-        </ScrollViewer>
-    </Grid>
+        </StackPanel>
+    </ScrollViewer>
 </Page>

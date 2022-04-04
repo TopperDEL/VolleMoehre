@@ -8,16 +8,14 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid HorizontalAlignment="Stretch">
-        <StackPanel MaxWidth="700">
-            <TextBlock Text="Name" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
-            <TextBox Text="{Binding Name, Mode=TwoWay}"/>
-            <TextBlock Text="Beschreibung" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
-            <TextBox Text="{Binding Beschreibung, Mode=TwoWay}" AcceptsReturn="True" TextWrapping="Wrap"/>
-            <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
-                <Button Content="Speichern" Margin="0" Click="SaveButton_Click" x:Name="SaveButton"/>
-                <Button Content="Abbrechen" Margin="5" Click="CancelButton_Click" x:Name="CancelButton" Style="{StaticResource MaterialOutlinedButtonStyle}"/>
-            </StackPanel>
+    <StackPanel MaxWidth="700">
+        <TextBlock Text="Name" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
+        <TextBox Text="{Binding Name, Mode=TwoWay}"/>
+        <TextBlock Text="Beschreibung" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
+        <TextBox Text="{Binding Beschreibung, Mode=TwoWay}" AcceptsReturn="True" TextWrapping="Wrap"/>
+        <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+            <Button Content="Speichern" Margin="0" Click="SaveButton_Click" x:Name="SaveButton"/>
+            <Button Content="Abbrechen" Margin="5" Click="CancelButton_Click" x:Name="CancelButton" Style="{StaticResource MaterialOutlinedButtonStyle}"/>
         </StackPanel>
-    </Grid>
+    </StackPanel>
 </Page>
