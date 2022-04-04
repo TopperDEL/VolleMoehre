@@ -9,11 +9,11 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <ScrollViewer MaxWidth="700">
-        <StackPanel HorizontalAlignment="Stretch">
+        <StackPanel HorizontalAlignment="Stretch" Margin="5">
             <TextBlock Text="Showtyp" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
             <TextBox Text="{Binding Showtyp, Mode=TwoWay}"/>
             <TextBlock Text="Datum" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
-            <DatePicker Date="{Binding Datum, Mode=TwoWay, Converter={StaticResource DateTimeToDateTimeOffsetConverter}}"/>
+            <DatePicker Date="{Binding Datum, Mode=TwoWay, Converter={StaticResource DateTimeToDateTimeOffsetConverter}}" HorizontalAlignment="Left"/>
             <TextBlock Text="Uhrzeit" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
             <TextBox Text="{Binding Uhrzeit, Mode=TwoWay}" Width="100" HorizontalAlignment="Left"/>
             <TextBlock Text="Ort" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
