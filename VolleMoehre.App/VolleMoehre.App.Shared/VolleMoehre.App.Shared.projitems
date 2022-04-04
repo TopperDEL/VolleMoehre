@@ -36,6 +36,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Converter\DateTimeConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converter\DateTimeToDateTimeOffsetConverter.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Converter\DateTimeToTimeSpanConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Helper\DialogExtensions.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Pages\AbrechnungPage.xaml.cs">
       <DependentUpon>AbrechnungPage.xaml</DependentUpon>
     </Compile>
@@ -87,6 +88,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Services\AbrechnungsService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\APIConnectionService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\AuftritteService.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\DialogService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\ListenService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\NachbereitungService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Services\OrteService.cs" />

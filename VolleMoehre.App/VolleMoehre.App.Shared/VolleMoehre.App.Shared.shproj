@@ -29,10 +29,12 @@
     <_Globbed_Compile Remove="Converter\DateTimeConverter.cs" />
     <_Globbed_Compile Remove="Converter\DateTimeToDateTimeOffsetConverter.cs" />
     <_Globbed_Compile Remove="Converter\DateTimeToTimeSpanConverter.cs" />
+    <_Globbed_Compile Remove="Helper\DialogExtensions.cs" />
     <_Globbed_Compile Remove="Resources.cs" />
     <_Globbed_Compile Remove="Services\AbrechnungsService.cs" />
     <_Globbed_Compile Remove="Services\APIConnectionService.cs" />
     <_Globbed_Compile Remove="Services\AuftritteService.cs" />
+    <_Globbed_Compile Remove="Services\DialogService.cs" />
     <_Globbed_Compile Remove="Services\ListenService.cs" />
     <_Globbed_Compile Remove="Services\NachbereitungService.cs" />
     <_Globbed_Compile Remove="Services\OrteService.cs" />

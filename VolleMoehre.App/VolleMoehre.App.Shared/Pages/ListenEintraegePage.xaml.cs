@@ -18,6 +18,7 @@ using Windows.UI.Xaml.Navigation;
 using VolleMoehre.Shared.Services;
 using Plugin.Connectivity;
 using System.Threading.Tasks;
+using VolleMoehre.App.Services;
 
 // Die Elementvorlage "Leere Seite" wird unter https://go.microsoft.com/fwlink/?LinkId=234238 dokumentiert.
 
@@ -30,10 +31,12 @@ namespace VolleMoehre.App.Shared
     {
         ListeViewModel _vm;
         ListenTyp _listentyp;
+        IDialogService _dialogService;
 
         public ListenEintraegePage()
         {
             this.InitializeComponent();
+            _dialogService = new DialogService();
         }
 
         protected async override void OnNavigatedTo(NavigationEventArgs e)
@@ -101,8 +104,7 @@ namespace VolleMoehre.App.Shared
             Random rand = new Random(Guid.NewGuid().GetHashCode());
             var randomEntry = _vm.ListenEintraege[rand.Next(0, _vm.ListenEintraege.Count)];
 
-            Windows.UI.Popups.MessageDialog dialog = new Windows.UI.Popups.MessageDialog(randomEntry.Name);
-            await dialog.ShowAsync();
+            await _dialogService.ShowInfoMessageAsync(randomEntry.Name, "Zufälliger Eintrag");
         }
     }
 }
