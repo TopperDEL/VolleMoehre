@@ -21,7 +21,7 @@
             <TextBlock Text="Ort" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
             <ComboBox x:Name="Orte" SelectedValue="{Binding OrtId, Mode=TwoWay}" DisplayMemberPath="Bezeichnung" SelectedValuePath="Id"/>
             <TextBlock Text="Freitext" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
-            <TextBox Text="{Binding FreitextInfo, Mode=TwoWay}"/>
+            <TextBox Text="{Binding FreitextInfo, Mode=TwoWay}" PlaceholderText="Falls es noch was zu diesem Termin zu erklären gibt"/>
             <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
                 <Button Content="Speichern" Margin="0" Click="SaveButton_Click" x:Name="SaveButton"/>
                 <Button Content="Abbrechen" Margin="5" Click="CancelButton_Click" x:Name="CancelButton" Style="{StaticResource MaterialOutlinedButtonStyle}"/>
