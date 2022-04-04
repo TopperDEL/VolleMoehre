@@ -11,33 +11,33 @@
     <ScrollViewer MaxWidth="700">
         <StackPanel HorizontalAlignment="Stretch" Margin="5">
             <TextBlock Text="Showtyp" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
-            <TextBox Text="{Binding Showtyp, Mode=TwoWay}"/>
+            <TextBox Text="{Binding Showtyp, Mode=TwoWay}" PlaceholderText="Normalerweise 'Improshow'"/>
             <TextBlock Text="Datum" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
             <DatePicker Date="{Binding Datum, Mode=TwoWay, Converter={StaticResource DateTimeToDateTimeOffsetConverter}}" HorizontalAlignment="Left"/>
             <TextBlock Text="Uhrzeit" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
             <TextBox Text="{Binding Uhrzeit, Mode=TwoWay}" Width="100" HorizontalAlignment="Left"/>
             <TextBlock Text="Ort" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
             <ComboBox x:Name="Orte" SelectedValue="{Binding OrtId, Mode=TwoWay}" DisplayMemberPath="Bezeichnung" SelectedValuePath="Id"/>
-            <TextBlock Text="Ort überschreiben mit" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
-            <TextBox Text="{Binding SpezialOrtText, Mode=TwoWay}"/>
-            <TextBlock Text="Auftrittsbeschreibung überschreiben mit" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
-            <TextBox Text="{Binding SpezialTerminDescription, Mode=TwoWay}"/>
-            <TextBlock Text="Freitext (intern)" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
-            <TextBox Text="{Binding FreitextInfoIntern, Mode=TwoWay}"/>
-            <TextBlock Text="Freitext (extern)" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
-            <TextBox Text="{Binding FreitextInfoExtern, Mode=TwoWay}"/>
+            <TextBlock Text="Ort überschreiben mit    - optional" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
+            <TextBox Text="{Binding SpezialOrtText, Mode=TwoWay}" PlaceholderText="Spielortbezeichnung, falls kein Ort in der Liste ausgewählt wurde (etwa 'JUZ Buxdehude')"/>
+            <TextBlock Text="Auftrittsbeschreibung überschreiben mit    - optional" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
+            <TextBox Text="{Binding SpezialTerminDescription, Mode=TwoWay}" PlaceholderText="Text, der anstelle der Showtyp-Langbeschreibung angezeigt werden soll"/>
+            <TextBlock Text="Freitext (intern)    - optional" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
+            <TextBox Text="{Binding FreitextInfoIntern, Mode=TwoWay}" PlaceholderText="Den sehen nur wir"/>
+            <TextBlock Text="Freitext (extern)    - optional" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
+            <TextBox Text="{Binding FreitextInfoExtern, Mode=TwoWay}" PlaceholderText="Der erscheint auch auf der Homepage"/>
             <CheckBox Content="Öffentlich" IsChecked="{Binding Oeffentlich, Mode=TwoWay}"/>
             <CheckBox Content="Eintritt frei" IsChecked="{Binding EintrittFrei, Mode=TwoWay}"/>
-            <TextBlock Text="Eintritt-Info (bei nicht-Standard-Orten)" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
-            <TextBox Text="{Binding EintrittInfo, Mode=TwoWay}"/>
-            <TextBlock Text="Musiker" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
-            <TextBox Text="{Binding Musiker, Mode=TwoWay}"/>
+            <TextBlock Text="Eintritt-Info (bei nicht-Standard-Orten)    - optional" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
+            <TextBox Text="{Binding EintrittInfo, Mode=TwoWay}" PlaceholderText="Information über den Eintrittspreis am Spielort wenn nicht kostenlos"/>
+            <TextBlock Text="Musiker    - optional" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
+            <TextBox Text="{Binding Musiker, Mode=TwoWay}" PlaceholderText="Name des Musikers falls mit dabei, bspw. David oder Moritz"/>
             <TextBlock Text="Benötigte Möhren (inkl. Mod)" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
-            <TextBox Text="{Binding BenoetigteSpieler, Mode=TwoWay}"/>
+            <TextBox Text="{Binding BenoetigteSpieler, Mode=TwoWay}" PlaceholderText="Normalerweise mindestens 4"/>
             <TextBlock Text="Bezahlung Moderator (in €)" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
-            <TextBox Text="{Binding BezahlungModerator, Mode=TwoWay}"/>
+            <TextBox Text="{Binding BezahlungModerator, Mode=TwoWay}" PlaceholderText="Normalerweise 40 €"/>
             <TextBlock Text="Bezahlung Spieler (in €)" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
-            <TextBox Text="{Binding BezahlungSpieler, Mode=TwoWay}"/>
+            <TextBox Text="{Binding BezahlungSpieler, Mode=TwoWay}" PlaceholderText="Normalerweise 30 €"/>
             <TextBlock Text="Bezahlung Helfer (in €)" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
             <TextBox Text="{Binding BezahlungHelfer, Mode=TwoWay}"/>
             <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
