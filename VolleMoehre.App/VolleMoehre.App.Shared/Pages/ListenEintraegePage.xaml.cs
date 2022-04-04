@@ -104,7 +104,7 @@ namespace VolleMoehre.App.Shared
             Random rand = new Random(Guid.NewGuid().GetHashCode());
             var randomEntry = _vm.ListenEintraege[rand.Next(0, _vm.ListenEintraege.Count)];
 
-            await _dialogService.ShowInfoMessageAsync(randomEntry.Name, "Zufälliger Eintrag");
+            await _dialogService.ShowInfoMessageAsync(randomEntry.Name, "Voilá:");
         }
     }
 }
