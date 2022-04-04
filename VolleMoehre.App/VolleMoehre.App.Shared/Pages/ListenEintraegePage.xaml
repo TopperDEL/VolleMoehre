@@ -15,7 +15,7 @@
         </Grid.RowDefinitions>
         <StackPanel Orientation="Horizontal" Grid.Row="0">
             <Button Content="Neuer Eintrag..." Margin="5" FontSize="11" MinHeight="10" HorizontalAlignment="Center" Click="ListenEintragAnlegenClick"/>
-            <Button Content="Zufallseintrag" Margin="5" FontSize="11" MinHeight="10" HorizontalAlignment="Center" Click="ListenEintragZufallseintragClick" Style="{StaticResource MaterialOutlinedButtonStyle}"/>
+            <Button Content="Zufallseintrag" Margin="5" FontSize="11" MinHeight="10" HorizontalAlignment="Center" Click="ListenEintragZufallseintragClick" Style="{StaticResource MaterialContainedSecondaryButtonStyle}"/>
             <Button Margin="5" FontSize="11" MinHeight="10" HorizontalAlignment="Center" Click="ListenEintragAktualisierenClick" Style="{StaticResource MaterialOutlinedButtonStyle}">
                 <SymbolIcon Symbol="Refresh"/>
             </Button>
