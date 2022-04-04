@@ -67,6 +67,7 @@
     <_Globbed_Content Remove="Assets\wide310x150logo.scale-200.png" />
   </ItemGroup>
   <ItemGroup>
+    <_Globbled_Page Remove="ColorPaletteOverride.xaml" />
     <_Globbled_Page Remove="Resources.xaml" />
   </ItemGroup>
 </Project>

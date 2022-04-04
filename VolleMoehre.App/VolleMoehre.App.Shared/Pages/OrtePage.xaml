@@ -13,7 +13,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Button Grid.Row="0" Content="Neuen Ort anlegen..." Margin="10" HorizontalAlignment="Center" Click="OrtAnlegenClick" Style="{StaticResource MoehreButtonStyle}"/>
+        <Button Grid.Row="0" Content="Neuen Ort anlegen..." Margin="10" HorizontalAlignment="Center" Click="OrtAnlegenClick"/>
         <ProgressRing Grid.Row="1" Visibility="{Binding Loading, Converter={StaticResource BooleanToVisibilityConverter}}" IsActive="True"/>
         <ListView Grid.Row="1" ItemsSource="{Binding Orte}" 
                       ItemTemplate="{StaticResource OrtTemplate}"

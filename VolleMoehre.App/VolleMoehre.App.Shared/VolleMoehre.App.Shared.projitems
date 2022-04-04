@@ -109,6 +109,10 @@
     <Compile Include="$(MSBuildThisFileDirectory)ViewModels\TrainingsViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Page Include="$(MSBuildThisFileDirectory)ColorPaletteOverride.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="$(MSBuildThisFileDirectory)Pages\AbrechnungPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
