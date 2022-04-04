@@ -9,17 +9,22 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
     <ScrollViewer>
-        <Grid>
-            <StackPanel>
-                <ComboBox Header="Trainingstyp" SelectedValue="{Binding Trainingstyp, Mode=TwoWay}" x:Name="TrainingstypenCombo"/>
-                <DatePicker Header="Datum" Date="{Binding Datum, Mode=TwoWay, Converter={StaticResource DateTimeToDateTimeOffsetConverter}}"/>
+        <Grid HorizontalAlignment="Stretch">
+            <StackPanel MaxWidth="700">
+                <TextBlock Text="Trainingstyp" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
+                <ComboBox SelectedValue="{Binding Trainingstyp, Mode=TwoWay}" x:Name="TrainingstypenCombo"/>
+                <TextBlock Text="Datum" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
+                <DatePicker Date="{Binding Datum, Mode=TwoWay, Converter={StaticResource DateTimeToDateTimeOffsetConverter}}"/>
                 <!--<TimePicker Header="Uhrzeit" Time="{Binding Uhrzeit, Mode=TwoWay}"
                             MinuteIncrement="15"/>-->
-                <TextBox Header="Uhrzeit" Text="{Binding Uhrzeit, Mode=TwoWay}" Width="50" HorizontalAlignment="Left"/>
+                <TextBlock Text="Uhrzeit" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
+                <TextBox Text="{Binding Uhrzeit, Mode=TwoWay}" Width="50" HorizontalAlignment="Left"/>
 
-                <ComboBox Header="Ort" x:Name="Orte" SelectedValue="{Binding OrtId, Mode=TwoWay}" DisplayMemberPath="Bezeichnung" SelectedValuePath="Id"/>
-                <TextBox Header="Freitext" Text="{Binding FreitextInfo, Mode=TwoWay}"/>
-                <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Ort" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
+                <ComboBox x:Name="Orte" SelectedValue="{Binding OrtId, Mode=TwoWay}" DisplayMemberPath="Bezeichnung" SelectedValuePath="Id"/>
+                <TextBlock Text="Freitext" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
+                <TextBox Text="{Binding FreitextInfo, Mode=TwoWay}"/>
+                <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
                     <Button Content="Speichern" Margin="0" Click="SaveButton_Click" x:Name="SaveButton"/>
                     <Button Content="Abbrechen" Margin="5" Click="CancelButton_Click" x:Name="CancelButton" Style="{StaticResource MaterialOutlinedButtonStyle}"/>
                 </StackPanel>

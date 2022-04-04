@@ -8,22 +8,34 @@
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
-        <StackPanel>
-            <TextBox Header="Bezeichnung" Text="{Binding Bezeichnung, Mode=TwoWay}"/>
-            <TextBox Header="Strasse" Text="{Binding Strasse, Mode=TwoWay}"/>
-            <TextBox Header="Hausnummer" Text="{Binding Hausnummer, Mode=TwoWay}"/>
-            <TextBox Header="Postleitzahl" Text="{Binding Postleitzahl, Mode=TwoWay}"/>
-            <TextBox Header="Stadt" Text="{Binding Stadt, Mode=TwoWay}"/>
-            <TextBox Header="Bemerkung" Text="{Binding Bemerkung, Mode=TwoWay}"/>
-            <TextBox Header="Eintritt" Text="{Binding Eintritt, Mode=TwoWay}"/>
-            <TextBox Header="Vorverkaufs-Link" Text="{Binding VVKLink, Mode=TwoWay}"/>
-            <TextBox Header="Anfahrts-Link" Text="{Binding AnfahrtLink, Mode=TwoWay}"/>
-            <TextBox Header="Info-Link" Text="{Binding InfoLink, Mode=TwoWay}"/>
-            <StackPanel Orientation="Horizontal">
-                <Button Content="Speichern" Margin="0" Click="SaveButton_Click" x:Name="SaveButton"/>
-                <Button Content="Abbrechen" Margin="5" Click="CancelButton_Click" x:Name="CancelButton" Style="{StaticResource MaterialOutlinedButtonStyle}"/>
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <ScrollViewer>
+            <StackPanel MaxWidth="700">
+                <TextBlock Text="Bezeichnung" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
+                <TextBox Text="{Binding Bezeichnung, Mode=TwoWay}"/>
+                <TextBlock Text="Strasse" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
+                <TextBox Text="{Binding Strasse, Mode=TwoWay}"/>
+                <TextBlock Text="Hausnummer" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
+                <TextBox Text="{Binding Hausnummer, Mode=TwoWay}"/>
+                <TextBlock Text="Postleitzahl" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
+                <TextBox Text="{Binding Postleitzahl, Mode=TwoWay}"/>
+                <TextBlock Text="Ort" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
+                <TextBox Text="{Binding Stadt, Mode=TwoWay}"/>
+                <TextBlock Text="Bemerkung" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
+                <TextBox Text="{Binding Bemerkung, Mode=TwoWay}"/>
+                <TextBlock Text="Eintritt" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
+                <TextBox Text="{Binding Eintritt, Mode=TwoWay}"/>
+                <TextBlock Text="Vorverkaufs-Link" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
+                <TextBox Text="{Binding VVKLink, Mode=TwoWay}"/>
+                <TextBlock Text="Anfahrts-Link" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
+                <TextBox Text="{Binding AnfahrtLink, Mode=TwoWay}"/>
+                <TextBlock Text="Info-Link" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
+                <TextBox Text="{Binding InfoLink, Mode=TwoWay}"/>
+                <StackPanel Orientation="Horizontal" Margin="0,10,0,0">
+                    <Button Content="Speichern" Margin="0" Click="SaveButton_Click" x:Name="SaveButton"/>
+                    <Button Content="Abbrechen" Margin="5" Click="CancelButton_Click" x:Name="CancelButton" Style="{StaticResource MaterialOutlinedButtonStyle}"/>
+                </StackPanel>
             </StackPanel>
-        </StackPanel>
+        </ScrollViewer>
     </Grid>
 </Page>
