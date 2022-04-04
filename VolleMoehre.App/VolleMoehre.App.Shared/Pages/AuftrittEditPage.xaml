@@ -29,9 +29,11 @@
                 <TextBox Header="Bezahlung Spieler (in €)" Text="{Binding BezahlungSpieler, Mode=TwoWay}"/>
                 <TextBox Header="Bezahlung Helfer (in €)" Text="{Binding BezahlungHelfer, Mode=TwoWay}"/>
                 <StackPanel Orientation="Horizontal">
-                    <Button Content="Speichern" Margin="0,24" Click="SaveButton_Click" x:Name="SaveButton"/>
-                    <Button Content="Abbrechen" Margin="24" Click="CancelButton_Click" x:Name="CancelButton"/>
-                    <Button Content="Löschen" Margin="24" Click="DeleteButton_Click" x:Name="DeleteButton"/>
+                    <Button Content="Speichern" Margin="0" Click="SaveButton_Click" x:Name="SaveButton"/>
+                    <Button Content="Abbrechen" Margin="5" Click="CancelButton_Click" x:Name="CancelButton" Style="{StaticResource MaterialOutlinedButtonStyle}"/>
+                    <Button Margin="5" Click="DeleteButton_Click" x:Name="DeleteButton" Style="{StaticResource MaterialOutlinedButtonStyle}">
+                        <SymbolIcon Symbol="Delete"/>
+                    </Button>
                 </StackPanel>
             </StackPanel>
         </Grid>
