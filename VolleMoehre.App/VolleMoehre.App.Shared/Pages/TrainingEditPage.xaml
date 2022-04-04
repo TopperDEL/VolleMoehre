@@ -20,8 +20,8 @@
                 <ComboBox Header="Ort" x:Name="Orte" SelectedValue="{Binding OrtId, Mode=TwoWay}" DisplayMemberPath="Bezeichnung" SelectedValuePath="Id"/>
                 <TextBox Header="Freitext" Text="{Binding FreitextInfo, Mode=TwoWay}"/>
                 <StackPanel Orientation="Horizontal">
-                    <Button Content="Speichern" Margin="0,24" Click="SaveButton_Click" x:Name="SaveButton" Style="{StaticResource MoehreButtonStyle}"/>
-                    <Button Content="Abbrechen" Margin="24" Click="CancelButton_Click" x:Name="CancelButton" Style="{StaticResource MoehreButtonStyle}"/>
+                    <Button Content="Speichern" Margin="0,24" Click="SaveButton_Click" x:Name="SaveButton"/>
+                    <Button Content="Abbrechen" Margin="24" Click="CancelButton_Click" x:Name="CancelButton"/>
                 </StackPanel>
             </StackPanel>
         </Grid>

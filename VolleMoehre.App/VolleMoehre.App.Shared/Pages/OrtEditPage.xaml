@@ -21,8 +21,8 @@
             <TextBox Header="Anfahrts-Link" Text="{Binding AnfahrtLink, Mode=TwoWay}"/>
             <TextBox Header="Info-Link" Text="{Binding InfoLink, Mode=TwoWay}"/>
             <StackPanel Orientation="Horizontal">
-                <Button Content="Speichern" Margin="0,24" Click="SaveButton_Click" x:Name="SaveButton" Style="{StaticResource MoehreButtonStyle}"/>
-                <Button Content="Abbrechen" Margin="24" Click="CancelButton_Click" x:Name="CancelButton" Style="{StaticResource MoehreButtonStyle}"/>
+                <Button Content="Speichern" Margin="0,24" Click="SaveButton_Click" x:Name="SaveButton"/>
+                <Button Content="Abbrechen" Margin="24" Click="CancelButton_Click" x:Name="CancelButton"/>
             </StackPanel>
         </StackPanel>
     </Grid>

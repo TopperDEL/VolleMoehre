@@ -12,7 +12,7 @@
     <StackPanel Margin="20">
         <TextBlock Text="Dein Verbindungsschlüssel:" FontWeight="Bold"/>
         <TextBox Text="{Binding SecretKey, Mode=TwoWay}" Margin="0,10"/>
-        <Button Content="Ok" Click="ConnectClick" Style="{StaticResource MoehreButtonStyle}"/>
+        <Button Content="Ok" Click="ConnectClick" />
         <ProgressRing Visibility="{Binding Loading, Converter={StaticResource BooleanToVisibilityConverter}}" IsActive="True"/>
         <TextBlock Text="Fehler! Bitte noch einmal versuchen." Visibility="{Binding ShowErrorMessage, Converter={StaticResource BooleanToVisibilityConverter}}" Foreground="Red"/>
     </StackPanel>
