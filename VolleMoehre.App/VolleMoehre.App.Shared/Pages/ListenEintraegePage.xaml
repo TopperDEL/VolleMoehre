@@ -13,7 +13,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal" Grid.Row="0">
+        <StackPanel Orientation="Horizontal" Grid.Row="0" HorizontalAlignment="Center">
             <Button Content="Neuer Eintrag..." Margin="5" FontSize="11" MinHeight="10" HorizontalAlignment="Center" Click="ListenEintragAnlegenClick"/>
             <Button Content="Zufallseintrag" Margin="5" FontSize="11" MinHeight="10" HorizontalAlignment="Center" Click="ListenEintragZufallseintragClick" Style="{StaticResource MaterialContainedSecondaryButtonStyle}"/>
             <Button Margin="5" FontSize="11" MinHeight="10" HorizontalAlignment="Center" Click="ListenEintragAktualisierenClick" Style="{StaticResource MaterialOutlinedButtonStyle}">
@@ -24,7 +24,7 @@
         <ListView Grid.Row="1" ItemsSource="{Binding ListenEintraege}" 
                       ItemClick="EintragSelected"
                       SelectionMode="None" IsItemClickEnabled="True"
-                      HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch">
+                      HorizontalContentAlignment="Center" HorizontalAlignment="Center">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalContentAlignment"  Value="Stretch"></Setter>
