@@ -10,7 +10,17 @@
     mc:Ignorable="d android"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <NavigationView IsSettingsVisible="False" android:IsBackButtonVisible="Collapsed"  x:Name="NavView" ItemInvoked="NavigationInvoked">
+    <NavigationView IsSettingsVisible="False" android:IsBackButtonVisible="Collapsed"  x:Name="NavView" ItemInvoked="NavigationInvoked"
+                    Style="{StaticResource MaterialWUXNoCompactMenuNavigationViewStyle}"
+                    OpenPaneLength="240" PaneDisplayMode="LeftMinimal" IsBackButtonVisible="Collapsed"
+                    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" ExpandedModeThresholdWidth="800">
+        <NavigationView.PaneHeader>
+            
+                <Image Source="/Assets/banner2.jpg"
+						   Margin="10,5,10,5"
+						   HorizontalAlignment="Center"
+						   Stretch="Uniform" />
+        </NavigationView.PaneHeader>
         <NavigationView.MenuItems>
             <NavigationViewItem Content="Auftritte" Tag="AuftrittePage">
                 <NavigationViewItem.Icon>

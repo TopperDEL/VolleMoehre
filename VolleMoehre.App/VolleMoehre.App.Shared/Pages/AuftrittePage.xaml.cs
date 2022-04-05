@@ -33,12 +33,12 @@ namespace VolleMoehre.App.Shared
         public AuftrittePage()
         {
             this.InitializeComponent();
-            this.Loaded += AuftrittePage_Loaded;
         }
 
-        private async void AuftrittePage_Loaded(object sender, RoutedEventArgs e)
+        protected override void OnNavigatedTo(NavigationEventArgs e)
         {
-            await InitAsync();
+            base.OnNavigatedTo(e);
+            InitAsync();
         }
 
         private async Task InitAsync()

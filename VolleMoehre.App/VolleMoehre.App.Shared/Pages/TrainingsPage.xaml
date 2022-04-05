@@ -5,6 +5,7 @@
     xmlns:local="using:VolleMoehre.App.Shared"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:VolleMoehre.App.Shared.ViewModels"
     mc:Ignorable="d" x:Name="Trainings_Page"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
@@ -13,10 +14,9 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Button Grid.Row="0" Content="Neues Training anlegen..." Margin="10" HorizontalAlignment="Center" Click="TrainingAnlegenClick" Style="{StaticResource MoehreButtonStyle}"/>
+        <Button Grid.Row="0" Content="Neues Training anlegen..." Margin="5" FontSize="11" MinHeight="10" HorizontalAlignment="Center" Click="TrainingAnlegenClick"/>
         <ProgressRing Grid.Row="1" Visibility="{Binding Loading, Converter={StaticResource BooleanToVisibilityConverter}}" IsActive="True"/>
         <ListView Grid.Row="1" ItemsSource="{Binding Trainings}"
-                      ItemTemplate="{StaticResource TrainingsterminTemplate}"
                       ItemClick="TrainingSelected"
                       SelectionMode="None" IsItemClickEnabled="True"
                       HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch">
@@ -25,6 +25,140 @@
                     <Setter Property="HorizontalContentAlignment"  Value="Stretch"></Setter>
                 </Style>
             </ListView.ItemContainerStyle>
+
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="vm:TrainingsterminViewModel">
+                    <Grid>
+                        <Grid Tag="{Binding}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="0" Margin="10,10,0,0">
+                                <TextBlock Text="{Binding Trainingstyp}" FontWeight="Bold"/>
+                                <TextBlock Text="{Binding Ort}" Margin="10,0,0,0"/>
+                                <TextBlock Text="{Binding Datum}" Margin="10,0,0,0"
+                           TextWrapping="WrapWholeWords"/>
+                                <TextBlock Text="{Binding FreitextInfo}" Margin="10,0,0,0" MaxWidth="150"
+                           TextWrapping="Wrap" FontStyle="Italic"/>
+                            </StackPanel>
+                            <StackPanel x:Name="Leiterinfo" Orientation="Vertical" Grid.Row="0" Margin="15,10,0,0" Grid.Column="1">
+                                <TextBlock TextWrapping="WrapWholeWords" Visibility="{Binding LeiterFehlt, Converter={StaticResource BooleanToInvertedVisibilityConverter}}" MaxWidth="250">
+                                    <TextBlock.Inlines>
+                                        <Run Text="Moderation: " FontWeight="Bold"/>
+                                        <LineBreak/>
+                                        <Run Text="{Binding Leiter}" />
+                                    </TextBlock.Inlines>
+                                </TextBlock>
+                                <TextBlock Text="Kein Leiter!" Foreground="Red" FontWeight="Bold" Visibility="{Binding LeiterFehlt, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                                <TextBlock TextWrapping="WrapWholeWords" Visibility="{Binding TeilnehmerLeer, Converter={StaticResource BooleanToInvertedVisibilityConverter}}" MaxWidth="250">
+                                    <TextBlock.Inlines>
+                                        <Run Text="Spieler: " FontWeight="Bold"/>
+                                        <LineBreak/>
+                                        <Run Text="{Binding Teilnehmer}" />
+                                    </TextBlock.Inlines>
+                                </TextBlock>
+                                <TextBlock TextWrapping="WrapWholeWords" Visibility="{Binding VorgemerkteLeer, Converter={StaticResource BooleanToInvertedVisibilityConverter}}" MaxWidth="250">
+                                    <TextBlock.Inlines>
+                                        <Run Text="Vorgemerkte: " FontWeight="Bold"/>
+                                        <LineBreak/>
+                                        <Run Text="{Binding Vorgemerkte}" />
+                                    </TextBlock.Inlines>
+                                </TextBlock>
+                                <TextBlock TextWrapping="WrapWholeWords" Visibility="{Binding AbwesendeLeer, Converter={StaticResource BooleanToInvertedVisibilityConverter}}" MaxWidth="250">
+                                    <TextBlock.Inlines>
+                                        <Run Text="Abwesende: " FontWeight="Bold"/>
+                                        <LineBreak/>
+                                        <Run Text="{Binding Abwesende}" />
+                                    </TextBlock.Inlines>
+                                </TextBlock>
+                            </StackPanel>
+                            <ListView ItemsSource="{Binding Kommentare}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="15,5" SelectionMode="None">
+                                <ListView.ItemContainerStyle>
+                                    <Style TargetType="ListViewItem">
+                                        <Setter Property="HorizontalContentAlignment"  Value="Stretch"></Setter>
+                                    </Style>
+                                </ListView.ItemContainerStyle>
+                                <ListView.ItemTemplate>
+                                    <DataTemplate x:DataType="vm:KommentarViewModel">
+                                        <Grid>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="{Binding Spieler}" FontWeight="Bold"/>
+                                                <TextBlock Text="{Binding Kommentar}" FontStyle="Italic" TextWrapping="WrapWholeWords" Margin="3,0" MaxWidth="300"/>
+                                            </StackPanel>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                            <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Margin="10,0">
+                                <Button Padding="0" Background="Transparent" Visibility="{Binding CanTeilnehmer, Converter={StaticResource BooleanToInvertedVisibilityConverter}}">
+                                    <Border BorderThickness="1" BorderBrush="Green"
+                            Background="Green" CornerRadius="10">
+                                        <TextBlock HorizontalAlignment="Center" Foreground="White" Text="Teilnehmer" Margin="5" Padding="0" FontSize="12" FontFamily="{StaticResource MaterialMediumFontFamily}"/>
+                                    </Border>
+                                </Button>
+                                <Button Padding="0" Background="Transparent" Visibility="{Binding CanTeilnehmer, Converter={StaticResource BooleanToVisibilityConverter}}"
+                        Command="{Binding DataContext.SetTeilnehmerCommand, ElementName=Trainings_Page}" CommandParameter="{Binding}">
+                                    <Border BorderThickness="1" BorderBrush="Green"
+                            Background="White" CornerRadius="10">
+                                        <TextBlock HorizontalAlignment="Center" Foreground="Black" Text="Teilnehmer" Margin="5" Padding="0" FontSize="12" FontFamily="{StaticResource MaterialMediumFontFamily}"/>
+                                    </Border>
+                                </Button>
+                                <Button Padding="0" Background="Transparent" Visibility="{Binding CanLeiter, Converter={StaticResource BooleanToInvertedVisibilityConverter}}">
+                                    <Border BorderThickness="1" BorderBrush="Purple"
+                            Background="Purple" CornerRadius="10">
+                                        <TextBlock HorizontalAlignment="Center" Foreground="White" Text="Leiter" Margin="5" Padding="0" FontSize="12" FontFamily="{StaticResource MaterialMediumFontFamily}"/>
+                                    </Border>
+                                </Button>
+                                <Button Padding="0" Background="Transparent" Visibility="{Binding CanLeiter, Converter={StaticResource BooleanToVisibilityConverter}}"
+                        Command="{Binding DataContext.SetLeiterCommand, ElementName=Trainings_Page}" CommandParameter="{Binding}">
+                                    <Border BorderThickness="1" BorderBrush="Purple"
+                            Background="White" CornerRadius="10">
+                                        <TextBlock HorizontalAlignment="Center" Foreground="Black" Text="Leiter" Margin="5" Padding="0" FontSize="12" FontFamily="{StaticResource MaterialMediumFontFamily}"/>
+                                    </Border>
+                                </Button>
+                                <Button Padding="0" Background="Transparent" Visibility="{Binding CanVormerken, Converter={StaticResource BooleanToInvertedVisibilityConverter}}">
+                                    <Border BorderThickness="1" BorderBrush="Orange"
+                            Background="Orange" CornerRadius="10">
+                                        <TextBlock HorizontalAlignment="Center" Foreground="White" Text="Vorgemerkt" Margin="5" Padding="0" FontSize="12" FontFamily="{StaticResource MaterialMediumFontFamily}"/>
+                                    </Border>
+                                </Button>
+                                <Button Padding="0" Background="Transparent" Visibility="{Binding CanVormerken, Converter={StaticResource BooleanToVisibilityConverter}}"
+                        Command="{Binding DataContext.SetVorgemerktCommand, ElementName=Trainings_Page}" CommandParameter="{Binding}">
+                                    <Border BorderThickness="1" BorderBrush="Orange"
+                            Background="White" CornerRadius="10">
+                                        <TextBlock HorizontalAlignment="Center" Foreground="Black" Text="Vorgemerkt" Margin="5" Padding="0" FontSize="12" FontFamily="{StaticResource MaterialMediumFontFamily}"/>
+                                    </Border>
+                                </Button>
+                                <Button Padding="0" Background="Transparent" Visibility="{Binding CanAbwesend, Converter={StaticResource BooleanToInvertedVisibilityConverter}}">
+                                    <Border BorderThickness="1" BorderBrush="Red"
+                            Background="Red" CornerRadius="10">
+                                        <TextBlock HorizontalAlignment="Center" Foreground="White" Text="Abwesend" Margin="5" Padding="0" FontSize="12" FontFamily="{StaticResource MaterialMediumFontFamily}"/>
+                                    </Border>
+                                </Button>
+                                <Button Padding="0" Background="Transparent" Visibility="{Binding CanAbwesend, Converter={StaticResource BooleanToVisibilityConverter}}"
+                        Command="{Binding DataContext.SetAbwesendCommand, ElementName=Trainings_Page}" CommandParameter="{Binding}">
+                                    <Border BorderThickness="1" BorderBrush="Red"
+                            Background="White" CornerRadius="10">
+                                        <TextBlock HorizontalAlignment="Center" Foreground="Black" Text="Abwesend" Margin="5" Padding="0" FontSize="12" FontFamily="{StaticResource MaterialMediumFontFamily}"/>
+                                    </Border>
+                                </Button>
+                            </StackPanel>
+                            <Rectangle Height="1" Width="Auto" Fill="Orange" Margin="0,10,0,10" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"/>
+                        </Grid>
+                        <Grid Visibility="{Binding Loading, Converter={StaticResource BooleanToVisibilityConverter}}" Background="White" Opacity="0.9">
+                            <ProgressRing IsActive="True"/>
+                        </Grid>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
         </ListView>
     </Grid>
 </Page>

@@ -14,8 +14,8 @@
             <ComboBox Header="Dein Teilnahmestatus" SelectedValue="{Binding SpielerStatus, Mode=TwoWay}" x:Name="SpielerStatusCombo"/>
 
             <StackPanel Orientation="Horizontal">
-                <Button Content="Speichern" Margin="0,24" Click="SaveButton_Click" x:Name="SaveButton" Style="{StaticResource MoehreButtonStyle}"/>
-                <Button Content="Abbrechen" Margin="24" Click="CancelButton_Click" x:Name="CancelButton" Style="{StaticResource MoehreButtonStyle}"/>
+                <Button Content="Speichern" Margin="0" Click="SaveButton_Click" x:Name="SaveButton"/>
+                <Button Content="Abbrechen" Margin="5" Click="CancelButton_Click" x:Name="CancelButton" Style="{StaticResource MaterialOutlinedButtonStyle}"/>
             </StackPanel>
         </StackPanel>
     </Grid>

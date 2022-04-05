@@ -45,8 +45,10 @@ namespace VolleMoehre.Shared.Services
 
         public async Task<IEnumerable<Auftrittstermin>> GetAlleAuftritteAsync()
         {
+#if !__WASM__
             if (!IsOnline())
                 return Barrel.Current.Get<List<Auftrittstermin>>("alleauftritte");
+#endif
 
             var client = GetClient(_apiKey);
             try
@@ -57,8 +59,9 @@ namespace VolleMoehre.Shared.Services
                 foreach (var termin in resultContent)
                     termin.Uhrzeit = termin.Datum.TimeOfDay.ToString("hh\\:mm");
 
+#if !__WASM__
                 Barrel.Current.Add<List<Auftrittstermin>>("alleauftritte", resultContent, TimeSpan.FromDays(180));
-
+#endif
                 return resultContent;
             }
             catch (Exception ex)
@@ -92,8 +95,9 @@ namespace VolleMoehre.Shared.Services
                 var result = await client.PostAsJsonAsync("auftritte", termin).ConfigureAwait(false);
                 if (result.IsSuccessStatusCode)
                 {
+#if !__WASM__
                     Barrel.Current.Empty("alleauftritte");
-
+#endif
                     return MoehreResult.WarErfolgreich();
                 }
                 else
@@ -110,7 +114,7 @@ namespace VolleMoehre.Shared.Services
             var client = GetClient(_apiKey);
             try
             {
-                var result = await client.GetAsync("auftritte/"+terminId, HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false);
+                var result = await client.GetAsync("auftritte/" + terminId, HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false);
                 if (result.IsSuccessStatusCode)
                 {
                     var termin = await result.Content.ReadAsAsync<Auftrittstermin>();
@@ -136,7 +140,9 @@ namespace VolleMoehre.Shared.Services
                 var result = await client.DeleteAsync("auftritte/" + termin.Id).ConfigureAwait(false);
                 if (result.IsSuccessStatusCode)
                 {
+#if !__WASM__
                     Barrel.Current.Empty("alleauftritte");
+#endif
 
                     return MoehreResult.WarErfolgreich();
                 }

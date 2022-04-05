@@ -13,16 +13,18 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <StackPanel Orientation="Horizontal" Grid.Row="0">
-            <Button Content="Neuer Eintrag..." Margin="10" HorizontalAlignment="Center" Click="ListenEintragAnlegenClick" Style="{StaticResource MoehreButtonStyle}"/>
-            <Button Content="Aktualisieren" Margin="10" HorizontalAlignment="Center" Click="ListenEintragAktualisierenClick" Style="{StaticResource MoehreButtonStyle}"/>
-            <Button Content="Zufallseintrag" Margin="10" HorizontalAlignment="Center" Click="ListenEintragZufallseintragClick" Style="{StaticResource MoehreButtonStyle}"/>
+        <StackPanel Orientation="Horizontal" Grid.Row="0" HorizontalAlignment="Center">
+            <Button Content="Neuer Eintrag..." Margin="5" FontSize="11" MinHeight="10" HorizontalAlignment="Center" Click="ListenEintragAnlegenClick"/>
+            <Button Content="Zufallseintrag" Margin="5" FontSize="11" MinHeight="10" HorizontalAlignment="Center" Click="ListenEintragZufallseintragClick" Style="{StaticResource MaterialContainedSecondaryButtonStyle}"/>
+            <Button Margin="5" FontSize="11" MinHeight="10" HorizontalAlignment="Center" Click="ListenEintragAktualisierenClick" Style="{StaticResource MaterialOutlinedButtonStyle}">
+                <SymbolIcon Symbol="Refresh"/>
+            </Button>
         </StackPanel>
         <ProgressRing Grid.Row="1" Visibility="{Binding Loading, Converter={StaticResource BooleanToVisibilityConverter}}" IsActive="True"/>
         <ListView Grid.Row="1" ItemsSource="{Binding ListenEintraege}" 
                       ItemClick="EintragSelected"
                       SelectionMode="None" IsItemClickEnabled="True"
-                      HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch">
+                      HorizontalContentAlignment="Center" HorizontalAlignment="Center">
             <ListView.ItemContainerStyle>
                 <Style TargetType="ListViewItem">
                     <Setter Property="HorizontalContentAlignment"  Value="Stretch"></Setter>

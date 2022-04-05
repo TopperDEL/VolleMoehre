@@ -138,7 +138,7 @@
     <PackageReference Include="PropertyChanged.Fody">
       <Version>3.1.3</Version>
     </PackageReference>
-    <PackageReference Include="Uno.UI" Version="2.4.4" />
+    <PackageReference Include="Uno.UI" Version="3.11.6" />
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="1.1.1" />
     <PackageReference Include="Microsoft.Extensions.Logging.Filter" Version="1.1.1" />
     <PackageReference Include="Xam.Plugin.Connectivity">
@@ -251,7 +251,8 @@
     <ImageAsset Include="Media.xcassets\AppIcons.appiconset\Icon-1024.png">
       <Visible>false</Visible>
     </ImageAsset>
-  </ItemGroup><ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\..\VolleMoehre.Contracts\VolleMoehre.Contracts.csproj">
       <Project>{196debd0-977c-427c-9170-a5c16960a41c}</Project>
       <Name>VolleMoehre.Contracts</Name>

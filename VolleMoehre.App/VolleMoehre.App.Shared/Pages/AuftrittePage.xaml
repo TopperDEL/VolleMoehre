@@ -5,18 +5,20 @@
     xmlns:local="using:VolleMoehre.App.Shared"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:VolleMoehre.App.Shared.ViewModels"
     mc:Ignorable="d" x:Name="Auftritte_Page"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+    <Grid MaxWidth="700">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <Button Grid.Row="0" Content="Neuen Auftritt anlegen..." Margin="10" HorizontalAlignment="Center" Click="AuftrittAnlegenClick" Style="{StaticResource MoehreButtonStyle}"/>
+        <Button Grid.Row="0" Content="Neuen Auftritt anlegen..." Margin="5" FontSize="11" MinHeight="10" HorizontalAlignment="Center" Click="AuftrittAnlegenClick" 
+                />
         <ProgressRing Grid.Row="1" Visibility="{Binding Loading, Converter={StaticResource BooleanToVisibilityConverter}}" IsActive="True"/>
         <ListView Grid.Row="1" ItemsSource="{Binding Auftritte}"
-                      ItemTemplate="{StaticResource AuftrittsterminTemplate_Intern}"
+                      
                       ItemClick="AuftrittSelected"
                       SelectionMode="None" IsItemClickEnabled="True"
                       HorizontalContentAlignment="Stretch" HorizontalAlignment="Stretch">
@@ -25,6 +27,166 @@
                     <Setter Property="HorizontalContentAlignment"  Value="Stretch"></Setter>
                 </Style>
             </ListView.ItemContainerStyle>
+            <ListView.ItemTemplate>
+                <DataTemplate x:DataType="vm:AuftrittsterminViewModel">
+                    <Grid>
+                        <Grid Tag="{Binding}">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="Auto"/>
+                                <ColumnDefinition Width="Auto"/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <StackPanel Orientation="Vertical" Grid.Row="0" Grid.Column="0" Margin="0,10,0,0">
+                                <TextBlock Text="{x:Bind Path=Showtyp, Mode=OneWay}" FontWeight="Bold"/>
+                                <TextBlock Text="{x:Bind Path=Ort, Mode=OneWay}" Margin="10,0,0,0"/>
+                                <TextBlock Text="{x:Bind Path=Datum, Mode=OneWay}" Margin="10,0,0,0"
+                           TextWrapping="WrapWholeWords"/>
+                                <TextBlock Text="{x:Bind Path=FreitextIntern}" Margin="10,0,0,0" MaxWidth="150"
+                           TextWrapping="Wrap" FontStyle="Italic"/>
+                                <TextBlock Text="{x:Bind Path=BenoetigteSpieler}" FontWeight="Bold" Foreground="Red" Margin="10,0,0,0" Visibility="{x:Bind Path=BenoetigteSpielerVisible, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                            </StackPanel>
+                            <StackPanel x:Name="Spielerinfo" Orientation="Vertical" Grid.Row="0" Margin="15,10,0,0" Grid.Column="1">
+                                <TextBlock TextWrapping="WrapWholeWords" Visibility="{x:Bind Path=ModerationFehlt, Converter={StaticResource BooleanToInvertedVisibilityConverter}}" MaxWidth="250">
+                                    <TextBlock.Inlines>
+                                        <Run Text="Moderation: " FontWeight="Bold"/>
+                                        <Run Text="{x:Bind Path=Moderation}" />
+                                    </TextBlock.Inlines>
+                                </TextBlock>
+                                <TextBlock Text="Keine Moderation!" Foreground="Red" FontWeight="Bold" Visibility="{x:Bind Path=ModerationFehlt, Converter={StaticResource BooleanToVisibilityConverter}}"/>
+                                <TextBlock TextWrapping="WrapWholeWords" Visibility="{x:Bind Path=SpielerLeer, Converter={StaticResource BooleanToInvertedVisibilityConverter}}" MaxWidth="250">
+                                    <TextBlock.Inlines>
+                                        <Run Text="Spieler: " FontWeight="Bold"/>
+                                        <LineBreak/>
+                                        <Run Text="{x:Bind Path=Spieler}" />
+                                    </TextBlock.Inlines>
+                                </TextBlock>
+                                <TextBlock TextWrapping="WrapWholeWords" Visibility="{x:Bind Path=MusikerLeer, Converter={StaticResource BooleanToInvertedVisibilityConverter}}" MaxWidth="250">
+                                    <TextBlock.Inlines>
+                                        <Run Text="Musiker: " FontWeight="Bold"/>
+                                        <LineBreak/>
+                                        <Run Text="{x:Bind Path=Musiker}" />
+                                    </TextBlock.Inlines>
+                                </TextBlock>
+                                <TextBlock TextWrapping="WrapWholeWords" Visibility="{x:Bind Path=HelferLeer, Converter={StaticResource BooleanToInvertedVisibilityConverter}}" MaxWidth="250">
+                                    <TextBlock.Inlines>
+                                        <Run Text="Helfer: " FontWeight="Bold"/>
+                                        <LineBreak/>
+                                        <Run Text="{x:Bind Path=Helfer}"/>
+                                    </TextBlock.Inlines>
+                                </TextBlock>
+                                <TextBlock TextWrapping="WrapWholeWords" Visibility="{x:Bind Path=VorgemerkteLeer, Converter={StaticResource BooleanToInvertedVisibilityConverter}}" MaxWidth="250">
+                                    <TextBlock.Inlines>
+                                        <Run Text="Vorgemerkte: " FontWeight="Bold"/>
+                                        <LineBreak/>
+                                        <Run Text="{x:Bind Path=Vorgemerkte}" />
+                                    </TextBlock.Inlines>
+                                </TextBlock>
+                                <TextBlock TextWrapping="WrapWholeWords" Visibility="{x:Bind Path=AbwesendeLeer, Converter={StaticResource BooleanToInvertedVisibilityConverter}}" MaxWidth="250">
+                                    <TextBlock.Inlines>
+                                        <Run Text="Abwesende: " FontWeight="Bold"/>
+                                        <LineBreak/>
+                                        <Run Text="{x:Bind Path=Abwesende}" />
+                                    </TextBlock.Inlines>
+                                </TextBlock>
+                            </StackPanel>
+                            <ListView ItemsSource="{x:Bind Path=Kommentare}" Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Margin="15,5" SelectionMode="None">
+                                <ListView.ItemContainerStyle>
+                                    <Style TargetType="ListViewItem">
+                                        <Setter Property="HorizontalContentAlignment"  Value="Stretch"></Setter>
+                                    </Style>
+                                </ListView.ItemContainerStyle>
+                                <ListView.ItemTemplate>
+                                    <DataTemplate x:DataType="vm:KommentarViewModel">
+                                        <Grid>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="{x:Bind Path=Spieler}" FontWeight="Bold"/>
+                                                <TextBlock Text="{x:Bind Path=Kommentar}" FontStyle="Italic" TextWrapping="WrapWholeWords" Margin="3,0" MaxWidth="200"/>
+                                            </StackPanel>
+                                        </Grid>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                            <StackPanel Orientation="Horizontal" Grid.Column="0" Grid.Row="2" Grid.ColumnSpan="2" Margin="0">
+                                <Button Padding="0" Background="Transparent" Visibility="{x:Bind Path=CanSpieler, Converter={StaticResource BooleanToInvertedVisibilityConverter}}">
+                                    <Border BorderThickness="1" BorderBrush="Green"
+                            Background="Green" CornerRadius="10">
+                                        <TextBlock HorizontalAlignment="Center" Foreground="White" Text="Spieler" Margin="5" Padding="0" FontSize="12" FontFamily="{StaticResource MaterialMediumFontFamily}"/>
+                                    </Border>
+                                </Button>
+                                <Button Padding="0" Background="Transparent" Visibility="{x:Bind Path=CanSpieler, Converter={StaticResource BooleanToVisibilityConverter}}"
+                        Command="{Binding DataContext.SetSpielerCommand, ElementName=Auftritte_Page}" CommandParameter="{Binding}">
+                                    <Border BorderThickness="1" BorderBrush="Green"
+                            Background="White" CornerRadius="10">
+                                        <TextBlock HorizontalAlignment="Center" Foreground="Black" Text="Spieler" Margin="5" Padding="0" FontSize="12" FontFamily="{StaticResource MaterialMediumFontFamily}"/>
+                                    </Border>
+                                </Button>
+                                <Button Padding="0" Background="Transparent" Visibility="{x:Bind Path=CanHelfer, Converter={StaticResource BooleanToInvertedVisibilityConverter}}">
+                                    <Border BorderThickness="1" BorderBrush="Blue"
+                            Background="Blue" CornerRadius="10">
+                                        <TextBlock HorizontalAlignment="Center" Foreground="White" Text="Helfer" Margin="5" Padding="0" FontSize="12" FontFamily="{StaticResource MaterialMediumFontFamily}"/>
+                                    </Border>
+                                </Button>
+                                <Button Padding="0" Background="Transparent" Visibility="{x:Bind Path=CanHelfer, Converter={StaticResource BooleanToVisibilityConverter}}"
+                        Command="{Binding DataContext.SetHelferCommand, ElementName=Auftritte_Page}" CommandParameter="{Binding}">
+                                    <Border BorderThickness="1" BorderBrush="Blue"
+                            Background="White" CornerRadius="10">
+                                        <TextBlock HorizontalAlignment="Center" Foreground="Black" Text="Helfer" Margin="5" Padding="0" FontSize="12" FontFamily="{StaticResource MaterialMediumFontFamily}"/>
+                                    </Border>
+                                </Button>
+                                <Button Padding="0" Background="Transparent" Visibility="{x:Bind Path=CanModeration, Converter={StaticResource BooleanToInvertedVisibilityConverter}}">
+                                    <Border BorderThickness="1" BorderBrush="Purple"
+                            Background="Purple" CornerRadius="10">
+                                        <TextBlock HorizontalAlignment="Center" Foreground="White" Text="Mod" Margin="5" Padding="0" FontSize="12" FontFamily="{StaticResource MaterialMediumFontFamily}"/>
+                                    </Border>
+                                </Button>
+                                <Button Padding="0" Background="Transparent" Visibility="{x:Bind Path=CanModeration, Converter={StaticResource BooleanToVisibilityConverter}}"
+                        Command="{Binding DataContext.SetModeratorCommand, ElementName=Auftritte_Page}" CommandParameter="{Binding}">
+                                    <Border BorderThickness="1" BorderBrush="Purple"
+                            Background="White" CornerRadius="10">
+                                        <TextBlock HorizontalAlignment="Center" Foreground="Black" Text="Mod" Margin="5" Padding="0" FontSize="12" FontFamily="{StaticResource MaterialMediumFontFamily}"/>
+                                    </Border>
+                                </Button>
+                                <Button Padding="0" Background="Transparent" Visibility="{x:Bind Path=CanVormerken, Converter={StaticResource BooleanToInvertedVisibilityConverter}}">
+                                    <Border BorderThickness="1" BorderBrush="Orange"
+                            Background="Orange" CornerRadius="10">
+                                        <TextBlock HorizontalAlignment="Center" Foreground="White" Text="Vorgemerkt" Margin="5" Padding="0" FontSize="12" FontFamily="{StaticResource MaterialMediumFontFamily}"/>
+                                    </Border>
+                                </Button>
+                                <Button Padding="0" Background="Transparent" Visibility="{x:Bind Path=CanVormerken, Converter={StaticResource BooleanToVisibilityConverter}}"
+                        Command="{Binding DataContext.SetVorgemerktCommand, ElementName=Auftritte_Page}" CommandParameter="{Binding}">
+                                    <Border BorderThickness="1" BorderBrush="Orange"
+                            Background="White" CornerRadius="10">
+                                        <TextBlock HorizontalAlignment="Center" Foreground="Black" Text="Vorgemerkt" Margin="5" Padding="0" FontSize="12" FontFamily="{StaticResource MaterialMediumFontFamily}"/>
+                                    </Border>
+                                </Button>
+                                <Button Padding="0" Background="Transparent" Visibility="{x:Bind Path=CanAbwesend, Converter={StaticResource BooleanToInvertedVisibilityConverter}}">
+                                    <Border BorderThickness="1" BorderBrush="Red"
+                            Background="Red" CornerRadius="10">
+                                        <TextBlock HorizontalAlignment="Center" Foreground="White" Text="Abwesend" Margin="5" Padding="0" FontSize="12" FontFamily="{StaticResource MaterialMediumFontFamily}"/>
+                                    </Border>
+                                </Button>
+                                <Button Padding="0" Background="Transparent" Visibility="{x:Bind Path=CanAbwesend, Converter={StaticResource BooleanToVisibilityConverter}}"
+                        Command="{Binding DataContext.SetAbwesendCommand, ElementName=Auftritte_Page}" CommandParameter="{Binding}">
+                                    <Border BorderThickness="1" BorderBrush="Red"
+                            Background="White" CornerRadius="10">
+                                        <TextBlock HorizontalAlignment="Center" Foreground="Black" Text="Abwesend" Margin="5" Padding="0" FontSize="12" FontFamily="{StaticResource MaterialMediumFontFamily}"/>
+                                    </Border>
+                                </Button>
+                            </StackPanel>
+                            <Rectangle Height="1" Width="Auto" Fill="Orange" Margin="0,10,0,10" Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2"/>
+                        </Grid>
+                        <Grid Visibility="{x:Bind Loading, Mode=OneWay, Converter={StaticResource BooleanToVisibilityConverter}}" Background="White" Opacity="0.9">
+                            <ProgressRing IsActive="True"/>
+                        </Grid>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
         </ListView>
     </Grid>
 </Page>

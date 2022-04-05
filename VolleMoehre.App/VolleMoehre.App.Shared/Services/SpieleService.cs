@@ -22,8 +22,10 @@ namespace VolleMoehre.Shared.Services
 
         public async Task<IEnumerable<Spiel>> GetSpieleAsync()
         {
+#if !__WASM__
             if (!Barrel.Current.IsExpired("spiele") || !IsOnline())
                 return Barrel.Current.Get<IEnumerable<Spiel>>("spiele");
+#endif
 
             var client = GetClient(_apiKey);
             try
@@ -31,7 +33,9 @@ namespace VolleMoehre.Shared.Services
                 var result = await client.GetAsync("spiele", HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false);
                 var resultContent = await result.Content.ReadAsAsync<IEnumerable<VolleMoehre.Contracts.Model.Spiel>>();
 
+#if !__WASM__
                 Barrel.Current.Add<IEnumerable<Spiel>>("spiele", resultContent, TimeSpan.FromDays(180));
+#endif
 
                 return resultContent;
             }
@@ -50,7 +54,9 @@ namespace VolleMoehre.Shared.Services
                 var result = await client.PostAsJsonAsync("spiele", spiel).ConfigureAwait(false);
                 if (result.IsSuccessStatusCode)
                 {
+#if !__WASM__
                     Barrel.Current.Empty("spiele");
+#endif
 
                     return MoehreResult.WarErfolgreich();
                 }

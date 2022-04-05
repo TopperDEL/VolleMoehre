@@ -63,8 +63,10 @@ namespace VolleMoehre.Shared.Services
 
         public async Task<IEnumerable<Trainingstermin>> GetTrainingsAsync()
         {
+#if !__WASM__
             if (!IsOnline())
                 return Barrel.Current.Get<IEnumerable<Trainingstermin>>("alletrainings");
+#endif
 
             var client = GetClient(_apiKey);
             try
@@ -75,7 +77,9 @@ namespace VolleMoehre.Shared.Services
                 foreach (var termin in resultContent)
                     termin.Uhrzeit = termin.Datum.TimeOfDay.ToString("hh\\:mm");
 
+#if !__WASM__
                 Barrel.Current.Add<IEnumerable<Trainingstermin>>("alletrainings", resultContent, TimeSpan.FromDays(180));
+#endif
 
                 return resultContent;
             }
@@ -95,7 +99,9 @@ namespace VolleMoehre.Shared.Services
                 var result = await client.PostAsJsonAsync("trainings", termin).ConfigureAwait(false);
                 if (result.IsSuccessStatusCode)
                 {
+#if !__WASM__
                     Barrel.Current.Empty("alletrainings");
+#endif
 
                     return MoehreResult.WarErfolgreich();
                 }

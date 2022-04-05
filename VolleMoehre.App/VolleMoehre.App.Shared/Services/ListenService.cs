@@ -22,11 +22,13 @@ namespace VolleMoehre.Shared.Services
 
         public async Task<IEnumerable<Liste>> GetListeAsync(ListenTyp listenTyp, bool forceRefresh = false)
         {
+#if !__WASM__
             if(forceRefresh)
                 Barrel.Current.Empty("liste_" + listenTyp.ToString());
 
             if (!Barrel.Current.IsExpired("liste_" + listenTyp.ToString()) || !IsOnline())
                 return Barrel.Current.Get<IEnumerable<Liste>>("liste_" + listenTyp.ToString());
+#endif
 
             var client = GetClient(_apiKey);
             try
@@ -34,7 +36,9 @@ namespace VolleMoehre.Shared.Services
                 var result = await client.GetAsync("listen/" + listenTyp.ToString(), HttpCompletionOption.ResponseHeadersRead).ConfigureAwait(false);
                 var resultContent = await result.Content.ReadAsAsync<List<VolleMoehre.Contracts.Model.Liste>>();
 
+#if !__WASM__
                 Barrel.Current.Add<IEnumerable<Liste>>("liste_" + listenTyp.ToString(), resultContent, TimeSpan.FromDays(180));
+#endif
 
                 return resultContent;
             }
@@ -53,7 +57,9 @@ namespace VolleMoehre.Shared.Services
                 var result = await client.PostAsJsonAsync("listen", eintrag).ConfigureAwait(false);
                 if (result.IsSuccessStatusCode)
                 {
+#if !__WASM__
                     Barrel.Current.Empty("liste_" + eintrag.Typ.ToString());
+#endif
 
                     return MoehreResult.WarErfolgreich();
                 }

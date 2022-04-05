@@ -10,4 +10,66 @@
   <PropertyGroup />
   <Import Project="VolleMoehre.App.Shared.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\CodeSharing\Microsoft.CodeSharing.CSharp.targets" />
+  <ItemGroup>
+    <_Globbed_Compile Remove="Commands\ChangeStatusCommand.cs" />
+    <_Globbed_Compile Remove="Commands\ChangeTrainingStatusCommand.cs" />
+    <_Globbed_Compile Remove="Commands\SetAbwesendCommand.cs" />
+    <_Globbed_Compile Remove="Commands\SetHelferCommand.cs" />
+    <_Globbed_Compile Remove="Commands\SetModeratorCommand.cs" />
+    <_Globbed_Compile Remove="Commands\SetSpielerCommand.cs" />
+    <_Globbed_Compile Remove="Commands\SetTrainingAbwesendCommand.cs" />
+    <_Globbed_Compile Remove="Commands\SetTrainingLeiterCommand.cs" />
+    <_Globbed_Compile Remove="Commands\SetTrainingTeilnehmerCommand.cs" />
+    <_Globbed_Compile Remove="Commands\SetTrainingVorgemerktCommand.cs" />
+    <_Globbed_Compile Remove="Commands\SetVorgemerktCommand.cs" />
+    <_Globbed_Compile Remove="Commands\StartNachbereitungCommand.cs" />
+    <_Globbed_Compile Remove="Converter\BooleanToInvertedVisibilityConverter.cs" />
+    <_Globbed_Compile Remove="Converter\BooleanToVisibilityConverter.cs" />
+    <_Globbed_Compile Remove="Converter\DateConverter.cs" />
+    <_Globbed_Compile Remove="Converter\DateTimeConverter.cs" />
+    <_Globbed_Compile Remove="Converter\DateTimeToDateTimeOffsetConverter.cs" />
+    <_Globbed_Compile Remove="Converter\DateTimeToTimeSpanConverter.cs" />
+    <_Globbed_Compile Remove="Helper\DialogExtensions.cs" />
+    <_Globbed_Compile Remove="Resources.cs" />
+    <_Globbed_Compile Remove="Services\AbrechnungsService.cs" />
+    <_Globbed_Compile Remove="Services\APIConnectionService.cs" />
+    <_Globbed_Compile Remove="Services\AuftritteService.cs" />
+    <_Globbed_Compile Remove="Services\DialogService.cs" />
+    <_Globbed_Compile Remove="Services\ListenService.cs" />
+    <_Globbed_Compile Remove="Services\NachbereitungService.cs" />
+    <_Globbed_Compile Remove="Services\OrteService.cs" />
+    <_Globbed_Compile Remove="Services\ServiceBase.cs" />
+    <_Globbed_Compile Remove="Services\SpielerService.cs" />
+    <_Globbed_Compile Remove="Services\SpieleService.cs" />
+    <_Globbed_Compile Remove="Services\TrainingsService.cs" />
+    <_Globbed_Compile Remove="ViewModels\AbrechnungViewModel.cs" />
+    <_Globbed_Compile Remove="ViewModels\APIConnectionPageViewModel.cs" />
+    <_Globbed_Compile Remove="ViewModels\AuftritteViewModel.cs" />
+    <_Globbed_Compile Remove="ViewModels\AuftrittsterminViewModel.cs" />
+    <_Globbed_Compile Remove="ViewModels\BaseViewModel.cs" />
+    <_Globbed_Compile Remove="ViewModels\KommentarViewModel.cs" />
+    <_Globbed_Compile Remove="ViewModels\ListeViewModel.cs" />
+    <_Globbed_Compile Remove="ViewModels\MainPageViewModel.cs" />
+    <_Globbed_Compile Remove="ViewModels\NachbereitungenViewModel.cs" />
+    <_Globbed_Compile Remove="ViewModels\OrteViewModel.cs" />
+    <_Globbed_Compile Remove="ViewModels\SpieleViewModel.cs" />
+    <_Globbed_Compile Remove="ViewModels\TrainingsterminViewModel.cs" />
+    <_Globbed_Compile Remove="ViewModels\TrainingsViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <_Globbed_Content Remove="Assets\banner2.jpg" />
+    <_Globbed_Content Remove="Assets\banner4.jpg" />
+    <_Globbed_Content Remove="Assets\lockscreenlogo.scale-200.png" />
+    <_Globbed_Content Remove="Assets\splashscreen.scale-200.png" />
+    <_Globbed_Content Remove="Assets\square150x150logo.scale-200.png" />
+    <_Globbed_Content Remove="Assets\Square150x150Logo.scale-400.png" />
+    <_Globbed_Content Remove="Assets\square44x44logo.scale-200.png" />
+    <_Globbed_Content Remove="Assets\square44x44logo.targetsize-24_altform-unplated.png" />
+    <_Globbed_Content Remove="Assets\storelogo.png" />
+    <_Globbed_Content Remove="Assets\wide310x150logo.scale-200.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <_Globbled_Page Remove="ColorPaletteOverride.xaml" />
+    <_Globbled_Page Remove="Resources.xaml" />
+  </ItemGroup>
 </Project>

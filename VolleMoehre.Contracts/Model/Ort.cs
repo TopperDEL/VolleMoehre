@@ -24,5 +24,19 @@ namespace VolleMoehre.Contracts.Model
         {
             Id = Guid.NewGuid().ToString();
         }
+
+        public override string ToString()
+        {
+            if (!string.IsNullOrEmpty(Stadt))
+            {
+                return Bezeichnung + ", " + Stadt;
+            }
+
+            if (!string.IsNullOrEmpty(Bemerkung))
+            {
+                return Bezeichnung + " (" + Bemerkung + ")";
+            }
+            return Bezeichnung;
+        }
     }
 }
