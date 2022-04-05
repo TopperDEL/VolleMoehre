@@ -2,6 +2,6 @@
 
     splashScreenImage: "Assets/SplashScreen.png",
     splashScreenColor: "#fff",
-    displayName: "VolleMoehre.App"
+    displayName: "Volle-Möhre"
 
 }
