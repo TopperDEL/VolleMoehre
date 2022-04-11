@@ -9,7 +9,7 @@ namespace VolleMoehre.Contracts.Interfaces
 {
     public interface ICalenderExporter
     {
-        byte[] TransferToiCalFeed(List<Spieler> alleApieler, Spieler spieler, List<Trainingstermin> trainingsTermine, List<Auftrittstermin> auftrittsTermine);
+        byte[] TransferToiCalFeed(Spieler spieler, List<Trainingstermin> trainingsTermine, List<Auftrittstermin> auftrittsTermine);
         byte[] TransferToiCal(Auftrittstermin auftrittsTermin);
         byte[] TransferToiCalPublic(Auftrittstermin auftrittsTermin);
         byte[] TransferToiCal(Trainingstermin trainingsTermin);

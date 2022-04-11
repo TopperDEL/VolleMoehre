@@ -152,6 +152,10 @@
       <Project>{7e341fa2-5171-41bd-9826-97bb90c31037}</Project>
       <Name>VolleMoehre.Contracts</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\VolleMoehre.Adapter.Calender\VolleMoehre.Adapter.Calender.csproj">
+      <Project>{bb2e9bc5-c94e-4c39-91d7-5f6c97e60115}</Project>
+      <Name>VolleMoehre.Adapter.Calender</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />

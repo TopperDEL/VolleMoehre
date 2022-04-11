@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\..\..\Documents\GitHub\VolleMoehre\VolleMoehre.Contracts\VolleMoehre.Contracts.csproj" />
+    <ProjectReference Include="..\..\VolleMoehre.Adapter.Calender\VolleMoehre.Adapter.Calender.csproj" />
   </ItemGroup>
   <Import Project="..\VolleMoehre.App.Shared\VolleMoehre.App.Shared.projitems" Label="Shared" Condition="Exists('..\VolleMoehre.App.Shared\VolleMoehre.App.Shared.projitems')" />
 </Project>
