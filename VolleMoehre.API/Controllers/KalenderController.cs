@@ -28,13 +28,13 @@ namespace VolleMoehre.API.Controllers
             try
             {
                 var alleSpieler = await _store.GetAllAsync<Spieler>();
-                var spieler = alleSpieler.Where(s => s.UserName == id.ToLower()).FirstOrDefault();
+                var spieler = alleSpieler.Where(s => s.UserName == id.Replace(".ics","").ToLower()).FirstOrDefault();
                 var auftritte = await _store.GetAllAsync<Auftrittstermin>(a => a.Oeffentlich && a.Datum >= DateTime.Now);
                 var trainings = await _store.GetAllAsync<Trainingstermin>(a => a.Datum >= DateTime.Now);
 
                 var calBytes = _calenderExporter.TransferToiCalFeed(spieler, trainings.ToList(), auftritte.ToList());
 
-                return new FileStreamResult(new MemoryStream(calBytes), new Microsoft.Net.Http.Headers.MediaTypeHeaderValue("text/calendar"));
+                return File(System.Text.Encoding.UTF8.GetBytes(calBytes), "text/calendar", "Kalender.ics");
             }
             catch (Exception ex)
             {

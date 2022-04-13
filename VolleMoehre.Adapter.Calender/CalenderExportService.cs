@@ -22,14 +22,16 @@ namespace VolleMoehre.Adapter.Calender
             throw new NotImplementedException();
         }
 
-        public byte[] TransferToiCalFeed(Spieler spieler, List<Trainingstermin> trainingsTermine, List<Auftrittstermin> auftrittsTermine)
+        public string TransferToiCalFeed(Spieler spieler, List<Trainingstermin> trainingsTermine, List<Auftrittstermin> auftrittsTermine)
         {
             byte[] retBytes;
 
-            Alarm alarm = new Alarm();
-            alarm.Action =  AlarmAction.Display;
-            alarm.Description = "Volle-Möhre Kalender für " + spieler.Name;
+            //Alarm alarm = new Alarm();
+            //alarm.Action =  AlarmAction.Display;
+            //alarm.Description = "Volle-Möhre Kalender für " + spieler.Name;
+            //alarm.Trigger = new Trigger();
             Calendar iCalender = new Calendar();
+            iCalender.Method = "PUBLISH";
 
             foreach (Auftrittstermin auftritt in auftrittsTermine.Where(a=>a.Helfer.Contains(spieler.Id) ||
                                                                            a.Moderator.Contains(spieler.Id) ||
@@ -50,7 +52,7 @@ namespace VolleMoehre.Adapter.Calender
                 //moehreEvent.Location = auftritt.Ort.Bezeichnung + " - Freitext: " + auftritt.FreitextInfoIntern;
                 moehreEvent.Summary = moehreEvent.Description;
                 //moehreEvent.Url = new Uri("http://www.vollemoehre.de/Auftritte/IndexIntern/#" + auftritt.TerminID);
-                moehreEvent.Alarms.Add(alarm);
+                //moehreEvent.Alarms.Add(alarm);
                 iCalender.Events.Add(moehreEvent);
             }
             //foreach (Trainingstermin auftritt in auftritteSpielerVGM)
@@ -96,21 +98,25 @@ namespace VolleMoehre.Adapter.Calender
                 //moehreEvent.Location = training.Ort.Bezeichnung + " - Freitext: " + training.FreitextInfo;
                 moehreEvent.Summary = moehreEvent.Description;
                 //moehreEvent.Url = new Uri("http://www.vollemoehre.de/Trainings/" + training.TrainingID);
-                moehreEvent.Alarms.Add(alarm);
+                //moehreEvent.Alarms.Add(alarm);
                 iCalender.Events.Add(moehreEvent);
             }
             iCalender.AddProperty("CALSCALE", "GREGORIAN");
 
-            using (System.IO.MemoryStream mstream = new System.IO.MemoryStream())
-            {
-                CalendarSerializer serializer = new CalendarSerializer();
-                System.Text.UTF8Encoding utf8OhneBOM = new System.Text.UTF8Encoding(false);
-                serializer.Serialize(iCalender, mstream, utf8OhneBOM);
-                mstream.Flush();
-                retBytes = mstream.GetBuffer();
-            }
+            CalendarSerializer serializer = new CalendarSerializer();
+            return serializer.SerializeToString(iCalender);
 
-            return retBytes;
+            //using (System.IO.MemoryStream mstream = new System.IO.MemoryStream())
+            //{
+            //    CalendarSerializer serializer = new CalendarSerializer();
+            //    serializer.SerializeToString(iCalender);
+            //    System.Text.UTF8Encoding utf8OhneBOM = new System.Text.UTF8Encoding(false);
+            //    serializer.Serialize(iCalender, mstream, utf8OhneBOM);
+            //    mstream.Flush();
+            //    retBytes = mstream.GetBuffer();
+            //}
+
+            //return retBytes;
         }
 
         public byte[] TransferToiCalPublic(Auftrittstermin auftrittsTermin)
