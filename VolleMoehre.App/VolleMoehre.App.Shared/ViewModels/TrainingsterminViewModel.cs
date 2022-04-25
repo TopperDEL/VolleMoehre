@@ -11,7 +11,7 @@ namespace VolleMoehre.App.Shared.ViewModels
     {
         public TrainingsterminViewModel()
         {
-            CanTeilnehmer = CanLeiter = CanVormerken = CanAbwesend = true;
+            CanTeilnehmer = CanLeiter = CanVormerken = CanAbwesend = CanOnline = true;
         }
 
         public void RefreshFrom(Trainingstermin termin, Spieler spieler)
@@ -48,6 +48,12 @@ namespace VolleMoehre.App.Shared.ViewModels
                     TeilnahmestatusFarbe = "Orange";
                     CanVormerken = false;
                 }
+                else if (termin.Online.Contains(spieler.Id))
+                {
+                    Teilnahmestatus = "Nur Online";
+                    TeilnahmestatusFarbe = "Blue";
+                    CanOnline = false;
+                }                
                 else if (termin.Abwesend.Contains(spieler.Id))
                 {
                     Teilnahmestatus = "Abwesend";
@@ -66,6 +72,8 @@ namespace VolleMoehre.App.Shared.ViewModels
                 TeilnehmerLeer = termin.Teilnehmer.Count == 0;
                 Vorgemerkte = GetSpielerListe(termin.Vorgemerkt);
                 VorgemerkteLeer = termin.Vorgemerkt.Count == 0;
+                Online = GetSpielerListe(termin.Online);
+                OnlineLeer = termin.Online.Count == 0;
                 Abwesende = GetSpielerListe(termin.Abwesend);
                 AbwesendeLeer = termin.Abwesend.Count == 0;
                
@@ -120,12 +128,15 @@ namespace VolleMoehre.App.Shared.ViewModels
         public bool TeilnehmerLeer { get; set; }
         public string Vorgemerkte { get; set; }
         public bool VorgemerkteLeer { get; set; }
+        public string Online { get; set; }
+        public bool OnlineLeer { get; set; }
         public string Abwesende { get; set; }
         public bool AbwesendeLeer { get; set; }
         public List<KommentarViewModel> Kommentare { get; set; }
         public bool CanLeiter { get; set; }
         public bool CanTeilnehmer { get; set; }
         public bool CanVormerken { get; set; }
+        public bool CanOnline { get; set; }
         public bool CanAbwesend { get; set; }
         public bool AussageNoetig { get; set; }
 
