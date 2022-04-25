@@ -59,6 +59,7 @@ namespace VolleMoehre.API.Controllers
                     training.Abwesend.Remove(value.SpielerId);
                     training.Leiter.Remove(value.SpielerId);
                     training.Vorgemerkt.Remove(value.SpielerId);
+                    training.Online.Remove(value.SpielerId);
                     training.Teilnehmer.Remove(value.SpielerId);
                     switch (value.NewStatus)
                     {
