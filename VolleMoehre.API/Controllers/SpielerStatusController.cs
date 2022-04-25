@@ -74,6 +74,9 @@ namespace VolleMoehre.API.Controllers
                         case Contracts.Interfaces.SpielerStatus.Vorgemerkt:
                             training.Vorgemerkt.Add(value.SpielerId);
                             break;
+                        case Contracts.Interfaces.SpielerStatus.Online:
+                            training.Online.Add(value.SpielerId);
+                            break;
                         default:
                             return BadRequest();
                     }

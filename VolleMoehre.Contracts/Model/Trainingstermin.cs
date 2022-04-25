@@ -28,6 +28,7 @@ namespace VolleMoehre.Contracts.Model
         public List<string> Leiter { get; set; }
         public List<string> Abwesend { get; set; }
         public List<string> Vorgemerkt { get; set; }
+        public List<string> Online { get; set; }
 
         public bool FehlenderLeiterVerkuendet { get; set; }
         public bool ZuwenigMoehrenVerkuendet { get; set; }
@@ -41,6 +42,7 @@ namespace VolleMoehre.Contracts.Model
             Leiter = new List<string>();
             Abwesend = new List<string>();
             Vorgemerkt = new List<string>();
+            Online = new List<string>();
             Kommentare = new List<Kommentar>();
 
             Uhrzeit = "19:00";
