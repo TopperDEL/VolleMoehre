@@ -60,6 +60,10 @@ namespace VolleMoehre.Adapter.Calender
                         moehreEvent.Description = moehreEvent.Description + ", " + auftritt.FreitextInfoIntern;
                     }
                 }
+                if(!string.IsNullOrEmpty(auftritt.Ansprechpartner))
+                {
+                    moehreEvent.Description = moehreEvent.Description + ", " + auftritt.Ansprechpartner;
+                }
                 moehreEvent.Summary = moehreEvent.Description;
                 iCalender.Events.Add(moehreEvent);
             }

@@ -23,6 +23,8 @@
             <TextBox Text="{Binding SpezialOrtText, Mode=TwoWay}" PlaceholderText="Spielortbezeichnung, falls kein Ort in der Liste ausgewählt wurde (etwa 'JUZ Buxdehude')"/>
             <TextBlock Text="Auftrittsbeschreibung überschreiben mit    - optional" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
             <TextBox Text="{Binding SpezialTerminDescription, Mode=TwoWay}" PlaceholderText="Text, der anstelle der Showtyp-Langbeschreibung angezeigt werden soll"/>
+            <TextBlock Text="Ansprechpartner (intern)- optional" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
+            <TextBox Text="{Binding Ansprechpartner, Mode=TwoWay}" PlaceholderText="Kontaktdaten, Telefonnummer - falls nötig"/>
             <TextBlock Text="Freitext (intern)    - optional" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
             <TextBox Text="{Binding FreitextInfoIntern, Mode=TwoWay}" PlaceholderText="Den sehen nur wir"/>
             <TextBlock Text="Freitext (extern)    - optional" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
