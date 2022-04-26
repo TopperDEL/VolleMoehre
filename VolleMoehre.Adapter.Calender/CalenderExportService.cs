@@ -51,6 +51,10 @@ namespace VolleMoehre.Adapter.Calender
                     {
                         moehreEvent.Description = moehreEvent.Description + ", " + beschreibung;
                     }
+                    else
+                    {
+                        moehreEvent.Description = moehreEvent.Description + ", " + auftritt.FreitextInfoIntern;
+                    }
                 }
                 moehreEvent.Summary = moehreEvent.Description;
                 iCalender.Events.Add(moehreEvent);
