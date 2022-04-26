@@ -14,7 +14,8 @@ namespace VolleMoehre.Contracts.Interfaces
         Moderator,
         Vorgemerkt,
         Teilnehmer,
-        Leiter
+        Leiter,
+        Online
     }
 
     public interface IAuftritteService

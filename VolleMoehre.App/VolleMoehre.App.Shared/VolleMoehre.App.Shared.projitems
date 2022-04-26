@@ -27,6 +27,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Commands\SetTrainingAbwesendCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\SetTrainingLeiterCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\SetTrainingTeilnehmerCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Commands\SetTrainingOnlineCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\SetTrainingVorgemerktCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\SetVorgemerktCommand.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Commands\StartNachbereitungCommand.cs" />

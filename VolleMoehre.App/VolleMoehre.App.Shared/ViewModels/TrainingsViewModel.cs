@@ -13,6 +13,7 @@ namespace VolleMoehre.App.Shared.ViewModels
         public SetTrainingTeilnehmerCommand SetTeilnehmerCommand { get; set; }
         public SetTrainingLeiterCommand SetLeiterCommand { get; set; }
         public SetTrainingVorgemerktCommand SetVorgemerktCommand { get; set; }
+        public SetTrainingOnlineCommand SetOnlineCommand { get; set; }
         public SetTrainingAbwesendCommand SetAbwesendCommand { get; set; }
 
         public TrainingsViewModel()
@@ -21,6 +22,7 @@ namespace VolleMoehre.App.Shared.ViewModels
             SetTeilnehmerCommand = new SetTrainingTeilnehmerCommand(this);
             SetLeiterCommand = new SetTrainingLeiterCommand(this);
             SetVorgemerktCommand = new SetTrainingVorgemerktCommand(this);
+            SetOnlineCommand = new SetTrainingOnlineCommand(this);
             SetAbwesendCommand = new SetTrainingAbwesendCommand(this);
         }
     }

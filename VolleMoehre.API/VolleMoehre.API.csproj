@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
   </PropertyGroup>
 
@@ -15,6 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\VolleMoehre.Adapter.Calender\VolleMoehre.Adapter.Calender.csproj" />
     <ProjectReference Include="..\VolleMoehre.Adapter.LiteDB\VolleMoehre.Adapter.LiteDB.csproj" />
     <ProjectReference Include="..\VolleMoehre.Contracts\VolleMoehre.Contracts.csproj" />
   </ItemGroup>

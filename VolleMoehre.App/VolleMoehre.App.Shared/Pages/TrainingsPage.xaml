@@ -9,7 +9,7 @@
     mc:Ignorable="d" x:Name="Trainings_Page"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
 
-    <Grid>
+    <Grid MaxWidth="700">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
@@ -70,6 +70,13 @@
                                         <Run Text="Vorgemerkte: " FontWeight="Bold"/>
                                         <LineBreak/>
                                         <Run Text="{Binding Vorgemerkte}" />
+                                    </TextBlock.Inlines>
+                                </TextBlock>
+                                <TextBlock TextWrapping="WrapWholeWords" Visibility="{Binding OnlineLeer, Converter={StaticResource BooleanToInvertedVisibilityConverter}}" MaxWidth="250">
+                                    <TextBlock.Inlines>
+                                        <Run Text="Nur Online: " FontWeight="Bold"/>
+                                        <LineBreak/>
+                                        <Run Text="{Binding Online}" />
                                     </TextBlock.Inlines>
                                 </TextBlock>
                                 <TextBlock TextWrapping="WrapWholeWords" Visibility="{Binding AbwesendeLeer, Converter={StaticResource BooleanToInvertedVisibilityConverter}}" MaxWidth="250">
@@ -135,6 +142,19 @@
                                     <Border BorderThickness="1" BorderBrush="Orange"
                             Background="White" CornerRadius="10">
                                         <TextBlock HorizontalAlignment="Center" Foreground="Black" Text="Vorgemerkt" Margin="5" Padding="0" FontSize="12" FontFamily="{StaticResource MaterialMediumFontFamily}"/>
+                                    </Border>
+                                </Button>
+                                <Button Padding="0" Background="Transparent" Visibility="{Binding CanOnline, Converter={StaticResource BooleanToInvertedVisibilityConverter}}">
+                                    <Border BorderThickness="1" BorderBrush="Blue"
+                            Background="Blue" CornerRadius="10">
+                                        <TextBlock HorizontalAlignment="Center" Foreground="White" Text="Nur Online" Margin="5" Padding="0" FontSize="12" FontFamily="{StaticResource MaterialMediumFontFamily}"/>
+                                    </Border>
+                                </Button>
+                                <Button Padding="0" Background="Transparent" Visibility="{Binding CanOnline, Converter={StaticResource BooleanToVisibilityConverter}}"
+                        Command="{Binding DataContext.SetOnlineCommand, ElementName=Trainings_Page}" CommandParameter="{Binding}">
+                                    <Border BorderThickness="1" BorderBrush="Blue"
+                            Background="White" CornerRadius="10">
+                                        <TextBlock HorizontalAlignment="Center" Foreground="Black" Text="Nur Online" Margin="5" Padding="0" FontSize="12" FontFamily="{StaticResource MaterialMediumFontFamily}"/>
                                     </Border>
                                 </Button>
                                 <Button Padding="0" Background="Transparent" Visibility="{Binding CanAbwesend, Converter={StaticResource BooleanToInvertedVisibilityConverter}}">
