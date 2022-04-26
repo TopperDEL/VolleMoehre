@@ -51,6 +51,10 @@ namespace VolleMoehre.Adapter.Calender
                     {
                         moehreEvent.Description = moehreEvent.Description + ", " + beschreibung;
                     }
+                    else if(!string.IsNullOrEmpty(auftritt.SpezialOrtText))
+                    {
+                        moehreEvent.Description = moehreEvent.Description + ", " + auftritt.SpezialOrtText;
+                    }
                     else
                     {
                         moehreEvent.Description = moehreEvent.Description + ", " + auftritt.FreitextInfoIntern;
@@ -66,6 +70,14 @@ namespace VolleMoehre.Adapter.Calender
             {
                 CalendarEvent moehreEvent = new CalendarEvent();
                 moehreEvent.Start = new CalDateTime(training.Datum);
+                if (training.Dauer == 0)
+                {
+                    moehreEvent.Duration = TimeSpan.FromHours(2);
+                }
+                else
+                {
+                    moehreEvent.Duration = TimeSpan.FromMinutes(training.Dauer);
+                }
                 moehreEvent.Duration = TimeSpan.FromHours(2);
                 if (training.Vorgemerkt.Contains(spieler.Id))
                 {

@@ -18,6 +18,8 @@
                         MinWidth="200"/>
             <TextBlock Text="Uhrzeit" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
             <TextBox Text="{Binding Uhrzeit, Mode=TwoWay}" Width="100" HorizontalAlignment="Left"/>
+            <TextBlock Text="Dauer" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
+            <TextBox Text="{Binding Dauer, Mode=TwoWay}" PlaceholderText="in Minuten" Width="200" HorizontalAlignment="Left"/>
 
             <TextBlock Text="Ort" Style="{StaticResource MaterialButtonText}" Margin="0,10,0,0"/>
             <ComboBox x:Name="Orte" SelectedValue="{Binding OrtId, Mode=TwoWay}" DisplayMemberPath="Bezeichnung" SelectedValuePath="Id"/>

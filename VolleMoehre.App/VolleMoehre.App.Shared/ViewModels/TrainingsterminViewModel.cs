@@ -28,7 +28,7 @@ namespace VolleMoehre.App.Shared.ViewModels
                     Ort = ort != null ? ort.Bezeichnung : "Unbekannter Ort";
                 }
                 FreitextInfo = termin.FreitextInfo;
-                CanTeilnehmer = CanLeiter = CanVormerken = CanAbwesend = true;
+                CanTeilnehmer = CanLeiter = CanVormerken = CanOnline = CanAbwesend = true;
                 AussageNoetig = false;
                 if (termin.Teilnehmer.Contains(spieler.Id))
                 {
