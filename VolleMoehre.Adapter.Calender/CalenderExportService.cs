@@ -51,6 +51,10 @@ namespace VolleMoehre.Adapter.Calender
                     {
                         moehreEvent.Description = moehreEvent.Description + ", " + beschreibung;
                     }
+                    else if(!string.IsNullOrEmpty(auftritt.SpezialOrtText))
+                    {
+                        moehreEvent.Description = moehreEvent.Description + ", " + auftritt.SpezialOrtText;
+                    }
                     else
                     {
                         moehreEvent.Description = moehreEvent.Description + ", " + auftritt.FreitextInfoIntern;
