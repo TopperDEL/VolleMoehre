@@ -31,8 +31,9 @@ namespace VolleMoehre.API.Controllers
                 var spieler = alleSpieler.Where(s => s.UserName == id.Replace(".ics","").ToLower()).FirstOrDefault();
                 var auftritte = await _store.GetAllAsync<Auftrittstermin>(a => a.Oeffentlich && a.Datum >= DateTime.Now);
                 var trainings = await _store.GetAllAsync<Trainingstermin>(a => a.Datum >= DateTime.Now);
+                var orte = await _store.GetAllAsync<Ort>();
 
-                var calBytes = _calenderExporter.TransferToiCalFeed(spieler, trainings.ToList(), auftritte.ToList());
+                var calBytes = _calenderExporter.TransferToiCalFeed(spieler, trainings.ToList(), auftritte.ToList(), orte.ToList());
 
                 return File(System.Text.Encoding.UTF8.GetBytes(calBytes), "text/calendar", "Kalender.ics");
             }

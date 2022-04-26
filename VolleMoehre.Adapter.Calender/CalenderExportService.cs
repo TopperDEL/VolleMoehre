@@ -22,7 +22,7 @@ namespace VolleMoehre.Adapter.Calender
             throw new NotImplementedException();
         }
 
-        public string TransferToiCalFeed(Spieler spieler, List<Trainingstermin> trainingsTermine, List<Auftrittstermin> auftrittsTermine)
+        public string TransferToiCalFeed(Spieler spieler, List<Trainingstermin> trainingsTermine, List<Auftrittstermin> auftrittsTermine, List<Ort> orte)
         {
             byte[] retBytes;
 
@@ -48,6 +48,15 @@ namespace VolleMoehre.Adapter.Calender
                 else
                 {
                     moehreEvent.Description = "Volle Möhre: " + auftritt.Showtyp;
+                }
+                if(!string.IsNullOrEmpty(auftritt.OrtId) && orte.Where(o=>o.Id == auftritt.OrtId).Count() == 1)
+                {
+                    var beschreibung = orte.Where(o => o.Id == auftritt.OrtId).First().Bezeichnung;
+                    moehreEvent.Location = beschreibung + " - Freitext: " + auftritt.FreitextInfoIntern;
+                    if (!string.IsNullOrEmpty(beschreibung) && !beschreibung.Contains("Freitext"))
+                    {
+                        moehreEvent.Description = moehreEvent.Description + ", " + beschreibung;
+                    }
                 }
                 //moehreEvent.Location = auftritt.Ort.Bezeichnung + " - Freitext: " + auftritt.FreitextInfoIntern;
                 moehreEvent.Summary = moehreEvent.Description;
@@ -82,7 +91,9 @@ namespace VolleMoehre.Adapter.Calender
             //    iCalender.Events.Add(moehreEvent);
             //}
             foreach (Trainingstermin training in trainingsTermine.Where(a => a.Teilnehmer.Contains(spieler.Id) ||
-                                                                             a.Vorgemerkt.Contains(spieler.Id)))
+                                                                             a.Vorgemerkt.Contains(spieler.Id) ||
+                                                                             a.Leiter.Contains(spieler.Id) ||
+                                                                             a.Online.Contains(spieler.Id)))
             {
                 CalendarEvent moehreEvent = new CalendarEvent();
                 moehreEvent.Start = new CalDateTime(training.Datum);
