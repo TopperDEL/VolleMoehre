@@ -71,6 +71,7 @@ namespace VolleMoehre.API.Controllers
             else
             {
                 existing.Datum = value.Datum;
+                existing.Dauer = value.Dauer;
                 existing.FreitextInfo = value.FreitextInfo;
                 existing.Kommentare = value.Kommentare;
                 existing.Trainingstyp = value.Trainingstyp;

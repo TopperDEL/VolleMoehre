@@ -18,6 +18,7 @@ namespace VolleMoehre.Contracts.Model
         public string Id { get; set; }
         public DateTime Datum { get; set; }
         public string Uhrzeit { get; set; }
+        public int Dauer { get; set; }
         public string FreitextInfo { get; set; }
         public Trainingstypen Trainingstyp { get; set; }
 
@@ -46,6 +47,7 @@ namespace VolleMoehre.Contracts.Model
             Kommentare = new List<Kommentar>();
 
             Uhrzeit = "19:00";
+            Dauer = 120;
         }
     }
 }
