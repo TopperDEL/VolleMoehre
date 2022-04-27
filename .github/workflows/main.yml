@@ -40,11 +40,11 @@ jobs:
 
     - name: Restore NuGet packages
       shell: pwsh
-      run: dotnet restore VolleMoehre.VolleMoehre.App/VolleMoehre.App.Mobile/VolleMoehre.App.Mobile.csproj
+      run: dotnet restore VolleMoehre/VolleMoehre.App/VolleMoehre.App.Mobile/VolleMoehre.App.Mobile.csproj
 
     - name: Build Maui Android project
       shell: pwsh
-      run: dotnet build VolleMoehre.VolleMoehre.App/VolleMoehre.App.Mobile/VolleMoehre.App.Mobile.csproj -c Debug -f net6.0-android --no-restore
+      run: dotnet build VolleMoehre/VolleMoehre.App/VolleMoehre.App.Mobile/VolleMoehre.App.Mobile.csproj -c Debug -f net6.0-android --no-restore
     
     # - name: Upload build artifacts
     #   uses: actions/upload-artifact@v2
@@ -89,13 +89,13 @@ jobs:
 
     - name: Restore NuGet packages
       shell: pwsh
-      run: dotnet restore src/MAUI/MauiDemo/MauiDemo.csproj
+      run: dotnet restore VolleMoehre/VolleMoehre.App/VolleMoehre.App.Mobile/VolleMoehre.App.Mobile.csproj
 
     - name: Build Maui WinUI project
       shell: pwsh
       run: |
         # On Windows, we use msbuild instead of dotnet build
-        msbuild VolleMoehre.VolleMoehre.App/VolleMoehre.App.Mobile/VolleMoehre.App.Mobile.csproj -r -p:Configuration=Debug -p:TargetFramework=net6.0-windows10.0.19041
+        msbuild VolleMoehre/VolleMoehre.App/VolleMoehre.App.Mobile/VolleMoehre.App.Mobile.csproj -r -p:Configuration=Debug -p:TargetFramework=net6.0-windows10.0.19041
     
     # - name: Upload build artifacts
     #   uses: actions/upload-artifact@v2
@@ -140,11 +140,11 @@ jobs:
 
     - name: Restore NuGet packages
       shell: bash
-      run: dotnet restore VolleMoehre.VolleMoehre.App/VolleMoehre.App.Mobile/VolleMoehre.App.Mobile.csproj
+      run: dotnet restore VolleMoehre/VolleMoehre.App/VolleMoehre.App.Mobile/VolleMoehre.App.Mobile.csproj
     
     - name: Build MAUI iOS project
       shell: bash
-      run: dotnet build VolleMoehre.VolleMoehre.App/VolleMoehre.App.Mobile/VolleMoehre.App.Mobile.csproj -c Debug -f net6.0-ios --no-restore
+      run: dotnet build VolleMoehre/VolleMoehre.App/VolleMoehre.App.Mobile/VolleMoehre.App.Mobile.csproj -c Debug -f net6.0-ios --no-restore
     
     # - name: Upload iOS build artifacts
     #   uses: actions/upload-artifact@v2
@@ -189,11 +189,11 @@ jobs:
 
     - name: Restore NuGet packages
       shell: bash
-      run: dotnet restore VolleMoehre.VolleMoehre.App/VolleMoehre.App.Mobile/VolleMoehre.App.Mobile.csproj
+      run: dotnet restore VolleMoehre/VolleMoehre.App/VolleMoehre.App.Mobile/VolleMoehre.App.Mobile.csproj
     
     - name: Build MAUI MAcCatalyst project
       shell: bash
-      run: dotnet build VolleMoehre.VolleMoehre.App/VolleMoehre.App.Mobile/VolleMoehre.App.Mobile.csproj -c Debug -f net6.0-maccatalyst --no-restore
+      run: dotnet build VolleMoehre/VolleMoehre.App/VolleMoehre.App.Mobile/VolleMoehre.App.Mobile.csproj -c Debug -f net6.0-maccatalyst --no-restore
     
     # - name: Upload iOS build artifacts
     #   uses: actions/upload-artifact@v2
