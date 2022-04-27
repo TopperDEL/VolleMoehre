@@ -5,8 +5,8 @@ on:
     branches:
       - main
     paths:
-      - 'src/MAUI/**/*'
-      - '.github/workflows/main_build-maui.yml' 
+      - 'VolleMoehre.VolleMoehre.App/**/*'
+      - '.github/workflows/main.yml' 
 
 jobs:
 
