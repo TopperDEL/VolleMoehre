@@ -82,7 +82,6 @@ namespace VolleMoehre.Adapter.Calender
                 {
                     moehreEvent.Duration = TimeSpan.FromMinutes(training.Dauer);
                 }
-                moehreEvent.Duration = TimeSpan.FromHours(2);
                 if (training.Vorgemerkt.Contains(spieler.Id))
                 {
                     moehreEvent.Description = "Vorgemerkt für Volle Möhre: " + training.FreitextInfo;
