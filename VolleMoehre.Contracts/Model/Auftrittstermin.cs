@@ -26,6 +26,7 @@ namespace VolleMoehre.Contracts.Model
         public string FreitextInfoExtern { get; set; }
         public string SpezialTerminDescription { get; set; }
         public string SpezialOrtText { get; set; }
+        public string Ansprechpartner { get; set; }
 
         public List<Kommentar> Kommentare { get; set; }
 

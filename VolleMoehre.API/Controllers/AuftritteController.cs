@@ -88,6 +88,7 @@ namespace VolleMoehre.API.Controllers
                 existing.Showtyp = value.Showtyp;
                 existing.SpezialOrtText = value.SpezialOrtText;
                 existing.SpezialTerminDescription = value.SpezialTerminDescription;
+                existing.Ansprechpartner = value.Ansprechpartner;
 
                 var success = await _store.SaveAsync(existing);
                 if (!success)
