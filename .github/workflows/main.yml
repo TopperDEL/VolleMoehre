@@ -5,7 +5,8 @@ on:
     branches:
       - main
     paths:
-      - 'VolleMoehre/**/*'
+      - 'VolleMoehre.App/**/*'
+      - 'VolleMoehre.Contracts/**/*'
       - '.github/workflows/main.yml' 
   workflow_dispatch:
 
