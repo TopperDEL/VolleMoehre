@@ -36,7 +36,14 @@ jobs:
 
     - name: Install MAUI workloads (currently required for hosted runners)
       shell: pwsh
-      run: dotnet workload install maui --ignore-failed-sources
+      run: |
+        dotnet workload install android --ignore-failed-sources
+        dotnet workload install ios --ignore-failed-sources
+        dotnet workload install maccatalyst --ignore-failed-sources
+        dotnet workload install macos --ignore-failed-sources
+
+        # single workload for all platforms
+        dotnet workload install maui --ignore-failed-sources
 
     - name: Restore NuGet packages
       shell: pwsh
@@ -85,7 +92,14 @@ jobs:
 
     - name: Install MAUI workloads (currently required for hosted runners)
       shell: pwsh
-      run: dotnet workload install maui --ignore-failed-sources
+      run: |
+        dotnet workload install android --ignore-failed-sources
+        dotnet workload install ios --ignore-failed-sources
+        dotnet workload install maccatalyst --ignore-failed-sources
+        dotnet workload install macos --ignore-failed-sources
+
+        # single workload for all platforms
+        dotnet workload install maui --ignore-failed-sources
 
     - name: Restore NuGet packages
       shell: pwsh
@@ -136,7 +150,14 @@ jobs:
 
     - name: Install MAUI workloads
       shell: pwsh
-      run: dotnet workload install maui --ignore-failed-sources
+      run: |
+        dotnet workload install android --ignore-failed-sources
+        dotnet workload install ios --ignore-failed-sources
+        dotnet workload install maccatalyst --ignore-failed-sources
+        dotnet workload install macos --ignore-failed-sources
+
+        # single workload for all platforms
+        dotnet workload install maui --ignore-failed-sources
 
     - name: Restore NuGet packages
       shell: bash
@@ -185,7 +206,14 @@ jobs:
 
     - name: Install MAUI workloads
       shell: pwsh
-      run: dotnet workload install maui --ignore-failed-sources
+      run: |
+        dotnet workload install android --ignore-failed-sources
+        dotnet workload install ios --ignore-failed-sources
+        dotnet workload install maccatalyst --ignore-failed-sources
+        dotnet workload install macos --ignore-failed-sources
+
+        # single workload for all platforms
+        dotnet workload install maui --ignore-failed-sources
 
     - name: Restore NuGet packages
       shell: bash
