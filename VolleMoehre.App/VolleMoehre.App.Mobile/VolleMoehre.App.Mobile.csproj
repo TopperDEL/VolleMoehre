@@ -29,11 +29,13 @@
     <PackageReference Include="Uno.UniversalImageLoader" Version="1.9.35" />
 	<PackageReference Include="MonkeyCache.FileStore" Version="1.6.3" />
 	<PackageReference Include="Xam.Plugin.Connectivity" Version="3.2.0" />
+	<PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
   </ItemGroup>
   <ItemGroup Condition="'$(TargetFramework)'=='net6.0-ios' or '$(TargetFramework)'=='net6.0-maccatalyst'">
     <PackageReference Include="Uno.Extensions.Logging.OSLog" Version="1.2.0-dev.2" />
 	<PackageReference Include="MonkeyCache.FileStore" Version="1.6.3" />
 	<PackageReference Include="Xam.Plugin.Connectivity" Version="3.2.0" />
+	<PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\VolleMoehre.Contracts\VolleMoehre.Contracts.csproj" />
