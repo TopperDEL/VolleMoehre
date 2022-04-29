@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - 'VolleMoehre.VolleMoehre.App/**/*'
+      - 'VolleMoehre/**/*'
       - '.github/workflows/main.yml' 
 
 jobs:
