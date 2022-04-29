@@ -28,7 +28,7 @@ jobs:
 
     - name: Generate version number using date and run number
       shell: pwsh
-      id: version-creator
+      id: version-creator 
       run: |
         $buildDay = Get-Date -Format "yyyy.Mdd"
         $ver = $buildDay + "." + $env:GITHUB_RUN_NUMBER + ".0"
