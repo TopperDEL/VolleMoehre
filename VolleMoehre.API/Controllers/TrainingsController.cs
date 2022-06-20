@@ -17,7 +17,7 @@ namespace VolleMoehre.API.Controllers
             if (!await IsInternalRequestAsync())
                 return Forbid();
 
-            var trainings = await _store.GetAllAsync<VolleMoehre.Contracts.Model.Trainingstermin>(a => a.Datum >= DateTime.Now);
+            var trainings = await _store.GetAllAsync<VolleMoehre.Contracts.Model.Trainingstermin>(a => a.Datum.Date >= DateTime.Now.Date);
             return trainings.ToList();
         }
 
