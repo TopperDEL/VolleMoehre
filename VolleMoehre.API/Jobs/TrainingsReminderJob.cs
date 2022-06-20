@@ -16,13 +16,13 @@ namespace VolleMoehre.API.Jobs
         public async override Task DoWork(CancellationToken cancellationToken)
         {
             var store = new VolleMoehre.Adapter.LiteDB.LiteDBStore();
-            var trainings = await store.GetAllAsync<VolleMoehre.Contracts.Model.Trainingstermin>(a => a.Datum >= DateTime.Now);
+            var trainings = await store.GetAllAsync<VolleMoehre.Contracts.Model.Trainingstermin>(a => a.Datum >= DateTime.Now).ConfigureAwait(true);
 
             foreach(var training in trainings)
             {
-                if(training.Datum == DateTime.Now.AddDays(1))
+                if(training.Datum.Date == DateTime.Now.AddDays(1).Date)
                 {
-                    await SlackHelper.SendMessage("#training", "Morgen steht ein Training an: " + training.FreitextInfo);
+                    await SlackHelper.SendMessage("#training", "Morgen steht ein Training an: " + training.FreitextInfo).ConfigureAwait(true);
                 }
             }
         }

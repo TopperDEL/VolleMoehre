@@ -28,14 +28,14 @@ namespace VolleMoehre.API.Jobs
             string TOKEN = Environment.GetEnvironmentVariable("SLACK_API_TOKEN");
             var slackClient = new SlackTaskClient(TOKEN);
 
-            var response = await slackClient.PostMessageAsync(channel, message);
+            var response = await slackClient.PostMessageAsync(channel, message).ConfigureAwait(true);
         }
         public static async Task SendDirectMessage(string moehre, string message)
         {
             string TOKEN = Environment.GetEnvironmentVariable("SLACK_API_TOKEN");
             var slackClient = new SlackTaskClient(TOKEN);
 
-            var response = await slackClient.PostMessageAsync(Moehren[moehre], message);
+            var response = await slackClient.PostMessageAsync(Moehren[moehre], message).ConfigureAwait(true);
         }
     }
 }

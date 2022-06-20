@@ -42,12 +42,12 @@ namespace VolleMoehre.API
                 options.CronFormat = Cronos.CronFormat.Standard;
             });
 
-            //services.ApplyResulation<TimTest>(options =>
-            //{
-            //    options.CronExpression = "46 13 * * *";
-            //    options.TimeZoneInfo = TimeZoneInfo.Local;
-            //    options.CronFormat = Cronos.CronFormat.Standard;
-            //});
+            services.ApplyResulation<AussageFehltJob>(options =>
+            {
+                options.CronExpression = "0 0 */3 * *";
+                options.TimeZoneInfo = TimeZoneInfo.Local;
+                options.CronFormat = Cronos.CronFormat.Standard;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -66,7 +66,7 @@ namespace VolleMoehre.API
                 .AllowAnyMethod()
                 .AllowAnyHeader()
                 .WithOrigins("https://intern.vollemoehre.de", "https://localhost:64784"));
-
+            
             app.UseHttpsRedirection();
             app.UseMvc();
         }
