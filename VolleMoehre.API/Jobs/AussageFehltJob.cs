@@ -15,6 +15,7 @@ namespace VolleMoehre.API.Jobs
 
         public async override Task DoWork(CancellationToken cancellationToken)
         {
+            int count = 0;
             await SlackHelper.SendDirectMessage("Tim", "Job 'Aussage fehlt' läuft los.").ConfigureAwait(true);
             var store = new VolleMoehre.Adapter.LiteDB.LiteDBStore();
             var auftritte = await store.GetAllAsync<VolleMoehre.Contracts.Model.Auftrittstermin>(a => a.Datum.Date >= DateTime.Now.Date).ConfigureAwait(true);
@@ -31,6 +32,7 @@ namespace VolleMoehre.API.Jobs
                         !auftritt.Abwesend.Contains(spieler.Id))
                     {
                         await SlackHelper.SendDirectMessage(spieler.Name, "Du hast zu dem Auftritt (" + auftritt.Showtyp + ") am " + auftritt.Datum.ToString() + " noch keine Aussage gemacht. Bitte hole das noch nach, vielen Dank! :)\nhttps://intern.vollemoehre.de").ConfigureAwait(true);
+                        count++;
                     }
                 }
             }
@@ -46,9 +48,12 @@ namespace VolleMoehre.API.Jobs
                         !training.Abwesend.Contains(spieler.Id))
                     {
                         await SlackHelper.SendDirectMessage(spieler.Name, "Du hast zu dem Training (" + training.FreitextInfo + ") am " + training.Datum.ToString() + " noch keine Aussage gemacht. Bitte hole das noch nach, vielen Dank! :)\nhttps://intern.vollemoehre.de").ConfigureAwait(true);
+                        count++;
                     }
                 }
             }
+
+            await SlackHelper.SendDirectMessage("Tim", "Job 'Aussage fehlt' hat " + count + " Erinnerung erzeugt.").ConfigureAwait(true);
         }
     }
 }
