@@ -17,40 +17,47 @@ namespace VolleMoehre.API.Jobs
         {
             int count = 0;
             await SlackHelper.SendDirectMessage("Tim", "Job 'Aussage fehlt' läuft los.").ConfigureAwait(true);
-            var store = new VolleMoehre.Adapter.LiteDB.LiteDBStore();
-            var auftritte = await store.GetAllAsync<VolleMoehre.Contracts.Model.Auftrittstermin>(a => a.Datum.Date >= DateTime.Now.Date).ConfigureAwait(true);
-            var trainings = await store.GetAllAsync<VolleMoehre.Contracts.Model.Trainingstermin>(a => a.Datum.Date >= DateTime.Now.Date).ConfigureAwait(true);
-            var alleSpieler = await store.GetAllAsync<VolleMoehre.Contracts.Model.Spieler>(s=>s.Aktiv).ConfigureAwait(true);
-            foreach (var auftritt in auftritte)
+            try
             {
-                foreach (var spieler in alleSpieler)
+                var store = new VolleMoehre.Adapter.LiteDB.LiteDBStore();
+                var auftritte = await store.GetAllAsync<VolleMoehre.Contracts.Model.Auftrittstermin>(a => a.Datum.Date >= DateTime.Now.Date).ConfigureAwait(true);
+                var trainings = await store.GetAllAsync<VolleMoehre.Contracts.Model.Trainingstermin>(a => a.Datum.Date >= DateTime.Now.Date).ConfigureAwait(true);
+                var alleSpieler = await store.GetAllAsync<VolleMoehre.Contracts.Model.Spieler>(s => s.Aktiv).ConfigureAwait(true);
+                foreach (var auftritt in auftritte)
                 {
-                    if (!auftritt.Moderator.Contains(spieler.Id) &&
-                        !auftritt.Spieler.Contains(spieler.Id) &&
-                        !auftritt.Helfer.Contains(spieler.Id) &&
-                        !auftritt.Vorgemerkt.Contains(spieler.Id) &&
-                        !auftritt.Abwesend.Contains(spieler.Id))
+                    foreach (var spieler in alleSpieler)
                     {
-                        await SlackHelper.SendDirectMessage(spieler.Name, "Du hast zu dem Auftritt (" + auftritt.Showtyp + ") am " + auftritt.Datum.ToString() + " noch keine Aussage gemacht. Bitte hole das noch nach, vielen Dank! :)\nhttps://intern.vollemoehre.de").ConfigureAwait(true);
-                        count++;
+                        if (!auftritt.Moderator.Contains(spieler.Id) &&
+                            !auftritt.Spieler.Contains(spieler.Id) &&
+                            !auftritt.Helfer.Contains(spieler.Id) &&
+                            !auftritt.Vorgemerkt.Contains(spieler.Id) &&
+                            !auftritt.Abwesend.Contains(spieler.Id))
+                        {
+                            await SlackHelper.SendDirectMessage(spieler.Name, "Du hast zu dem Auftritt (" + auftritt.Showtyp + ") am " + auftritt.Datum.ToString() + " noch keine Aussage gemacht. Bitte hole das noch nach, vielen Dank! :)\nhttps://intern.vollemoehre.de").ConfigureAwait(true);
+                            count++;
+                        }
+                    }
+                }
+
+                foreach (var training in trainings)
+                {
+                    foreach (var spieler in alleSpieler)
+                    {
+                        if (!training.Leiter.Contains(spieler.Id) &&
+                            !training.Teilnehmer.Contains(spieler.Id) &&
+                            !training.Online.Contains(spieler.Id) &&
+                            !training.Vorgemerkt.Contains(spieler.Id) &&
+                            !training.Abwesend.Contains(spieler.Id))
+                        {
+                            await SlackHelper.SendDirectMessage(spieler.Name, "Du hast zu dem Training (" + training.FreitextInfo + ") am " + training.Datum.ToString() + " noch keine Aussage gemacht. Bitte hole das noch nach, vielen Dank! :)\nhttps://intern.vollemoehre.de").ConfigureAwait(true);
+                            count++;
+                        }
                     }
                 }
             }
-
-            foreach (var training in trainings)
+            catch(Exception ex)
             {
-                foreach (var spieler in alleSpieler)
-                {
-                    if (!training.Leiter.Contains(spieler.Id) &&
-                        !training.Teilnehmer.Contains(spieler.Id) &&
-                        !training.Online.Contains(spieler.Id) &&
-                        !training.Vorgemerkt.Contains(spieler.Id) &&
-                        !training.Abwesend.Contains(spieler.Id))
-                    {
-                        await SlackHelper.SendDirectMessage(spieler.Name, "Du hast zu dem Training (" + training.FreitextInfo + ") am " + training.Datum.ToString() + " noch keine Aussage gemacht. Bitte hole das noch nach, vielen Dank! :)\nhttps://intern.vollemoehre.de").ConfigureAwait(true);
-                        count++;
-                    }
-                }
+                await SlackHelper.SendDirectMessage("Tim", ex.Message).ConfigureAwait(true);
             }
 
             await SlackHelper.SendDirectMessage("Tim", "Job 'Aussage fehlt' hat " + count + " Erinnerung erzeugt.").ConfigureAwait(true);
