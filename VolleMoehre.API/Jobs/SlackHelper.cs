@@ -15,6 +15,7 @@ namespace VolleMoehre.API.Jobs
             {"Tim","UJE17SRP1" },
             {"PhilippW","UJBHG5SRK" },
             {"PhilippH","UJ0MH67C3" },
+            {"Philipp","UJ0MH67C3" },
             {"Christine","UJC4E8UKX" },
             {"Goeksen","UJ0MRNDKM" },
             {"Göksen","UJ0MRNDKM" },
