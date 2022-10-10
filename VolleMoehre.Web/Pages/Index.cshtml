@@ -66,7 +66,7 @@
                 </h2>
             </div>
             <div class="three-fourth last termineNextDesc">
-                <a href="#termine">
+                <a id="termine">
                     @if (Model.Auftritte.Count > 0)
                     {
                     @Model.Auftritte.First().Datum.ToString("ddd dd.MM.yyyy")
@@ -144,15 +144,15 @@
                         @item.Showtyp
                     </h2>
                     <p class="formatTicker">
-                        @if (item.Showtyp.ToLower().Contains("show"))
+                        @if (!string.IsNullOrEmpty(item.Showtyp) && item.Showtyp.ToLower().Contains("show"))
                             {
                         <moehre-content url="Format_ImproShow.aspx"></moehre-content>
                             }
-                            else if (item.Showtyp.ToLower().Contains("kabarett"))
+                            else if (!string.IsNullOrEmpty(item.Showtyp) &&item.Showtyp.ToLower().Contains("kabarett"))
                             {
                         <moehre-content url="Format_ImproKabarett.aspx"></moehre-content>
                             }
-                            else if (item.Showtyp.ToLower().Contains("match"))
+                            else if (!string.IsNullOrEmpty(item.Showtyp) && item.Showtyp.ToLower().Contains("match"))
                             {
                         <moehre-content url="Format_ImproMatch.aspx"></moehre-content>
                             }
@@ -276,6 +276,7 @@
     <!-- End termine Section -->
     <!-- Begin "Über Uns" Section -->
     <div id="ueberuns" class="borderline">
+        <a id="ueberuns"></a>
         <div class="title">
             <h2>
                 Info<span>Über uns</span>
@@ -347,8 +348,6 @@
                         <b>Homepages:</b>
                         <br>
                         <a href="https://www.mehrkopf.de">https://www.mehrkopf.de</a>
-                        <br>
-                        <a href="https://www.barembo.de">https://www.barembo.de</a>
                         <br>
                         <br>
                     <p>
@@ -871,6 +870,7 @@
     <!-- End Services Section -->
     <!-- Begin Workshops Section -->
     <div id="workshops" class="borderline">
+        <a id="workshops"></a>
         <div class="title">
             <h2>
                 Workshops<span>Wenn Sie mal wollen</span>
@@ -893,6 +893,7 @@
     <!-- End Workshops Section -->
     <!-- Begin "Presse" Section -->
     <div id="presse" class="borderline">
+        <a id="presse"></a>
         <div class="title">
             <h2>
                 Presse<span>Zusatzmaterial</span>
@@ -915,6 +916,7 @@
     <!-- End "Presse" Section -->
     <!-- Begin "Kontakt" Section -->
     <div id="kontakt" class="borderline">
+        <a id="kontakt"></a>
         <div class="title">
             <h2>
                 Kontakt <span>Schreiben Sie uns!</span>
@@ -928,16 +930,9 @@
             <div class="form-container">
                 <p>
                     Vielen Dank, dass Sie sich für einen Auftritt von Volle Möhre! interessieren. Geben
-                    Sie uns mit dem folgenden Formular möglichst viele Informationen über das geplante
-                    Event und vor allem über Ihre Kontaktdaten. Wir setzen uns dann umgehend mit Ihnen
+                    Sie uns mit Ihrer Anfrage möglichst viele Informationen über das geplante
+                    Event und vergessen Sie nicht Ihre Kontaktdaten. Wir setzen uns dann umgehend mit Ihnen
                     in Verbindung!
-                </p>
-                <p>
-                    <img class="lazy" src="~/images/grey.gif" data-original="/images/pfeilchen.png"
-                         width="9" height="9" />
-                    @*<%= Html.ActionLink(" Senden Sie uns hier eine Nachricht ", "Nachricht", "Kontakt", new { Spielername = "buchung", popup = true }, new { @class = "popup-link" })%>*@
-                    <img class="lazy" src="~/images/grey.gif" data-original="/images/pfeilchenTurned.png"
-                         width="9" height="9" />
                 </p>
             </div>
             <!-- Begin Information -->
@@ -946,6 +941,7 @@
                     <ul>
                         <li><span class="lite">Webseite:</span>www.volle-moehre.de</li>
                         <li><span class="lite">Kontaktperson:</span>Göksen Meine</li>
+                        <li><span class="lite">E-Mail:</span>goeksen (at) vollemoehre.de</li>
                         <li><span class="lite">Telefon:</span>0151 - 26 95 83 23</li>
                     </ul>
                 </div>
@@ -984,6 +980,7 @@
     <!-- End "Kontakt" Section -->
     <!-- Begin "Impressum" Section -->
     <div id="impressum" class="borderline">
+        <a id="impressum"></a>
         <div class="title">
             <h2>
                 Impressum<span>Das Rechtliche</span>
