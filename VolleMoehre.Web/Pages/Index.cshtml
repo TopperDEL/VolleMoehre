@@ -69,9 +69,9 @@
                 <a href="#termine">
                     @if (Model.Auftritte.Count > 0)
                     {
-                    @Model.Auftritte.First().Datum.ToString("ddd dd.MM.yyyy")
+                    @Model.Auftritte.First().Datum.LocalDateTime.ToString("ddd dd.MM.yyyy")
                     <span>-</span>
-                        @Model.Auftritte.First().Datum.ToString("t")
+                        @Model.Auftritte.First().Datum.LocalDateTime.ToString("t")
                 <span>Uhr -</span>
                     @Model.Auftritte.First().Showtyp
                 <span>-</span>
@@ -119,13 +119,13 @@
                 <li class="tab">
                     <div class="date">
                         <div class="day">
-                            @item.Datum.Day
+                            @item.Datum.LocalDateTime.Day
                         </div>
                         <div class="month">
-                            @Html.Encode(String.Format("{0:MMM}", item.Datum))
+                            @Html.Encode(String.Format("{0:MMM}", item.Datum.LocalDateTime))
                         </div>
                         <div class="year">
-                            @item.Datum.Year
+                                @item.Datum.LocalDateTime.Year
                         </div>
                     </div>
                     <a href="#termin_@item.Id">
@@ -144,15 +144,15 @@
                         @item.Showtyp
                     </h2>
                     <p class="formatTicker">
-                        @if (item.Showtyp.ToLower().Contains("show"))
+                        @if (!string.IsNullOrEmpty(item.Showtyp) && item.Showtyp.ToLower().Contains("show"))
                             {
                         <moehre-content url="Format_ImproShow.aspx"></moehre-content>
                             }
-                            else if (item.Showtyp.ToLower().Contains("kabarett"))
+                            else if (!string.IsNullOrEmpty(item.Showtyp) && item.Showtyp.ToLower().Contains("kabarett"))
                             {
                         <moehre-content url="Format_ImproKabarett.aspx"></moehre-content>
                             }
-                            else if (item.Showtyp.ToLower().Contains("match"))
+                            else if (!string.IsNullOrEmpty(item.Showtyp) && item.Showtyp.ToLower().Contains("match"))
                             {
                         <moehre-content url="Format_ImproMatch.aspx"></moehre-content>
                             }
@@ -167,9 +167,9 @@
                         </p>
                         <p>
                             Wann: <span class="terminDatum">
-                                @item.Datum.ToString("ddd dd.MM.yyyy")
+                                @item.Datum.LocalDateTime.ToString("ddd dd.MM.yyyy")
                                 -
-                                @item.Datum.ToString("t")
+                                @item.Datum.LocalDateTime.ToString("t")
                                 Uhr
                             </span>
                         </p>
