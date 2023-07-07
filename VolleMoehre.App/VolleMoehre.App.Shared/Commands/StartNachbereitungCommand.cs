@@ -30,7 +30,7 @@ namespace VolleMoehre.App.Shared.Commands
         {
             if (!ServiceBase.IsOnline())
             {
-                Windows.UI.Popups.MessageDialog dialog = new Windows.UI.Popups.MessageDialog("Du bist gerade leider nicht online. Bitte prüfe deine Verbindung.");
+                Microsoft.UI.Popups.MessageDialog dialog = new Microsoft.UI.Popups.MessageDialog("Du bist gerade leider nicht online. Bitte prüfe deine Verbindung.");
                 await dialog.ShowAsync();
                 return;
             }
@@ -55,7 +55,7 @@ namespace VolleMoehre.App.Shared.Commands
             else if (Model.Termin.Vorgemerkt.Contains(App.__spieler.Id))
                 spielerStatus = SpielerStatus.Vorgemerkt;
 
-            var frame = (Windows.UI.Xaml.Controls.Frame)Windows.UI.Xaml.Window.Current.Content;
+            var frame = (Microsoft.UI.Xaml.Controls.Frame)Microsoft.UI.Xaml.Window.Current.Content;
             frame.Navigate(typeof(NachbereitungEditPage), new NacharbeitungsErgebnis() { Id = Model.Termin.Id, SpielerId = App.__spieler.Id, SpielerStatus = spielerStatus, GefahreneKilometer = gefahreneKilometer });
         }
     }

@@ -10,7 +10,7 @@
     <!-- Debugger workaround https://github.com/dotnet/maui-samples/blob/8aa6b8780b12e97b157514c3bdc54bb4a13001cd/HelloMacCatalyst/HelloMacCatalyst.csproj#L7 -->
     <!-- <MtouchExtraArgs Condition="'$(TargetFramework)' == 'net6.0-maccatalyst'">$(MtouchExtraArgs) -setenv:MONO_THREADS_SUSPEND=preemptive</MtouchExtraArgs> -->
     <!-- Required for C# Hot Reload -->
-    <UseInterpreter Condition="'$(Configuration)' == 'Debug' and '$(TargetFramework)' != 'net6.0-maccatalyst'">True</UseInterpreter>
+    <!--<UseInterpreter Condition="'$(Configuration)' == 'Debug' and '$(TargetFramework)' != 'net6.0-maccatalyst'">True</UseInterpreter>-->
     <IsUnoHead>true</IsUnoHead>
     <SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net6.0-ios'">14.2</SupportedOSPlatformVersion>
     <SupportedOSPlatformVersion Condition="'$(TargetFramework)' == 'net6.0-maccatalyst'">14.0</SupportedOSPlatformVersion>
@@ -18,13 +18,22 @@
     <SupportedOSPlatformVersion Condition="'$(TargetFramework)'=='net6.0-macos'">10.14</SupportedOSPlatformVersion>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Uno.UI" Version="4.1.9" />
-    <PackageReference Include="Uno.UI.RemoteControl" Version="4.1.9" Condition="'$(Configuration)'=='Debug'" /> 
+    <PackageReference Include="Uno.WinUI" Version="4.4.13" />
+    <PackageReference Include="Uno.WinUI.RemoteControl" Version="4.4.13" Condition="'$(Configuration)'=='Debug'" />
     <PackageReference Include="Uno.UI.Adapter.Microsoft.Extensions.Logging" Version="4.1.9" />
     <PackageReference Include="Microsoft.Extensions.Logging" Version="5.0.0" />
     <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="5.0.0" />
+	<PackageReference Include="MonkeyCache.FileStore" Version="1.6.3" />
+	<PackageReference Include="Xam.Plugin.Connectivity" Version="3.2.0" />
+	<PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
   </ItemGroup>
-  <ItemGroup Condition="'$(TargetFramework)'=='net6.0-android'">
+  <ItemGroup>
+    <AndroidAsset Include="Android\Assets\Fonts\uno-fluentui-assets.ttf" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'net6.0-ios'">
+	<BundleResource Include=".\iOs\Resources\Fonts\uno-fluentui-assets.ttf" RegisterFont="True" />
+  </ItemGroup>
+  <!-- <ItemGroup Condition="'$(TargetFramework)'=='net6.0-android'">
     <PackageReference Include="Xamarin.Google.Android.Material" Version="1.4.0.4" />
     <PackageReference Include="Uno.UniversalImageLoader" Version="1.9.35" />
 	<PackageReference Include="MonkeyCache.FileStore" Version="1.6.3" />
@@ -36,7 +45,47 @@
 	<PackageReference Include="MonkeyCache.FileStore" Version="1.6.3" />
 	<PackageReference Include="Xam.Plugin.Connectivity" Version="3.2.0" />
 	<PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="5.2.7" />
-  </ItemGroup>
+  </ItemGroup> -->
+  <Choose>
+    <When Condition="'$(TargetFramework)'=='net6.0-android'">
+      <ItemGroup>
+        <PackageReference Include="Xamarin.Google.Android.Material" Version="1.4.0.4" />
+        <PackageReference Include="Uno.UniversalImageLoader" Version="1.9.36" />
+      </ItemGroup>
+      <ItemGroup>
+        <AndroidEnvironment Include="Android/environment.conf" />
+      </ItemGroup>
+    </When>
+    <When Condition="'$(TargetFramework)'=='net6.0-ios'">
+      <PropertyGroup Condition="'$(TargetFramework)'=='net6.0-ios'">
+        <MtouchExtraArgs>$(MtouchExtraArgs) --setenv=MONO_GC_PARAMS=soft-heap-limit=512m,nursery-size=64m,evacuation-threshold=66,major=marksweep,concurrent-sweep</MtouchExtraArgs>
+        <!-- https://github.com/xamarin/xamarin-macios/issues/14812 -->
+        <MtouchExtraArgs>$(MtouchExtraArgs) --marshal-objectivec-exceptions:disable</MtouchExtraArgs>
+      </PropertyGroup>
+      <ItemGroup>
+        <PackageReference Include="Uno.Extensions.Logging.OSLog" Version="1.4.0" />
+      </ItemGroup>
+    </When>
+    <When Condition="'$(TargetFramework)'=='net6.0-maccatalyst'">
+      <PropertyGroup>
+        <!-- Configure the GC -->
+        <MtouchExtraArgs>$(MtouchExtraArgs) --setenv=MONO_GC_PARAMS=soft-heap-limit=512m,nursery-size=64m,evacuation-threshold=66,major=marksweep,concurrent-sweep</MtouchExtraArgs>
+        <!-- Required for unknown crash as of .NET 6 Mobile Preview 13 -->
+        <MtouchExtraArgs>$(MtouchExtraArgs) --registrar:static</MtouchExtraArgs>
+        <!-- https://github.com/xamarin/xamarin-macios/issues/14812 -->
+        <MtouchExtraArgs>$(MtouchExtraArgs) --marshal-objectivec-exceptions:disable</MtouchExtraArgs>
+        <!-- Full globalization is required for Uno -->
+        <InvariantGlobalization>false</InvariantGlobalization>
+      </PropertyGroup>
+      <ItemGroup>
+        <PackageReference Include="Uno.Extensions.Logging.OSLog" Version="1.4.0" />
+      </ItemGroup>
+    </When>
+    <When Condition="'$(TargetFramework)'=='net6.0-macos'">
+      <PropertyGroup>
+      </PropertyGroup>
+    </When>
+  </Choose>
   <ItemGroup>
     <ProjectReference Include="..\..\VolleMoehre.Contracts\VolleMoehre.Contracts.csproj" />
   </ItemGroup>

@@ -5,12 +5,11 @@ using System.Threading.Tasks;
 using VolleMoehre.App.Shared;
 using VolleMoehre.Contracts.Model;
 using VolleMoehre.Shared.Services;
-using Windows.ApplicationModel;
-using Windows.ApplicationModel.Activation;
 using Windows.Storage;
-using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
-using Windows.UI.Xaml.Navigation;
+using Microsoft.UI.Xaml;
+using Microsoft.UI.Xaml.Controls;
+using Microsoft.UI.Xaml.Navigation;
+using Windows.ApplicationModel;
 
 namespace VolleMoehre.App
 {
@@ -56,7 +55,7 @@ namespace VolleMoehre.App
             _window = new Window();
             _window.Activate();
 #else
-            _window = Windows.UI.Xaml.Window.Current;
+            _window = Microsoft.UI.Xaml.Window.Current;
 #endif
 
             var rootFrame = _window.Content as Frame;
@@ -70,19 +69,19 @@ namespace VolleMoehre.App
 
                 rootFrame.NavigationFailed += OnNavigationFailed;
 
-                if (args.PreviousExecutionState == ApplicationExecutionState.Terminated)
-                {
-                    // TODO: Load state from previously suspended application
-                }
+                //if (args.PreviousExecutionState == ApplicationExecutionState.Terminated)
+                //{
+                //    // TODO: Load state from previously suspended application
+                //}
 
                 // Place the frame in the current Window
                 _window.Content = rootFrame;
             }
 
-#if !(NET6_0_OR_GREATER && WINDOWS)
-            if (args.PrelaunchActivated == false)
-#endif
-            {
+//#if !(NET6_0_OR_GREATER && WINDOWS)
+//            if (args.PrelaunchActivated == false)
+//#endif
+//            {
                 if (rootFrame.Content == null)
                 {
                     // When the navigation stack isn't restored navigate to the first page,
@@ -99,7 +98,7 @@ namespace VolleMoehre.App
                 }
                 // Ensure the current window is active
                 _window.Activate();
-            }
+            //}
         }
 
         /// <summary>
@@ -152,22 +151,22 @@ namespace VolleMoehre.App
                 builder.AddFilter("Microsoft", LogLevel.Warning);
 
                 // Generic Xaml events
-                // builder.AddFilter("Windows.UI.Xaml", LogLevel.Debug );
-                // builder.AddFilter("Windows.UI.Xaml.VisualStateGroup", LogLevel.Debug );
-                // builder.AddFilter("Windows.UI.Xaml.StateTriggerBase", LogLevel.Debug );
-                // builder.AddFilter("Windows.UI.Xaml.UIElement", LogLevel.Debug );
-                // builder.AddFilter("Windows.UI.Xaml.FrameworkElement", LogLevel.Trace );
+                // builder.AddFilter("Microsoft.UI.Xaml", LogLevel.Debug );
+                // builder.AddFilter("Microsoft.UI.Xaml.VisualStateGroup", LogLevel.Debug );
+                // builder.AddFilter("Microsoft.UI.Xaml.StateTriggerBase", LogLevel.Debug );
+                // builder.AddFilter("Microsoft.UI.Xaml.UIElement", LogLevel.Debug );
+                // builder.AddFilter("Microsoft.UI.Xaml.FrameworkElement", LogLevel.Trace );
 
                 // Layouter specific messages
-                // builder.AddFilter("Windows.UI.Xaml.Controls", LogLevel.Debug );
-                // builder.AddFilter("Windows.UI.Xaml.Controls.Layouter", LogLevel.Debug );
-                // builder.AddFilter("Windows.UI.Xaml.Controls.Panel", LogLevel.Debug );
+                // builder.AddFilter("Microsoft.UI.Xaml.Controls", LogLevel.Debug );
+                // builder.AddFilter("Microsoft.UI.Xaml.Controls.Layouter", LogLevel.Debug );
+                // builder.AddFilter("Microsoft.UI.Xaml.Controls.Panel", LogLevel.Debug );
 
                 // builder.AddFilter("Windows.Storage", LogLevel.Debug );
 
                 // Binding related messages
-                // builder.AddFilter("Windows.UI.Xaml.Data", LogLevel.Debug );
-                // builder.AddFilter("Windows.UI.Xaml.Data", LogLevel.Debug );
+                // builder.AddFilter("Microsoft.UI.Xaml.Data", LogLevel.Debug );
+                // builder.AddFilter("Microsoft.UI.Xaml.Data", LogLevel.Debug );
 
                 // Binder memory references tracking
                 // builder.AddFilter("Uno.UI.DataBinding.BinderReferenceHolder", LogLevel.Debug );

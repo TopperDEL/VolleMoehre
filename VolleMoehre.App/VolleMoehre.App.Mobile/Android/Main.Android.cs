@@ -9,7 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Windows.UI.Xaml.Media;
+using Microsoft.UI.Xaml.Media;
 
 namespace VolleMoehre.App.Droid
 {
@@ -20,7 +20,7 @@ namespace VolleMoehre.App.Droid
         HardwareAccelerated = true,
         Theme = "@style/AppTheme"
     )]
-    public class Application : Windows.UI.Xaml.NativeApplication
+    public class Application : Microsoft.UI.Xaml.NativeApplication
     {
         public Application(IntPtr javaReference, JniHandleOwnership transfer)
             : base(() => new App(), javaReference, transfer)

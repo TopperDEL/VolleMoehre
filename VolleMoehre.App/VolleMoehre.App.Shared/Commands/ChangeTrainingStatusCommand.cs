@@ -32,7 +32,7 @@ namespace VolleMoehre.App.Shared.Commands
         {
             if (!ServiceBase.IsOnline())
             {
-                Windows.UI.Popups.MessageDialog dialog = new Windows.UI.Popups.MessageDialog("Du bist gerade leider nicht online. Bitte prüfe deine Verbindung.");
+                Microsoft.UI.Popups.MessageDialog dialog = new Microsoft.UI.Popups.MessageDialog("Du bist gerade leider nicht online. Bitte prüfe deine Verbindung.");
                 await dialog.ShowAsync();
                 return;
             }
@@ -55,7 +55,7 @@ namespace VolleMoehre.App.Shared.Commands
             }
             else
             {
-                Windows.UI.Popups.MessageDialog dialog = new Windows.UI.Popups.MessageDialog(success.Fehlermeldung);
+                Microsoft.UI.Popups.MessageDialog dialog = new Microsoft.UI.Popups.MessageDialog(success.Fehlermeldung);
                 await dialog.ShowAsync();
                 return;
             }
