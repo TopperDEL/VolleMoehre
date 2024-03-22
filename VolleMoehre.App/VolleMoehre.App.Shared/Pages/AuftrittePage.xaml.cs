@@ -9,15 +9,16 @@ using VolleMoehre.Contracts.Model;
 using VolleMoehre.App.Shared.ViewModels;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
-using Microsoft.UI.Xaml;
-using Microsoft.UI.Xaml.Controls;
-using Microsoft.UI.Xaml.Controls.Primitives;
-using Microsoft.UI.Xaml.Data;
-using Microsoft.UI.Xaml.Input;
-using Microsoft.UI.Xaml.Media;
-using Microsoft.UI.Xaml.Navigation;
+using Windows.UI.Xaml;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Controls.Primitives;
+using Windows.UI.Xaml.Media;
 using VolleMoehre.Shared.Services;
 using Plugin.Connectivity;
+using Windows.UI.Xaml.Navigation;
+using Windows.UI.Xaml.Controls;
+using Windows.UI.Popups;
+using Windows.UI.Xaml;
 
 // Die Elementvorlage "Leere Seite" wird unter https://go.microsoft.com/fwlink/?LinkId=234238 dokumentiert.
 
@@ -65,7 +66,7 @@ namespace VolleMoehre.App.Shared
         {
             if (!ServiceBase.IsOnline())
             {
-                Microsoft.UI.Popups.MessageDialog dialog = new Microsoft.UI.Popups.MessageDialog("Du bist gerade leider nicht online. Bitte prüfe deine Verbindung.");
+                MessageDialog dialog = new MessageDialog("Du bist gerade leider nicht online. Bitte prüfe deine Verbindung.");
                 await dialog.ShowAsync();
                 return;
             }
@@ -80,7 +81,7 @@ namespace VolleMoehre.App.Shared
         {
             if (!ServiceBase.IsOnline())
             {
-                Microsoft.UI.Popups.MessageDialog dialog = new Microsoft.UI.Popups.MessageDialog("Du bist gerade leider nicht online. Bitte prüfe deine Verbindung.");
+                MessageDialog dialog = new MessageDialog("Du bist gerade leider nicht online. Bitte prüfe deine Verbindung.");
                 await dialog.ShowAsync();
                 return;
             }

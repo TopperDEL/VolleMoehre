@@ -31,7 +31,7 @@ namespace VolleMoehre.App.Shared.Commands
         {
             if (!ServiceBase.IsOnline())
             {
-                Microsoft.UI.MessageDialog dialog = new Microsoft.UI.Popups.MessageDialog("Du bist gerade leider nicht online. Bitte prüfe deine Verbindung.");
+                Windows.UI.Popups.MessageDialog dialog = new Windows.UI.Popups.MessageDialog("Du bist gerade leider nicht online. Bitte prüfe deine Verbindung.");
                 await dialog.ShowAsync();
                 return;
             }
@@ -49,7 +49,7 @@ namespace VolleMoehre.App.Shared.Commands
                 {
                     if (model.Teilnahmestatus != "Unbekannt" && model.Teilnahmestatus != "Abwesend")
                     {
-                        Microsoft.UI.Popups.MessageDialog dialog = new Microsoft.UI.Popups.MessageDialog("Bitte sorge ggfs. für Ersatz! :)");
+                        Windows.UI.Popups.MessageDialog dialog = new Windows.UI.Popups.MessageDialog("Bitte sorge ggfs. für Ersatz! :)");
                         await dialog.ShowAsync();
                     }
                 }
@@ -65,7 +65,7 @@ namespace VolleMoehre.App.Shared.Commands
             }
             else
             {
-                Microsoft.UI.Popups.MessageDialog dialog = new Microsoft.UI.Popups.MessageDialog(success.Fehlermeldung);
+                Windows.UI.Popups.MessageDialog dialog = new Windows.UI.Popups.MessageDialog(success.Fehlermeldung);
                 await dialog.ShowAsync();
                 return;
             }
