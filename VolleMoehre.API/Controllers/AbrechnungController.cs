@@ -53,7 +53,7 @@ namespace VolleMoehre.API.Controllers
                     {
                         if (auslage.GefahreneKilometer != 0)
                         {
-                            double KMWert = ((float)auslage.GefahreneKilometer) * 0.16d;
+                            double KMWert = ((float)auslage.GefahreneKilometer) * 0.30d;
                             KMWert = Math.Round(KMWert, 2);
                             abrechnung.Abrechnungszeilen.Add("    + Gefahrene Kilometer: " + auslage.GefahreneKilometer + " - " + KMWert + "€");
                             abrechnung.Endergebnis += KMWert;
