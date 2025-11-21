@@ -8,6 +8,7 @@
 
 <!-- Begin Wrapper -->
 <div id="wrapper">
+    <a id="top"></a>
     <!-- Begin Header -->
     <div id="header">
         <div id="logo">
@@ -66,7 +67,7 @@
                 </h2>
             </div>
             <div class="three-fourth last termineNextDesc">
-                <a id="termine">
+                <a href="#termine">
                     @if (Model.Auftritte.Count > 0)
                     {
                     @Model.Auftritte.First().Datum.LocalDateTime.ToString("ddd dd.MM.yyyy")
@@ -245,7 +246,7 @@
                                     }
                                 @if (!string.IsNullOrEmpty(item.AnfahrtLink))
                                     {
-                                <li>/><a href="@item.AnfahrtLink" target="_blank">Anfahrt</a></li>
+                                <li><a href="@item.AnfahrtLink" target="_blank">Anfahrt</a></li>
                                     }
                                     else if (item.Strasse != null && item.Strasse != string.Empty)
                                     {
@@ -276,7 +277,6 @@
     <!-- End termine Section -->
     <!-- Begin "Über Uns" Section -->
     <div id="ueberuns" class="borderline">
-        <a id="ueberuns"></a>
         <div class="title">
             <h2>
                 Info<span>Über uns</span>
@@ -290,7 +290,7 @@
         </div>
         <!-- Begin Spieler Container -->
         <div id="tab-buttons-container-spieler" class="tab-container">
-            <ul id="carouselSpieler" class="etabs, carouselSpielerCls">
+            <ul id="carouselSpieler" class="etabs carouselSpielerCls">
                 <li class="tab"><a href="#tim">Tim Parth</a></li>
                 <li class="tab"><a href="#yosh">Jörg Diethorn</a></li>
                 <li class="tab"><a href="#goeksen">Göksen Meine</a></li>
@@ -861,7 +861,6 @@
     <!-- End Services Section -->
     <!-- Begin Workshops Section -->
     <div id="workshops" class="borderline">
-        <a id="workshops"></a>
         <div class="title">
             <h2>
                 Workshops<span>Wenn Sie mal wollen</span>
@@ -884,7 +883,6 @@
     <!-- End Workshops Section -->
     <!-- Begin "Presse" Section -->
     <div id="presse" class="borderline">
-        <a id="presse"></a>
         <div class="title">
             <h2>
                 Presse<span>Zusatzmaterial</span>
@@ -907,7 +905,6 @@
     <!-- End "Presse" Section -->
     <!-- Begin "Kontakt" Section -->
     <div id="kontakt" class="borderline">
-        <a id="kontakt"></a>
         <div class="title">
             <h2>
                 Kontakt <span>Schreiben Sie uns!</span>
@@ -971,7 +968,6 @@
     <!-- End "Kontakt" Section -->
     <!-- Begin "Impressum" Section -->
     <div id="impressum" class="borderline">
-        <a id="impressum"></a>
         <div class="title">
             <h2>
                 Impressum<span>Das Rechtliche</span>
@@ -992,5 +988,36 @@
         </div>
     </div>
     <!-- End "Impressum" Section -->
+    <!-- Smooth scroll for top navigation and scrolltop links -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var menu = document.getElementById('menu');
+            if (menu) {
+                menu.addEventListener('click', function (e) {
+                    var link = e.target.closest('a[href^="#"]');
+                    if (!link) return;
+                    var hash = link.getAttribute('href');
+                    if (!hash || hash === '#') return;
+                    var target = document.querySelector(hash);
+                    if (target) {
+                        e.preventDefault();
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        try { history.replaceState(null, '', hash); } catch (_) { }
+                    }
+                });
+            }
+            document.querySelectorAll('a.scrolltop[href^="#"]').forEach(function (a) {
+                a.addEventListener('click', function (e) {
+                    var hash = a.getAttribute('href');
+                    var target = document.querySelector(hash);
+                    if (target) {
+                        e.preventDefault();
+                        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        try { history.replaceState(null, '', hash); } catch (_) { }
+                    }
+                });
+            });
+        });
+    </script>
     <!-- End Wrapper -->
 </div>
