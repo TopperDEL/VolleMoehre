@@ -23,7 +23,7 @@ namespace VolleMoehre.Web.Pages
         public void OnGet()
         {
             var client = new RestClient("https://api.vollemoehre.de/api/");
-            var request = new RestRequest("public/auftritte", DataFormat.Json);
+            var request = new RestRequest("public/auftritte", Method.Get);
             var response = client.Get<List<Contracts.Model.AuftrittsterminPublic>>(request);
             Auftritte = response.Data.OrderBy(a=>a.Datum).ToList();
         }
