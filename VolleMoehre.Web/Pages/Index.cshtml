@@ -290,16 +290,26 @@
         </div>
         <!-- Begin Spieler Container -->
         <div id="tab-buttons-container-spieler" class="tab-container">
+            @{
+                var spielerTabs = new[]
+                {
+                    new { Id = "tim", Name = "Tim Parth" },
+                    new { Id = "yosh", Name = "Jörg Diethorn" },
+                    new { Id = "goeksen", Name = "Göksen Meine" },
+                    new { Id = "lisa", Name = "Lisa van der Linden" },
+                    new { Id = "philipph", Name = "Philipp Hofmann" },
+                    new { Id = "christine", Name = "Christine Hofmann" },
+                    new { Id = "michael", Name = "Michael Müller" },
+                    new { Id = "kalli", Name = "Karlheinz Knöbl" },
+                    new { Id = "philippw", Name = "Philipp Weißmann" }
+                };
+                var randomizedSpieler = spielerTabs.OrderBy(_ => Guid.NewGuid()).ToList();
+            }
             <ul id="carouselSpieler" class="etabs carouselSpielerCls">
-                <li class="tab"><a href="#tim">Tim Parth</a></li>
-                <li class="tab"><a href="#yosh">Jörg Diethorn</a></li>
-                <li class="tab"><a href="#goeksen">Göksen Meine</a></li>
-                <li class="tab"><a href="#lisa">Lisa van der Linden</a></li>
-                <li class="tab"><a href="#philipph">Philipp Hofmann</a></li>
-                <li class="tab"><a href="#christine">Christine Hofmann</a></li>
-                <li class="tab"><a href="#michael">Michael Müller</a></li>
-                <li class="tab"><a href="#kalli">Karlheinz Knöbl</a></li>
-                <li class="tab"><a href="#philippw">Philipp Weißmann</a></li>
+                @foreach (var p in randomizedSpieler)
+                {
+                    <li class="tab"><a href="#@p.Id">@p.Name</a></li>
+                }
             </ul>
             <!-- Begin Entries -->
             <div class="panel-container">
@@ -834,6 +844,13 @@
         <script type="text/javascript">
             //Fügt die Schaltflächen für Vor und Zurück auf kleinen Geräten hinzu
             setTabButtons('#tab-buttons-container-spieler', '.tab-buttons-panel-spieler');
+            // Wähle nach dem Initialisieren immer den ersten zufälligen Tab aus
+            (function(){
+                var $first = $('#carouselSpieler a:first');
+                if ($first.length) {
+                    $('#tab-buttons-container-spieler').easytabs('select', $first.attr('href'));
+                }
+            })();
         </script>
     </div>
     <!-- End "Über uns" Section -->
