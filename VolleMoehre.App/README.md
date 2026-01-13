@@ -36,11 +36,7 @@ The app now uses the modern single-project structure introduced in Uno Platform 
 - Upgraded to .NET 10 (from .NET 6)
 - Target frameworks: net10.0-android, net10.0-ios, net10.0-browserwasm, net10.0-desktop
 
-### 4. Central Package Management
-- Uses Directory.Packages.props for centralized package version management
-- More maintainable dependency management
-
-### 5. Uno Material
+### 4. Uno Material
 - Configured to use Uno Material for consistent Material Design theming
 
 ## Building the Project
@@ -96,11 +92,13 @@ dotnet run -f net10.0-desktop
 
 ## Dependencies
 
-See `Directory.Packages.props` for the complete list of dependencies. Key dependencies include:
+Key dependencies include:
 - Uno.Sdk: 6.4.53
-- PropertyChanged.Fody: For automatic INotifyPropertyChanged implementation
-- Microsoft.AspNet.WebApi.Client: For HTTP API calls
-- MonkeyCache.FileStore: For local data caching
+- PropertyChanged.Fody: 4.1.0 - For automatic INotifyPropertyChanged implementation
+- Microsoft.AspNet.WebApi.Client: 6.0.0 - For HTTP API calls
+- MonkeyCache.FileStore: 1.6.3 - For local data caching
+- Xam.Plugin.Connectivity: 3.2.0 - For connectivity detection
+- Fody: 6.8.2 - IL weaving for PropertyChanged.Fody
 
 ## Related Projects
 

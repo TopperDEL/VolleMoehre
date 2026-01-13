@@ -35,8 +35,6 @@ VolleMoehre.App/
 ```
 VolleMoehre.App/
 ├── global.json (Uno SDK version configuration)
-├── Directory.Build.props (Build configuration)
-├── Directory.Packages.props (Central package management)
 └── VolleMoehre.App/ (Single Project - .csproj)
     ├── App.xaml
     ├── Pages/
@@ -98,13 +96,7 @@ using Microsoft.UI.Xaml.Navigation;
 - **Before**: `Microsoft.NET.Sdk` or `Microsoft.NET.Sdk.Web`
 - **After**: `Uno.Sdk` (provides all Uno Platform functionality)
 
-### 7. Package Management
-
-Now uses Central Package Management (CPM):
-- Package versions defined in `Directory.Packages.props`
-- Individual projects reference packages without specifying versions
-
-### 8. Logging
+### 7. Logging
 
 Simplified logging initialization:
 
