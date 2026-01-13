@@ -68,11 +68,6 @@ namespace VolleMoehre.App
 
                 rootFrame.NavigationFailed += OnNavigationFailed;
 
-                if (args.PreviousExecutionState == ApplicationExecutionState.Terminated)
-                {
-                    // TODO: Load state from previously suspended application
-                }
-
                 // Place the frame in the current Window
                 _window.Content = rootFrame;
             }
@@ -86,10 +81,10 @@ namespace VolleMoehre.App
                 if (localSettings.Values.ContainsKey("APIKey"))
                 {
                     __APIKey = localSettings.Values["APIKey"] as string;
-                    rootFrame.Navigate(typeof(Pages.InternMainPage), args.Arguments);
+                    rootFrame.Navigate(typeof(VolleMoehre.App.Shared.InternMainPage), args.Arguments);
                 }
                 else
-                    rootFrame.Navigate(typeof(Pages.MainPage), args.Arguments);
+                    rootFrame.Navigate(typeof(VolleMoehre.App.Shared.MainPage), args.Arguments);
             }
             // Ensure the current window is active
             _window.Activate();
