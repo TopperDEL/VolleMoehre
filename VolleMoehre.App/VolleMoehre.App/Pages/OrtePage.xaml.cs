@@ -9,7 +9,7 @@ using VolleMoehre.Contracts.Model;
 using VolleMoehre.App.Shared.ViewModels;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
-using Windows.UI.Xaml;
+using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
 using Microsoft.UI.Xaml.Data;
