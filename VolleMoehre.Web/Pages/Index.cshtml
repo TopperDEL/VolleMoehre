@@ -80,7 +80,7 @@
                     }
                     else
                     {
-                    <p>Derzeit haben wir leider - Corona-bedingt - keine Auftritte.</p>
+                    <p>Derzeit haben wir leider keine Auftritte.</p>
                     }
                 </a>
             </div>
@@ -212,7 +212,7 @@
                             <moehre-content url="Ort_Allgemein.aspx"></moehre-content>
                                 }
                         </p>
-                        @if (!string.IsNullOrEmpty(item.EintrittInfo))
+                        @* @if (!string.IsNullOrEmpty(item.EintrittInfo))
                             {
                         <p>
                             Eintritt: <span class="eintritt">
@@ -223,7 +223,7 @@
                             else
                             {
                         <p><span class="eintritt">Eintritt frei!</span></p>
-                            }
+                            } *@
                         <div id="esSpielen">
                             Es spielen:<br>
                             @foreach (string spieler in item.Teilnehmer)
