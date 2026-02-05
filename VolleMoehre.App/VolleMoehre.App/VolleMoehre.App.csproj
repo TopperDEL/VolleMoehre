@@ -1,0 +1,47 @@
+<Project Sdk="Uno.Sdk">
+  <PropertyGroup>
+    <TargetFrameworks>net10.0-android;net10.0-ios;net10.0-browserwasm;net10.0-desktop</TargetFrameworks>
+
+    <OutputType>Exe</OutputType>
+    <UnoSingleProject>true</UnoSingleProject>
+
+    <!-- Display name -->
+    <ApplicationTitle>VolleMoehre</ApplicationTitle>
+    <!-- App Identifier -->
+    <ApplicationId>com.vollemoehre.app</ApplicationId>
+    <!-- Versions -->
+    <ApplicationDisplayVersion>1.0</ApplicationDisplayVersion>
+    <ApplicationVersion>1</ApplicationVersion>
+    <!-- Package Publisher -->
+    <ApplicationPublisher>VolleMoehre</ApplicationPublisher>
+    <!-- Package Description -->
+    <Description>VolleMoehre App powered by Uno Platform.</Description>
+
+    <!--
+      UnoFeatures are used to quickly add and manage features enabled for your app.
+      https://aka.platform.uno/singleproject-features
+    -->
+    <UnoFeatures>
+      Material;
+    </UnoFeatures>
+    
+    <DefaultLanguage>de-DE</DefaultLanguage>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Fody" Version="6.8.2">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="PropertyChanged.Fody" Version="4.1.0" />
+    <PackageReference Include="Microsoft.AspNet.WebApi.Client" Version="6.0.0" />
+    <PackageReference Include="MonkeyCache.FileStore" Version="1.6.3" />
+    <PackageReference Include="Xam.Plugin.Connectivity" Version="3.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\VolleMoehre.Adapter.Calender\VolleMoehre.Adapter.Calender.csproj" />
+    <ProjectReference Include="..\..\VolleMoehre.Contracts\VolleMoehre.Contracts.csproj" />
+  </ItemGroup>
+
+</Project>
